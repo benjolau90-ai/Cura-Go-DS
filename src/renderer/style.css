@@ -2893,6 +2893,19 @@ h6,
   }
 }
 
+/* @component
+ * name: Button
+ * selector: .btn
+ * variants: primary, secondary, ghost, destructive
+ * states: default, hover, active, pressed, disabled, focus
+ * figmaProps:
+ *   Style: primary | secondary | ghost | destructive
+ *   Icon: boolean
+ *   Label: string
+ *   Loading: boolean
+ * tokens: --button-primary-background-default, --button-primary-text, --button-primary-border, --button-secondary-background-default, --button-secondary-text, --button-secondary-border, --button-ghost-text
+ * figmaId:
+ */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -3554,13 +3567,21 @@ h6,
   align-items: start;
 }
 
+/* @component
+ * name: ActionMenu
+ * selector: .action-menu
+ * variants: default
+ * states: closed, open, open-up, align-left
+ * figmaProps:
+ *   Trigger: icon-button | button
+ *   HasHeader: boolean
+ *   Items: string
+ * tokens: --color-surface-default, --shadow-floating, --radius-md, --color-border-subtle
+ * figmaId:
+ */
 /* ---------- Action Menu ----------
    Kebab-/Overflow-Menü: Trigger (üblicherweise .btn--icon) + .menu-surface
-   als Overlay-Panel. Positionierung folgt der bestehenden Konvention aus
-   .split-button__menu/.sidebar-more__menu (position:absolute im
-   position:relative-Wrapper, kein JS-Rect-Tracking wie beim Tooltip) –
-   einzige JS-Aufgabe ist der Kollisionscheck für die beiden Flip-Modifier
-   unten. Siehe js/ui/action-menu.js. */
+   als Overlay-Panel. */
 .action-menu {
   position: relative;
   display: inline-flex;
@@ -5100,6 +5121,19 @@ h6,
   gap: var(--spacing-8);
 }
 
+/* @component
+ * name: Chip
+ * selector: .chip
+ * variants: default, status, success, warning, error, info
+ * states: default, hover, selected, disabled
+ * figmaProps:
+ *   Style: default | success | warning | error | info
+ *   Icon: boolean
+ *   Label: string
+ *   Dismissible: boolean
+ * tokens: --chip-background, --chip-text, --chip-border, --chip-height, --chip-padding-x, --chip-radius
+ * figmaId:
+ */
 .chip {
   min-height: var(--chip-height);
   padding: 0 var(--chip-padding-x);
@@ -5305,6 +5339,17 @@ button.chip--choice.is-hover {
    [data-tooltip]-Trigger angehängt. Nur reiner Text, keine interaktiven
    Inhalte – für alles Interaktive ist ein Popover/Menu zuständig, kein
    Tooltip. Erscheint verzögert (Hover/Focus), verschwindet sofort. */
+/* @component
+ * name: Tooltip
+ * selector: .tooltip
+ * variants: default
+ * states: hidden, visible
+ * figmaProps:
+ *   Label: string
+ *   Position: top | right | bottom | left
+ * tokens: --tooltip-background, --tooltip-text, --shadow-floating, --radius-sm
+ * figmaId:
+ */
 .tooltip {
   position: fixed;
   z-index: 50;
@@ -5327,6 +5372,18 @@ button.chip--choice.is-hover {
 }
 
 /* ---------- Modal: Feedback erfassen ---------- */
+/* @component
+ * name: Modal
+ * selector: .modal
+ * variants: default
+ * states: hidden, visible
+ * figmaProps:
+ *   Title: string
+ *   Size: sm | md | lg
+ *   HasFooter: boolean
+ * tokens: --color-surface-default, --shadow-floating, --radius-lg, --color-scrim
+ * figmaId:
+ */
 .modal-overlay {
   position: absolute;
   inset: 0;

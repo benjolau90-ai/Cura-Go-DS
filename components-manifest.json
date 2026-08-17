@@ -1,0 +1,194 @@
+{
+  "Button": {
+    "name": "Button",
+    "selector": ".btn",
+    "variants": [
+      "primary",
+      "secondary",
+      "ghost",
+      "destructive"
+    ],
+    "states": [
+      "default",
+      "hover",
+      "active",
+      "pressed",
+      "disabled",
+      "focus"
+    ],
+    "figmaProps": {
+      "Style": [
+        "primary",
+        "secondary",
+        "ghost",
+        "destructive"
+      ],
+      "Icon": [
+        "boolean"
+      ],
+      "Label": [
+        "string"
+      ],
+      "Loading": [
+        "boolean"
+      ]
+    },
+    "tokens": [
+      "--button-primary-background-default",
+      "--button-primary-text",
+      "--button-primary-border",
+      "--button-secondary-background-default",
+      "--button-secondary-text",
+      "--button-secondary-border",
+      "--button-ghost-text"
+    ],
+    "figmaId": null,
+    "hash": "25f3c5b5f115",
+    "updatedAt": "2026-08-17T07:46:39.282Z"
+  },
+  "ActionMenu": {
+    "name": "ActionMenu",
+    "selector": ".action-menu",
+    "variants": [
+      "default"
+    ],
+    "states": [
+      "closed",
+      "open",
+      "open-up",
+      "align-left"
+    ],
+    "figmaProps": {
+      "Trigger": [
+        "icon-button",
+        "button"
+      ],
+      "HasHeader": [
+        "boolean"
+      ],
+      "Items": [
+        "string"
+      ]
+    },
+    "tokens": [
+      "--color-surface-default",
+      "--shadow-floating",
+      "--radius-md",
+      "--color-border-subtle"
+    ],
+    "figmaId": null,
+    "hash": "93742cabf852",
+    "updatedAt": "2026-08-17T07:46:39.283Z"
+  },
+  "Chip": {
+    "name": "Chip",
+    "selector": ".chip",
+    "variants": [
+      "default",
+      "status",
+      "success",
+      "warning",
+      "error",
+      "info"
+    ],
+    "states": [
+      "default",
+      "hover",
+      "selected",
+      "disabled"
+    ],
+    "figmaProps": {
+      "Style": [
+        "default",
+        "success",
+        "warning",
+        "error",
+        "info"
+      ],
+      "Icon": [
+        "boolean"
+      ],
+      "Label": [
+        "string"
+      ],
+      "Dismissible": [
+        "boolean"
+      ]
+    },
+    "tokens": [
+      "--chip-background",
+      "--chip-text",
+      "--chip-border",
+      "--chip-height",
+      "--chip-padding-x",
+      "--chip-radius"
+    ],
+    "figmaId": null,
+    "hash": "8bd46405fe1c",
+    "updatedAt": "2026-08-17T07:46:39.283Z"
+  },
+  "Tooltip": {
+    "name": "Tooltip",
+    "selector": ".tooltip",
+    "variants": [
+      "default"
+    ],
+    "states": [
+      "hidden",
+      "visible"
+    ],
+    "figmaProps": {
+      "Label": [
+        "string"
+      ],
+      "Position": [
+        "top",
+        "right",
+        "bottom",
+        "left"
+      ]
+    },
+    "tokens": [
+      "--tooltip-background",
+      "--tooltip-text",
+      "--shadow-floating",
+      "--radius-sm"
+    ],
+    "figmaId": null,
+    "hash": "5813f9e7dd0a",
+    "updatedAt": "2026-08-17T07:46:39.283Z"
+  },
+  "Modal": {
+    "name": "Modal",
+    "selector": ".modal",
+    "variants": [
+      "default"
+    ],
+    "states": [
+      "hidden",
+      "visible"
+    ],
+    "figmaProps": {
+      "Title": [
+        "string"
+      ],
+      "Size": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "HasFooter": [
+        "boolean"
+      ]
+    },
+    "tokens": [
+      "--color-surface-default",
+      "--shadow-floating",
+      "--radius-lg",
+      "--color-scrim"
+    ],
+    "figmaId": null,
+    "hash": "e4c670f94b89",
+    "updatedAt": "2026-08-17T07:46:39.283Z"
+  }
+}
