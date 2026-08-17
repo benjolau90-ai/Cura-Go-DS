@@ -2939,10 +2939,11 @@ h6,
  * states: default, hover, active, pressed, disabled, focus
  * figmaProps:
  *   Style: primary | secondary | ghost | destructive
+ *   Size: sm | md | lg
  *   Icon: boolean
  *   Label: string
  *   Loading: boolean
- * tokens: --button-primary-background-default, --button-primary-text, --button-primary-border, --button-secondary-background-default, --button-secondary-text, --button-secondary-border, --button-ghost-text
+ * tokens: --button-primary-background-default, --button-primary-text, --button-primary-border, --button-secondary-background-default, --button-secondary-text, --button-secondary-border, --button-ghost-text, --button-size-sm, --button-size-md, --button-size-lg, --button-padding-x-sm, --button-padding-x-md, --button-padding-x-lg, --button-radius
  * figmaId:
  */
 .btn {
@@ -2962,15 +2963,15 @@ h6,
 }
 
 .btn--sm {
-  --btn-size: 28px;
-  --btn-padding-x: var(--spacing-10);
+  --btn-size: var(--button-size-sm);
+  --btn-padding-x: var(--button-padding-x-sm);
   --btn-gap: var(--spacing-4);
   --btn-font: var(--type-control-strong);
 }
 
 .btn--lg {
-  --btn-size: 40px;
-  --btn-padding-x: var(--spacing-16);
+  --btn-size: var(--button-size-lg);
+  --btn-padding-x: var(--button-padding-x-lg);
   --btn-gap: var(--spacing-8);
   --btn-font: var(--type-body-strong);
 }
@@ -3079,10 +3080,11 @@ h6,
  * states: default, hover, active, pressed, disabled, focus
  * figmaProps:
  *   Style: primary | secondary | ghost | destructive | ai
+ *   Size: sm | md | lg
  *   Icon: string
  *   Active: boolean
  *   Tooltip: string
- * tokens: --button-primary-background-default, --button-secondary-background-default, --button-ghost-text, --btn-size
+ * tokens: --button-primary-background-default, --button-secondary-background-default, --button-ghost-text, --button-size-sm, --button-size-md, --button-size-lg, --button-radius
  * figmaId:
  */
 .btn--icon {
@@ -3188,10 +3190,11 @@ h6,
  * states: default, hover, active, pressed, disabled
  * figmaProps:
  *   Style: primary | secondary | destructive
+ *   Size: sm | md | lg
  *   Label: string
  *   Icon: boolean
  *   MenuOpen: boolean
- * tokens: --button-primary-background-default, --button-secondary-background-default, --button-destructive-background, --split-button-divider, --btn-size, --button-radius
+ * tokens: --button-primary-background-default, --button-secondary-background-default, --button-destructive-background, --split-button-divider, --button-size-sm, --button-size-md, --button-size-lg, --button-radius
  * figmaId:
  */
 .split-button {

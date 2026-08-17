@@ -261,6 +261,12 @@
      ausschließlich auf Semantic-Tokens oben, nie auf Global-Rohwerte direkt.
      ==================================================================== */
   --button-radius: 10px;
+  --button-size-sm: 28px;
+  --button-size-md: 34px;
+  --button-size-lg: 40px;
+  --button-padding-x-sm: var(--spacing-10);
+  --button-padding-x-md: var(--spacing-14);
+  --button-padding-x-lg: var(--spacing-16);
   --button-primary-background-default: linear-gradient(180deg, color-mix(in srgb, var(--color-brand-default) 58%, var(--color-brand-hover)) 0%, color-mix(in srgb, var(--color-brand-default) 78%, var(--color-brand-hover)) 100%);
   --button-primary-background-hover: linear-gradient(180deg, color-mix(in srgb, var(--color-brand-default) 48%, var(--color-brand-hover)) 0%, color-mix(in srgb, var(--color-brand-default) 68%, var(--color-brand-hover)) 100%);
   --button-primary-background-active: linear-gradient(180deg, color-mix(in srgb, var(--color-brand-default) 84%, var(--color-brand-active)) 0%, color-mix(in srgb, var(--color-brand-default) 70%, var(--color-brand-active)) 100%);

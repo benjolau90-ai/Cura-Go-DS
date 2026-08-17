@@ -34,7 +34,7 @@
     ],
     "figmaId": null,
     "hash": "f9285f610199",
-    "updatedAt": "2026-08-17T08:21:49.400Z"
+    "updatedAt": "2026-08-17T09:01:19.819Z"
   },
   "SearchInput": {
     "name": "SearchInput",
@@ -69,7 +69,7 @@
     ],
     "figmaId": null,
     "hash": "7fbbfe434e86",
-    "updatedAt": "2026-08-17T08:21:49.401Z"
+    "updatedAt": "2026-08-17T09:01:19.820Z"
   },
   "ListRow": {
     "name": "ListRow",
@@ -115,7 +115,7 @@
     ],
     "figmaId": null,
     "hash": "607094c1d4f2",
-    "updatedAt": "2026-08-17T08:21:49.401Z"
+    "updatedAt": "2026-08-17T09:01:19.820Z"
   },
   "Button": {
     "name": "Button",
@@ -141,6 +141,11 @@
         "ghost",
         "destructive"
       ],
+      "Size": [
+        "sm",
+        "md",
+        "lg"
+      ],
       "Icon": [
         "boolean"
       ],
@@ -158,11 +163,18 @@
       "--button-secondary-background-default",
       "--button-secondary-text",
       "--button-secondary-border",
-      "--button-ghost-text"
+      "--button-ghost-text",
+      "--button-size-sm",
+      "--button-size-md",
+      "--button-size-lg",
+      "--button-padding-x-sm",
+      "--button-padding-x-md",
+      "--button-padding-x-lg",
+      "--button-radius"
     ],
     "figmaId": null,
-    "hash": "1de73f0bbc03",
-    "updatedAt": "2026-08-17T08:21:49.401Z"
+    "hash": "0079cecf3c45",
+    "updatedAt": "2026-08-17T09:01:19.821Z"
   },
   "IconButton": {
     "name": "IconButton",
@@ -190,6 +202,11 @@
         "destructive",
         "ai"
       ],
+      "Size": [
+        "sm",
+        "md",
+        "lg"
+      ],
       "Icon": [
         "string"
       ],
@@ -204,11 +221,14 @@
       "--button-primary-background-default",
       "--button-secondary-background-default",
       "--button-ghost-text",
-      "--btn-size"
+      "--button-size-sm",
+      "--button-size-md",
+      "--button-size-lg",
+      "--button-radius"
     ],
     "figmaId": null,
-    "hash": "dfa8ad0857ca",
-    "updatedAt": "2026-08-17T08:21:49.401Z"
+    "hash": "007641a6f38d",
+    "updatedAt": "2026-08-17T09:01:19.821Z"
   },
   "AIButton": {
     "name": "AIButton",
@@ -243,7 +263,7 @@
     ],
     "figmaId": null,
     "hash": "ddef6f2bf99d",
-    "updatedAt": "2026-08-17T08:21:49.402Z"
+    "updatedAt": "2026-08-17T09:01:19.821Z"
   },
   "SplitButton": {
     "name": "SplitButton",
@@ -266,6 +286,11 @@
         "secondary",
         "destructive"
       ],
+      "Size": [
+        "sm",
+        "md",
+        "lg"
+      ],
       "Label": [
         "string"
       ],
@@ -281,12 +306,14 @@
       "--button-secondary-background-default",
       "--button-destructive-background",
       "--split-button-divider",
-      "--btn-size",
+      "--button-size-sm",
+      "--button-size-md",
+      "--button-size-lg",
       "--button-radius"
     ],
     "figmaId": null,
-    "hash": "14270a4f1857",
-    "updatedAt": "2026-08-17T08:21:49.402Z"
+    "hash": "8ea893267f73",
+    "updatedAt": "2026-08-17T09:01:19.821Z"
   },
   "ActionMenu": {
     "name": "ActionMenu",
@@ -320,7 +347,7 @@
     ],
     "figmaId": null,
     "hash": "93742cabf852",
-    "updatedAt": "2026-08-17T08:21:49.402Z"
+    "updatedAt": "2026-08-17T09:01:19.821Z"
   },
   "Chip": {
     "name": "Chip",
@@ -367,7 +394,7 @@
     ],
     "figmaId": null,
     "hash": "8bd46405fe1c",
-    "updatedAt": "2026-08-17T08:21:49.402Z"
+    "updatedAt": "2026-08-17T09:01:19.821Z"
   },
   "Tooltip": {
     "name": "Tooltip",
@@ -398,7 +425,7 @@
     ],
     "figmaId": null,
     "hash": "5813f9e7dd0a",
-    "updatedAt": "2026-08-17T08:21:49.402Z"
+    "updatedAt": "2026-08-17T09:01:19.821Z"
   },
   "Modal": {
     "name": "Modal",
@@ -431,7 +458,7 @@
     ],
     "figmaId": null,
     "hash": "2596f64409cc",
-    "updatedAt": "2026-08-17T08:21:49.403Z"
+    "updatedAt": "2026-08-17T09:01:19.821Z"
   },
   "FormInput": {
     "name": "FormInput",
@@ -475,6 +502,6 @@
     ],
     "figmaId": null,
     "hash": "74c4e46a83b5",
-    "updatedAt": "2026-08-17T08:21:49.403Z"
+    "updatedAt": "2026-08-17T09:01:19.821Z"
   }
 }
