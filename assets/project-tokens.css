@@ -1,0 +1,598 @@
+/* ====================================================================
+   SELBST GEHOSTETE FONTS
+   Variable Fonts (ein WOFF2 pro Familie deckt via wght-Achse alle
+   verwendeten Schnitte 400–700 exakt ab, kein CDN-Request zur Laufzeit).
+   Quelle: Google Fonts (Open Sans v44, Roboto v51), Lizenz Apache 2.0/OFL.
+   ==================================================================== */
+@font-face {
+  font-family: "Open Sans";
+  src: url("assets/fonts/open-sans-variable.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/roboto-variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ====================================================================
+     GLOBAL TOKENS
+     Rohe Farbskalen ohne Bedeutung. Nie direkt in Komponentenregeln nutzen –
+     nur um die Semantic-Ebene unten zu definieren. Gleiche Figma-Quelle wie
+     /Users/benjaminlau/Documents/DesignSystem/styles.css, damit beide Projekte
+     an denselben Zahlen hängen.
+     ==================================================================== */
+  /* ---------- Brand-Layer (App-spezifisch) ----------
+     Einzige Stelle, die pro App in der Produkt-Reihe anders ist – alles
+     andere in dieser Datei ist geteilte Basis. Eine neue App überschreibt
+     ausschließlich diese 10 Zeilen (per <link> nach tokens.css geladen,
+     siehe goBook/src/renderer/tokens-brand.css), der Rest erbt automatisch,
+     weil alle Semantic-/Component-Tokens per var() auf --primary-* zeigen
+     statt eigene Rohwerte zu hardcoden. Voraussetzung dafür: keine
+     hardcodierten rgba()-Farbwerte, die zufällig wie --primary-* aussehen –
+     das war vorher an 6 Stellen der Fall (--color-brand-ring,
+     --app-background-tint-brand, --surface-preview-tint-brand,
+     --state-selected-background/-ring, je light+dark), jetzt alle über
+     color-mix() an die Skala gebunden. */
+  --primary-50: #eaf6ff;
+  --primary-100: #d6ecff;
+  --primary-200: #b6d8ff;
+  --primary-300: #87b4ff;
+  --primary-400: #598bff;
+  --primary-500: #2b5bdc;
+  --primary-600: #153db4;
+  --primary-700: #052089;
+  --primary-800: #010b5c;
+  --primary-900: #000030;
+
+  /* Neue Zwischenstufe (nicht in DesignSystems Original-Skala): Weiß und
+     neutral-50 lagen ohne jede Stufe dazwischen, wodurch surface-raised in
+     Light auf denselben Wert wie background-secondary gequetscht war (siehe
+     Kontrast-Audit) – dark hatte für die analoge Rolle längst eine eigene
+     Stufe (neutral-700 vs. neutral-800). */
+  --neutral-25: #fafbfc;
+  --neutral-50: #f4f6f9;
+  --neutral-100: #e8ebf1;
+  --neutral-200: #d3d9e1;
+  --neutral-300: #b0b8c3;
+  --neutral-400: #8a93a0;
+  --neutral-500: #606a78;
+  --neutral-600: #454e5a;
+  --neutral-700: #2c333e;
+  /* Zwischenstufe wie --neutral-25 oben, nur für Dark: surface-default und
+     background-secondary lagen beide auf neutral-800 (Kontrast 1.00), obwohl
+     Light für dasselbe Paar ~1.08 hat – dieselbe Bug-Klasse wie beim
+     surface-raised-Fund, nur spiegelverkehrt (dort Light identisch, hier Dark
+     identisch). Ziel: ~1.08 Kontrast zu neutral-800, ohne die Werte selbst zu
+     erfinden – linear zwischen neutral-700 und neutral-800 interpoliert. */
+  --neutral-750: #1e242d;
+  --neutral-800: #181d25;
+  --neutral-900: #06090e;
+  --neutral-white: #ffffff;
+  --neutral-black: #000000;
+
+  --accent-50: #ffede5;
+  --accent-300: #ff8d71;
+  --accent-400: #f25738;
+  --accent-500: #c70000;
+  --accent-600: #a00000;
+  --accent-900: #260000;
+
+  --success-50: #e6fdea;
+  --success-400: #22ae54;
+  --success-500: #00841b;
+  --success-900: #001100;
+
+  --warning-50: #fff2d4;
+  --warning-400: #e4a000;
+  --warning-500: #bc7d00;
+  --warning-900: #241100;
+
+  --error-50: #ffece5;
+  --error-400: #fa4a3b;
+  --error-500: #cf0000;
+  --error-900: #290000;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* Radius/Spacing-Zahlen bewusst noch unverändert gelassen – Abgleich mit
+     DesignSystem (6/8/16/999) ist Schritt 4, eigene Entscheidung nötig. */
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-icon: 3px;
+  --radius-sm: 4px;
+  --radius-control: 6px;
+  /* 8px statt der ursprünglichen 6px: 12 Stellen in style.css (Buttons, Chips,
+     Modal-Card, Inputs …) hartkodierten schon 8px als "medium radius" – der
+     Token war der Ausreißer, nicht die App (Schritt 8). */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+  --shell-padding: 8px;
+  --spacing-0: 0;
+  --spacing-1: 1px;
+  --spacing-2: 2px;
+  --spacing-3: 3px;
+  --spacing-4: 4px;
+  --spacing-6: 6px;
+  --spacing-7: 7px;
+  --spacing-8: 8px;
+  --spacing-10: 10px;
+  --spacing-11: 11px;
+  --spacing-12: 12px;
+  --spacing-14: 14px;
+  --spacing-16: 16px;
+  --spacing-18: 18px;
+  --spacing-20: 20px;
+  --spacing-22: 22px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-86: 86px;
+
+  --font-size-2xs: 11px;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-control: 14px;
+  --font-size-md: 15px;
+  --font-size-section: 16px;
+  --font-size-lg: 18px;
+  --font-size-display: 20px;
+
+  --line-height-sm: 18px;
+  --line-height-md: 22px;
+  --line-height-lg: 26px;
+  --line-height-title: 28px;
+  --letter-spacing-default: 0;
+
+  /* ====================================================================
+     SEMANTIC TOKENS (Light) — Rolle statt Rohwert. Component-Code soll
+     bevorzugt einen Component-Token (weiter unten) nutzen; existiert keiner,
+     wird direkt hierher verwiesen. Namen/Struktur 1:1 wie in
+     DesignSystem/styles.css, damit beide Projekte dieselbe Sprache sprechen.
+     ==================================================================== */
+  --color-background-primary: var(--neutral-white);
+  --color-background-secondary: var(--neutral-50);
+  --color-background-tertiary: var(--neutral-100);
+  --color-surface-default: var(--neutral-white);
+  --color-surface-raised: var(--neutral-25);
+  --color-surface-overlay: var(--neutral-100);
+  --color-border-default: var(--neutral-200);
+  --color-border-strong: var(--neutral-400);
+  --color-border-subtle: var(--neutral-100);
+  --color-text-primary: var(--neutral-900);
+  --color-text-secondary: var(--neutral-600);
+  --color-text-tertiary: var(--neutral-500);
+  --color-text-disabled: var(--neutral-300);
+  --color-text-inverse: var(--neutral-white);
+  --color-text-on-brand: var(--neutral-white);
+  --color-brand-default: var(--primary-500);
+  --color-brand-hover: var(--primary-600);
+  --color-brand-active: var(--primary-700);
+  --color-brand-subtle: var(--primary-50);
+  --color-brand-muted: var(--primary-100);
+  --color-brand-ring: color-mix(in srgb, var(--primary-500) 35%, transparent);
+  --color-accent-default: var(--accent-500);
+  --color-accent-hover: var(--accent-600);
+  --color-accent-subtle: var(--accent-50);
+  --color-accent-muted: color-mix(in srgb, var(--accent-50) 78%, var(--accent-500));
+  --color-status-success: var(--success-500);
+  --color-status-success-subtle: var(--success-50);
+  --color-status-success-muted: color-mix(in srgb, var(--success-50) 78%, var(--success-500));
+  --color-status-warning: var(--warning-500);
+  --color-status-warning-subtle: var(--warning-50);
+  --color-status-warning-muted: color-mix(in srgb, var(--warning-50) 78%, var(--warning-500));
+  --color-status-error: var(--error-500);
+  --color-status-error-subtle: var(--error-50);
+  --color-status-error-muted: color-mix(in srgb, var(--error-50) 78%, var(--error-500));
+  --color-focus-ring: rgba(99, 102, 241, 0.8);
+
+  /* Von DesignSystem noch nicht abgedeckte, aber in desktopLayout gebrauchte
+     Semantic-Rollen – eigenes Segment, damit klar ist, was zusätzlich ist. */
+  --color-surface-subtle: var(--neutral-50);
+  --color-category-feedback: #8a5cf6;
+  --color-category-feedback-subtle: #faf8ff;
+  --color-text-on-danger: var(--neutral-white);
+
+  /* Glass / Elevation-Effekte (Figma-Glass-Variablen, unverändert korrekt) */
+  --app-background-tint-brand: color-mix(in srgb, var(--primary-500) 20%, transparent);
+  --app-background-tint-accent: color-mix(in srgb, var(--accent-500) 11%, transparent);
+  --surface-preview-tint-brand: color-mix(in srgb, var(--primary-500) 6%, transparent);
+  --glass-toolbar: rgba(255, 253, 252, 0.5);
+  --glass-card: rgba(255, 253, 252, 0.7);
+  --glass-solid: rgba(255, 253, 252, 0.95);
+  --glass-chrome-nav: rgba(245, 248, 253, 0.64);
+  --glass-chrome-top: rgba(252, 252, 252, 0.42);
+  --glass-elevation-glow: rgba(244, 246, 249, calc(0.35 * var(--glass-glow-factor)));
+  --glass-elevation-drop: rgba(0, 0, 0, 0.06);
+  --glass-border: #ffffff;
+  --glass-elevation-lg-radius: 16px;
+  --glass-elevation-md-radius: 6px;
+  --glass-elevation-sm-radius: 2px;
+  --glass-drop-lg-radius: 8px;
+  --glass-drop-lg-offset: 3px;
+  --glass-drop-md-radius: 4px;
+  --glass-drop-md-offset: 2px;
+  --glass-drop-sm-radius: 2px;
+  --glass-drop-sm-offset: 1px;
+  --shadow: 0 20px 60px rgba(6, 9, 14, 0.12);
+  --shadow-soft: 0 12px 30px rgba(6, 9, 14, 0.12);
+  --shadow-hairline: 0 1px 3px rgba(6, 9, 14, calc(0.06 * var(--shadow-ambient-factor)));
+  --shadow-hairline-soft: 0 1px 3px rgba(6, 9, 14, calc(0.05 * var(--shadow-ambient-factor)));
+  --shadow-control: 0 1px 1px rgba(6, 9, 14, calc(0.12 * var(--shadow-ambient-factor)));
+  --shadow-card: 0 1px 1px rgba(6, 9, 14, calc(0.08 * var(--shadow-ambient-factor)));
+  --shadow-surface: 0 4px 12px rgba(15, 23, 42, calc(0.05 * var(--shadow-ambient-factor)));
+  --shadow-floating: 0 8px 20px rgba(15, 23, 42, calc(0.12 * var(--shadow-ambient-factor)));
+  --shadow-modal: 0 18px 42px rgba(15, 23, 42, calc(0.18 * var(--shadow-ambient-factor)));
+  --shadow-dialog: 0 4px 6px rgba(6, 9, 14, calc(0.12 * var(--shadow-ambient-factor)));
+  --scrim-subtle: rgba(15, 23, 42, 0.16);
+  --scrim-modal: rgba(6, 9, 14, 0.35);
+
+  /* Skalierungsfaktoren für die Bevel-Schatten an Buttons/Modal/Card (Schritt
+     "Dark-Mode-Schatten"). Multiplizieren die bestehenden, unveränderten
+     Alpha-Werte per calc() – Verhältnis zwischen default/hover/active bleibt
+     dadurch automatisch erhalten, nur die Gesamt-Intensität skaliert um. */
+  --shadow-highlight-factor: 1;
+  --shadow-ambient-factor: 1;
+  /* Eigener, stärker gedimmter Faktor nur für den Panel-/Card-Glasglanz
+     (--glass-elevation-glow) – bewusst getrennt von --shadow-highlight-factor
+     (Buttons), da der Glow auf großen Flächen viel präsenter wirkt als die
+     kleine Button-Kante und deutlich mehr Dimmung braucht. */
+  --glass-glow-factor: 1;
+
+  --tooltip-background: #1f2328;
+  --tooltip-text: #f5f8fa;
+  --button-secondary-split: #f6f2eb;
+  --opacity-muted: 0.7;
+
+  /* ====================================================================
+     COMPONENT TOKENS — konkrete Anwendung an einem UI-Baustein. Mappen
+     ausschließlich auf Semantic-Tokens oben, nie auf Global-Rohwerte direkt.
+     ==================================================================== */
+  --button-radius: 10px;
+  --button-size-sm: 28px;
+  --button-size-md: 34px;
+  --button-size-lg: 40px;
+  --button-padding-x-sm: var(--spacing-10);
+  --button-padding-x-md: var(--spacing-14);
+  --button-padding-x-lg: var(--spacing-16);
+  --button-primary-background-default: linear-gradient(180deg, color-mix(in srgb, var(--color-brand-default) 58%, var(--color-brand-hover)) 0%, color-mix(in srgb, var(--color-brand-default) 78%, var(--color-brand-hover)) 100%);
+  --button-primary-background-hover: linear-gradient(180deg, color-mix(in srgb, var(--color-brand-default) 48%, var(--color-brand-hover)) 0%, color-mix(in srgb, var(--color-brand-default) 68%, var(--color-brand-hover)) 100%);
+  --button-primary-background-active: linear-gradient(180deg, color-mix(in srgb, var(--color-brand-default) 84%, var(--color-brand-active)) 0%, color-mix(in srgb, var(--color-brand-default) 70%, var(--color-brand-active)) 100%);
+  --button-primary-border: color-mix(in srgb, var(--color-brand-default) 82%, var(--color-brand-active));
+  --button-primary-text: var(--color-text-on-brand);
+  --button-secondary-background-default: color-mix(in srgb, var(--color-surface-default) 66%, transparent);
+  /* DesignSystem-Kanon nutzt --color-surface-raised; desktopLayout hat für
+     Button-Hover schon immer den etwas dezenteren --color-surface-subtle
+     verwendet (eigener Semantic-Slot, siehe Schritt 1) – hier bewusst der
+     tatsächlichen Verwendung angepasst statt umgekehrt. */
+  --button-secondary-background-hover: color-mix(in srgb, var(--color-surface-raised) 76%, var(--color-brand-subtle));
+  --button-secondary-text: var(--color-text-primary);
+  --button-secondary-border: color-mix(in srgb, var(--color-border-default) 84%, var(--color-border-strong));
+  --button-ghost-text: var(--color-text-primary);
+  --button-ghost-background-hover: var(--color-surface-subtle);
+  --button-destructive-background: var(--color-status-error);
+  --button-destructive-text: var(--color-text-on-danger);
+  --button-destructive-border: color-mix(in srgb, var(--color-status-error) 78%, var(--error-900));
+  --button-ai-background-default: color-mix(in srgb, var(--color-status-warning-subtle) 12%, var(--color-surface-default));
+  --button-ai-background-hover: color-mix(in srgb, var(--color-status-warning-subtle) 18%, var(--color-surface-default));
+  --button-ai-background-active: color-mix(in srgb, var(--color-status-warning-subtle) 32%, var(--color-surface-default));
+  --button-ai-border: var(--AIGradient, linear-gradient(131deg, #ffb932 28.28%, #f00 53.54%, #d123ab 73.55%));
+  --button-ai-text: var(--color-text-primary);
+  --button-ai-icon: var(--color-status-warning);
+  --button-structure-highlight: inset 0 1px 0 color-mix(in srgb, var(--neutral-white) 24%, transparent);
+  --button-glass-highlight: inset 0 1px 1px color-mix(in srgb, var(--neutral-white) 55%, transparent), inset 0 -1px 1px color-mix(in srgb, var(--neutral-black) 8%, transparent), 0 1px 2px color-mix(in srgb, var(--neutral-black) 8%, transparent);
+  --button-glass-blur: blur(4.6px);
+  --button-transition: background 0.15s ease, background-color 0.15s ease, background-position 0.45s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease, opacity 0.15s ease, transform 0.08s ease, backdrop-filter 0.15s ease;
+  --icon-primary: var(--color-text-primary);
+  --icon-secondary: var(--color-text-secondary);
+  --btn-icon-size: 18px;
+  --state-hover-background: color-mix(in srgb, var(--color-brand-default) 8%, var(--color-surface-default));
+  --button-secondary-icon: var(--color-text-secondary);
+
+  --card-background: var(--color-surface-raised);
+  --card-border: var(--color-border-subtle);
+  --card-title: var(--color-text-primary);
+  --card-body: var(--color-text-secondary);
+
+  --nav-background: var(--color-background-primary);
+  --nav-border: var(--color-border-subtle);
+  --nav-item-text-default: var(--color-text-secondary);
+  --nav-item-text-active: var(--color-brand-default);
+  --nav-item-background-hover: var(--color-surface-raised);
+  --nav-item-background-active: var(--color-brand-subtle);
+
+  --input-background-default: var(--color-surface-default);
+  --input-background-focus: var(--color-background-primary);
+  --input-border-default: var(--color-border-default);
+  --input-border-hover: color-mix(in srgb, var(--input-border-default) 72%, var(--color-brand-default));
+  --input-border-focus: var(--color-brand-default);
+  --input-shadow-default: inset 0 1px 0 color-mix(in srgb, var(--neutral-white) 84%, transparent);
+  --input-shadow-focus: var(--input-shadow-default), 0 0 0 3px color-mix(in srgb, var(--color-focus-ring) 34%, transparent);
+  --input-text-value: var(--color-text-primary);
+  --input-text-placeholder: var(--color-text-tertiary);
+
+  --form-control-height-compact: 34px;
+  --form-control-height-default: 44px;
+  --form-control-radius: var(--radius-md);
+  --form-control-background: var(--input-background-default);
+  --form-control-border: var(--input-border-default);
+  --form-control-border-hover: var(--input-border-hover);
+  --form-control-border-focus: var(--input-border-focus);
+  --form-control-shadow-focus: var(--input-shadow-focus);
+
+  --chip-background: var(--color-surface-default);
+  --chip-border: var(--color-border-strong);
+  --chip-text: var(--color-text-primary);
+  --chip-height: 24px;
+  --chip-padding-x: var(--spacing-10);
+  --chip-gap: var(--spacing-4);
+  --chip-radius: var(--radius-full);
+  --chip-background-muted: var(--color-surface-subtle);
+  --chip-border-muted: var(--color-border-default);
+  --chip-text-muted: var(--color-text-secondary);
+  --chip-choice-background: var(--color-surface-default);
+  --chip-choice-background-hover: var(--state-hover-background, var(--color-brand-subtle));
+  --chip-choice-background-selected: var(--color-brand-subtle);
+  --chip-choice-border-selected: var(--color-brand-default);
+  --chip-choice-text-selected: var(--color-brand-default);
+  --chip-unit-radius: var(--radius-sm);
+  --chip-icon-size: 14px;
+  --chip-remove-size: 18px;
+
+  --segmented-control-height: var(--form-control-height-compact);
+  --segmented-control-radius: var(--form-control-radius);
+  --segmented-control-background: var(--color-surface-subtle);
+  --segmented-control-item-selected-background: var(--color-brand-default);
+  --segmented-control-item-selected-text: var(--color-text-on-brand);
+  --switch-track-background-off: var(--color-border-default);
+  --switch-track-background-on: var(--color-brand-default);
+  --switch-thumb-background: var(--color-surface-default);
+  --checkbox-border: var(--input-border-default);
+  --checkbox-border-focus: var(--input-border-focus);
+  --checkbox-background-checked: var(--color-brand-default);
+  --radio-border: var(--input-border-default);
+  --radio-border-focus: var(--input-border-focus);
+  --radio-dot: var(--color-brand-default);
+  --menu-surface-background: var(--color-surface-default);
+  --menu-surface-border: var(--color-border-default);
+  --menu-item-background-hover: var(--state-hover-background, var(--color-brand-subtle));
+  --modal-surface-background: var(--color-surface-raised);
+  --modal-card-background: var(--color-surface-default);
+  --modal-border: var(--color-border-default);
+  --banner-radius: var(--radius-md);
+  --banner-gap: var(--spacing-10);
+  --banner-padding-y: var(--spacing-12);
+  --banner-padding-x: var(--spacing-14);
+  --banner-info-background: color-mix(in srgb, var(--color-brand-subtle) 62%, var(--color-surface-default));
+  --banner-info-border: color-mix(in srgb, var(--color-brand-default) 28%, var(--color-border-default));
+  --banner-info-text: var(--color-text-primary);
+  --banner-info-icon: var(--color-brand-default);
+  --banner-success-background: var(--success-bg);
+  --banner-success-border: var(--success-border);
+  --banner-success-text: var(--success-text);
+  --banner-success-icon: var(--success-icon);
+  --banner-warning-background: var(--warning-bg);
+  --banner-warning-border: var(--warning-border);
+  --banner-warning-text: var(--warning-text);
+  --banner-warning-icon: var(--warning-icon);
+  --banner-error-background: var(--danger-bg);
+  --banner-error-border: var(--danger-border);
+  --banner-error-text: var(--danger-text);
+  --banner-error-icon: var(--danger-icon);
+  --divider-color-default: var(--color-border-default);
+  --divider-color-strong: var(--color-border-strong);
+  --divider-gap-structural: var(--spacing-6);
+  --AIGradient: linear-gradient(131deg, #ffb932 28.28%, #f00 53.54%, #d123ab 73.55%);
+
+  /* ====================================================================
+     LEGACY ALIASE — Übergang, bis Schritt 8 jede Verwendungsstelle in
+     style.css auf die Component-Tokens oben umgezogen hat. Zeigen jetzt auf
+     die neue Semantic-Ebene statt eigener Rohwerte, damit Licht/Dunkel-Werte
+     nur noch an einer Stelle (oben) gepflegt werden müssen.
+     ==================================================================== */
+  --brand-hover: var(--color-brand-hover);
+  --brand-active: var(--color-brand-active);
+  --brand-subtle: var(--color-brand-subtle);
+  --brand-muted: var(--color-brand-muted);
+  --accent-hover: var(--color-accent-hover);
+  --accent-subtle: var(--color-accent-subtle);
+  --accent-muted: var(--color-accent-muted);
+  --status-success: var(--color-status-success);
+  --status-success-subtle: var(--color-status-success-subtle);
+  --status-success-muted: var(--color-status-success-muted);
+  --status-warning: var(--color-status-warning);
+  --status-warning-subtle: var(--color-status-warning-subtle);
+  --status-warning-muted: var(--color-status-warning-muted);
+  --status-error: var(--color-status-error);
+  --status-error-subtle: var(--color-status-error-subtle);
+  --status-error-muted: var(--color-status-error-muted);
+  /* --danger-600 (#dc2626) und --text-danger (#b91c1c) liegen auf keiner
+     Figma-Skalenstufe – historisch eigenständige Werte, bewusst literal
+     belassen statt falsch an die Skala anzunähern. Entscheidung für
+     Schritt 8: beibehalten oder auf --color-status-error vereinheitlichen? */
+  --danger-500: var(--color-status-error);
+  --danger-600: #dc2626;
+  --text-danger: #b91c1c;
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-tertiary: var(--color-text-tertiary);
+  --text-disabled: var(--color-text-disabled);
+  --text-inverse: var(--color-text-inverse);
+  --text-on-brand: var(--color-text-on-brand);
+  --border-default: var(--color-border-default);
+  --border-subtle: var(--color-border-subtle);
+  --border-strong: var(--color-border-strong);
+  --background-primary: var(--color-background-primary);
+  --background-secondary: var(--color-background-secondary);
+  --background-tertiary: var(--color-background-tertiary);
+  --color-slate-100: var(--color-background-secondary);
+  --surface-default: var(--color-surface-default);
+  --surface-subtle: var(--color-surface-subtle);
+  --surface-raised: var(--color-surface-raised);
+  --surface-overlay: var(--color-surface-overlay);
+  --surface-glass-strong: rgba(252, 252, 252, 0.56);
+  --state-selected-background: color-mix(in srgb, var(--primary-50) 72%, transparent);
+  --state-selected-border: var(--color-brand-default);
+  --state-selected-shadow: none;
+  --state-selected-ring: color-mix(in srgb, var(--primary-500) 18%, transparent);
+  --input-background: var(--input-background-default);
+  --input-text: var(--input-text-value);
+
+  /* ---------- Typografie: Font-Shorthands ----------
+     Produktentscheidung: Headings und Badges laufen über Roboto, Body/UI
+     über Open Sans. Beide sind oben als @font-face selbst gehostet; die
+     System-Stacks hier greifen nur als Fallback, falls die Datei aus
+     irgendeinem Grund nicht lädt. */
+  --font-family-heading: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-family-body: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-badge: var(--font-family-heading);
+  --type-micro: 600 var(--font-size-2xs)/var(--line-height-sm) var(--font-family-body);
+  --type-caption: 600 var(--font-size-xs)/var(--line-height-sm) var(--font-family-body);
+  --type-meta: 400 var(--font-size-sm)/var(--line-height-sm) var(--font-family-body);
+  --type-label: 600 var(--font-size-sm)/var(--line-height-sm) var(--font-family-body);
+  --type-label-loose: 600 var(--font-size-sm)/var(--line-height-md) var(--font-family-body);
+  --type-body: 400 var(--font-size-md)/var(--line-height-md) var(--font-family-body);
+  --type-body-medium: 500 var(--font-size-md)/var(--line-height-md) var(--font-family-body);
+  --type-body-strong: 600 var(--font-size-md)/var(--line-height-md) var(--font-family-body);
+  --type-body-reading: 400 var(--font-size-md)/var(--line-height-lg) var(--font-family-body);
+  --type-body-reading-strong: 600 var(--font-size-md)/var(--line-height-lg) var(--font-family-body);
+  --type-control: 400 var(--font-size-control)/var(--line-height-md) var(--font-family-body);
+  --type-control-strong: 600 var(--font-size-control)/var(--line-height-md) var(--font-family-body);
+  --type-badge: 600 var(--font-size-control)/var(--line-height-sm) var(--font-family-body);
+  --type-heading-display: 700 var(--font-size-display)/var(--line-height-title) var(--font-family-heading);
+  --type-heading-section: 700 var(--font-size-section)/var(--line-height-md) var(--font-family-heading);
+  --type-title: 600 var(--font-size-md)/var(--line-height-title) var(--font-family-heading);
+  --type-title-strong: 700 var(--font-size-md)/var(--line-height-title) var(--font-family-heading);
+  --type-title-lg: 600 var(--font-size-lg)/var(--line-height-title) var(--font-family-heading);
+  --font-badge: var(--type-micro);
+  --font-subtitle: var(--type-title-strong);
+  --font-input-placeholder: 400 var(--font-size-sm)/var(--line-height-md) var(--font-family-body);
+  --font-button: 600 var(--font-size-sm)/var(--line-height-md) var(--font-family-body);
+}
+
+/* ==========================================================================
+   DARK MODE — überschreibt ausschließlich Semantic-Tokens (--color-*), exakt
+   nach dem Mapping aus DesignSystem/styles.css (gleiche Figma-Quelle). Global-
+   und Component-Tokens bleiben unangetastet und erben automatisch, weil sie
+   auf die Semantic-Ebene verweisen statt auf Rohwerte – deckt sich mit
+   STYLEGUIDE.md Punkt 4. Das behebt nebenbei die Kollision, die vorher bestand
+   (--border-subtle == --surface-default in Dark Mode): DesignSystems Mapping
+   verwendet für beide unterschiedliche Neutral-Stufen, die eigene Annäherung
+   von vorher entfällt damit.
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-background-primary: var(--neutral-900);
+    --color-background-secondary: var(--neutral-800);
+    --color-background-tertiary: var(--neutral-700);
+    --color-surface-default: var(--neutral-750);
+    --color-surface-raised: var(--neutral-700);
+    --color-surface-overlay: var(--neutral-600);
+    --color-border-default: var(--neutral-600);
+    --color-border-strong: var(--neutral-400);
+    --color-border-subtle: var(--neutral-700);
+    --color-text-primary: var(--neutral-50);
+    --color-text-secondary: var(--neutral-300);
+    --color-text-tertiary: var(--neutral-400);
+    --color-text-disabled: var(--neutral-600);
+    --color-text-inverse: var(--neutral-900);
+    --color-text-on-brand: var(--neutral-900);
+    --color-brand-default: var(--primary-400);
+    --color-brand-hover: var(--primary-300);
+    --color-brand-active: var(--primary-200);
+    --color-brand-subtle: var(--primary-900);
+    --color-brand-muted: var(--primary-800);
+    --color-brand-ring: color-mix(in srgb, var(--primary-400) 35%, transparent);
+    --color-accent-default: var(--accent-400);
+    --color-accent-hover: var(--accent-300);
+    --color-accent-subtle: var(--accent-900);
+    --color-accent-muted: color-mix(in srgb, var(--accent-900) 78%, var(--accent-400));
+    --color-status-success: var(--success-400);
+    --color-status-success-subtle: var(--success-900);
+    --color-status-success-muted: color-mix(in srgb, var(--success-900) 78%, var(--success-400));
+    --color-status-warning: var(--warning-400);
+    --color-status-warning-subtle: var(--warning-900);
+    --color-status-warning-muted: color-mix(in srgb, var(--warning-900) 78%, var(--warning-400));
+    --color-status-error: var(--error-400);
+    --color-status-error-subtle: var(--error-900);
+    --color-status-error-muted: color-mix(in srgb, var(--error-900) 78%, var(--error-400));
+    --color-focus-ring: rgba(129, 140, 248, 0.8);
+
+    /* Von DesignSystem noch nicht abgedeckt, gleiches "eine Stufe dunkler"-
+       Muster fortgesetzt wie bei --color-surface-raised. */
+    --color-surface-subtle: var(--neutral-800);
+    --color-category-feedback: #a78bfa;
+    --color-category-feedback-subtle: #2c214a;
+    --color-text-on-danger: var(--neutral-900);
+
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
+    --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.28);
+
+    /* Bevel-Highlight (weiße Glanzlinie) bleibt sichtbar, aber deutlich
+       gedimmt – auf hellerem Dark-Mode-Untergrund (Buttons werden selbst
+       heller/gesättigter, s. --color-brand-default: primary-400 statt -500)
+       wirkt die volle Light-Mode-Deckkraft sonst wie ein Leuchtrand statt
+       einer feinen Kante. Ambient/Innenschatten dagegen komplett aus: ein
+       dunkler Schatten auf ohnehin fast-schwarzem Grund (neutral-900 =
+       #06090e) hat keinen sichtbaren Helligkeits-Delta mehr – Elevation
+       läuft im Dark Mode stattdessen über die hellere Flächenfarbe selbst
+       (gleiches Prinzip wie bei surface-raised/-overlay). */
+    --shadow-highlight-factor: 0.3;
+    --shadow-ambient-factor: 0;
+    /* Erste Fassung (0.3, geerbt von --shadow-highlight-factor) war laut
+       Rückmeldung immer noch zu shiny (Kontrast ~1.34 gg. neutral-800).
+       Eigener, deutlich niedrigerer Faktor: 0.35 * 0.1 = 0.035 Alpha,
+       Kontrast ~1.09 – nur noch ein Hauch, kaum wahrnehmbar, statt einer
+       klaren Leucht-Kante. */
+    --glass-glow-factor: 0.1;
+    --glass-elevation-drop: rgba(0, 0, 0, 0.32);
+
+    /* Rein desktopLayout-eigene Glass-Flächen (nicht in DesignSystem) –
+       hier MUSS auf dunkles RGB gewechselt werden statt nur die Opazität zu
+       senken, sonst entsteht eine helle Fläche auf dunklem Grund (siehe
+       --surface-glass-strong unten für dasselbe Problem/dieselbe Lösung). */
+    --glass-toolbar: rgba(26, 29, 34, 0.5);
+    --glass-card: rgba(26, 29, 34, 0.7);
+    --glass-solid: rgba(26, 29, 34, 0.95);
+    --glass-chrome-nav: rgba(26, 29, 34, 0.64);
+    --glass-chrome-top: rgba(26, 29, 34, 0.42);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --surface-glass-strong: rgba(96, 106, 120, 0.56);
+    /* War color-mix(primary-900, 72%): primary-900 (#000030) ist dunkler als
+       die Fläche, auf der die Row liegt (--color-surface-default =
+       neutral-750) – die "Hervorhebung" machte die Row dunkler statt heller,
+       während der Rahmen (--state-selected-border, primary-400) korrekt hell
+       war. Gleiche Ursache wie beim Button-Highlight/Glass-Glow: Light-Wert
+       1:1 auf den entgegengesetzten Skalenpunkt gespiegelt statt an die
+       Dark-Realität angepasst. Fix: primary-400 (dieselbe Familie wie der
+       Rahmen) bei niedriger Opazität – Ergebnis liegt klar über der
+       Umgebungsfläche statt darunter. Optisches Feintuning ggf. nötig, siehe
+       glass-glow-Vorgehen. */
+    --state-selected-background: color-mix(in srgb, var(--primary-400) 18%, transparent);
+    --state-selected-border: var(--color-brand-default);
+    --state-selected-shadow: none;
+    --state-selected-ring: color-mix(in srgb, var(--primary-400) 22%, transparent);
+
+    /* --input-*, --button-secondary-icon, --icon-primary, --danger-500 stehen
+       hier bewusst NICHT nochmal – die Legacy-Aliase zeigen im Root-Block
+       bereits per var()-Kette auf --color-*, erben also automatisch. Nur
+       Werte ohne eine solche Kette (literale Hex-Werte) brauchen eine
+       eigene Dark-Zeile: */
+    --danger-600: #ef4444;
+    --text-danger: #fca5a5;
+  }
+}
