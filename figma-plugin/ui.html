@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Inter, -apple-system, sans-serif;
+    font-size: 12px;
+    color: #1a1a1a;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .header {
+    padding: 16px;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-logo {
+    width: 24px;
+    height: 24px;
+    background: #1a56db;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .header-title { font-weight: 600; font-size: 13px; }
+  .header-sub { color: #666; font-size: 11px; margin-top: 1px; }
+
+  .body { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+
+  .state-idle, .state-loading, .state-error { text-align: center; padding: 32px 16px; color: #666; }
+  .state-loading { animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1 } 50% { opacity:.4 } }
+
+  .error-box {
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 12px;
+    color: #dc2626;
+    font-size: 11px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #888;
+    margin-bottom: 4px;
+  }
+
+  .diff-list { display: flex; flex-direction: column; gap: 4px; }
+
+  .diff-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: #f5f5f5;
+  }
+
+  .diff-item--new     { background: #f0fdf4; }
+  .diff-item--changed { background: #fffbeb; }
+  .diff-item--removed { background: #fff5f5; }
+
+  .diff-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .diff-badge--new     { background: #bbf7d0; color: #166534; }
+  .diff-badge--changed { background: #fde68a; color: #92400e; }
+  .diff-badge--removed { background: #fecaca; color: #991b1b; }
+  .diff-badge--ok      { background: #e5e7eb; color: #6b7280; }
+
+  .diff-name { font-weight: 500; flex: 1; }
+
+  .tokens-summary {
+    padding: 10px 12px;
+    background: #f0f4ff;
+    border-radius: 6px;
+    color: #1a56db;
+    font-size: 11px;
+  }
+
+  .footer {
+    padding: 12px 16px;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    gap: 8px;
+  }
+
+  button {
+    flex: 1;
+    height: 32px;
+    border-radius: 6px;
+    border: none;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity .15s;
+  }
+  button:disabled { opacity: .4; cursor: not-allowed; }
+
+  .btn-primary { background: #1a56db; color: #fff; }
+  .btn-primary:not(:disabled):hover { background: #1648c0; }
+
+  .btn-secondary { background: #f0f0f0; color: #333; }
+  .btn-secondary:not(:disabled):hover { background: #e5e5e5; }
+
+  .result-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: #f5f5f5;
+    font-size: 11px;
+  }
+  .result-row--ok  { background: #f0fdf4; }
+  .result-row--err { background: #fff5f5; color: #dc2626; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">C</div>
+  <div>
+    <div class="header-title">Cura DS Sync</div>
+    <div class="header-sub">Design System → Figma</div>
+  </div>
+</div>
+
+<div class="body" id="body">
+  <div class="state-idle" id="state-idle">
+    Klicke "Prüfen" um den aktuellen Stand<br>vom Design System zu laden.
+  </div>
+  <div class="state-loading" id="state-loading" style="display:none">
+    Lade Manifest von GitHub…
+  </div>
+  <div id="state-error" style="display:none"></div>
+  <div id="state-diff" style="display:none"></div>
+  <div id="state-result" style="display:none"></div>
+</div>
+
+<div class="footer">
+  <button class="btn-secondary" id="btn-check" onclick="check()">Prüfen</button>
+  <button class="btn-primary"   id="btn-sync"  onclick="sync()" disabled>Sync anwenden</button>
+</div>
+
+<script>
+let _manifest = null;
+let _tokensCss = null;
+let _diff = null;
+
+function check() {
+  show('loading');
+  disable(true);
+  parent.postMessage({ pluginMessage: { type: 'fetch-manifest' } }, '*');
+}
+
+function sync() {
+  const toSync = [...(_diff?.added ?? []), ...(_diff?.changed ?? [])];
+  if (!toSync.length) return;
+  show('loading');
+  disable(true);
+  document.getElementById('state-loading').textContent = 'Sync läuft…';
+  parent.postMessage({
+    pluginMessage: { type: 'apply-sync', changes: { manifest: _manifest, tokensCss: _tokensCss, toSync } }
+  }, '*');
+}
+
+window.onmessage = (e) => {
+  const msg = e.data.pluginMessage;
+  if (!msg) return;
+
+  if (msg.type === 'manifest-loaded') {
+    _manifest  = msg.manifest;
+    _tokensCss = msg.tokensCss;
+    _diff      = msg.diff;
+    renderDiff(msg.diff, msg.manifest);
+  }
+
+  if (msg.type === 'sync-done') {
+    renderResult(msg.results);
+  }
+
+  if (msg.type === 'error') {
+    show('error');
+    document.getElementById('state-error').innerHTML =
+      `<div class="error-box">⚠ ${msg.message}</div>`;
+    disable(false);
+  }
+};
+
+function renderDiff(diff, manifest) {
+  show('diff');
+  const el = document.getElementById('state-diff');
+  const total = diff.added.length + diff.changed.length;
+  const hasChanges = total > 0;
+
+  const rows = (items, type, label) => items.map(name => `
+    <div class="diff-item diff-item--${type}">
+      <span class="diff-badge diff-badge--${type}">${label}</span>
+      <span class="diff-name">${name}</span>
+      ${manifest[name] ? `<span style="color:#999;font-size:10px">${manifest[name].variants.length} Variants</span>` : ''}
+    </div>`).join('');
+
+  el.innerHTML = `
+    ${hasChanges ? `
+      <div>
+        <div class="section-label">Zu aktualisieren (${total})</div>
+        <div class="diff-list">
+          ${rows(diff.added, 'new', 'Neu')}
+          ${rows(diff.changed, 'changed', 'Geändert')}
+          ${rows(diff.removed, 'removed', 'Entfernt')}
+        </div>
+      </div>` : ''}
+    ${diff.unchanged.length ? `
+      <div>
+        <div class="section-label">Unverändert (${diff.unchanged.length})</div>
+        <div class="diff-list">
+          ${diff.unchanged.map(n => `
+            <div class="diff-item">
+              <span class="diff-badge diff-badge--ok">✓</span>
+              <span class="diff-name">${n}</span>
+            </div>`).join('')}
+        </div>
+      </div>` : ''}
+    <div class="tokens-summary">
+      🎨 tokens.css wird ebenfalls synchronisiert (Farben, Spacing, Radius)
+    </div>
+    ${!hasChanges ? '<div class="state-idle">Alles aktuell — kein Sync nötig.</div>' : ''}
+  `;
+
+  disable(false);
+  document.getElementById('btn-sync').disabled = !hasChanges;
+}
+
+function renderResult(results) {
+  show('result');
+  const el = document.getElementById('state-result');
+  const t = results.tokens;
+  el.innerHTML = `
+    <div class="section-label">Ergebnis</div>
+    ${t && !t.error ? `
+      <div class="result-row result-row--ok">
+        🎨 Tokens: ${t.created} erstellt, ${t.updated} aktualisiert, ${t.skipped} übersprungen
+      </div>` : t?.error ? `<div class="result-row result-row--err">Tokens: ${t.error}</div>` : ''}
+    ${results.components.map(c => `
+      <div class="result-row ${c.error ? 'result-row--err' : 'result-row--ok'}">
+        ${c.error ? `⚠ ${c.name}: ${c.error}` : `✓ ${c.name} — ${c.note ?? c.status}`}
+      </div>`).join('')}
+  `;
+  disable(false);
+  document.getElementById('btn-sync').disabled = true;
+  document.getElementById('btn-check').textContent = 'Erneut prüfen';
+}
+
+function show(state) {
+  ['idle','loading','error','diff','result'].forEach(s =>
+    document.getElementById(`state-${s}`).style.display = s === state ? '' : 'none'
+  );
+}
+
+function disable(on) {
+  document.getElementById('btn-check').disabled = on;
+  document.getElementById('btn-sync').disabled  = on;
+}
+</script>
+</body>
+</html>

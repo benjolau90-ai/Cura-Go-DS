@@ -1,0 +1,11 @@
+{
+  "name": "Cura DS Sync",
+  "id": "cura-ds-sync-001",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "networkAccess": {
+    "allowedDomains": ["https://raw.githubusercontent.com"],
+    "reasoning": "Fetches design system manifest and tokens from the Cura-Go-DS GitHub repository"
+  }
+}
