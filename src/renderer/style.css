@@ -219,6 +219,19 @@ h6,
   justify-self: center;
 }
 
+/* @component
+ * name: NavItem
+ * selector: .sidebar-icon
+ * variants: default, selected
+ * states: default, hover, selected, focus
+ * figmaProps:
+ *   Label: string
+ *   Icon: string
+ *   Selected: boolean
+ *   Expanded: boolean
+ * tokens: --nav-item-text-default, --nav-item-text-active, --nav-item-background-active, --icon-primary
+ * figmaId:
+ */
 .sidebar-icon {
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr);
@@ -793,6 +806,18 @@ h6,
   gap: var(--spacing-16);
 }
 
+/* @component
+ * name: SearchInput
+ * selector: .filter-input
+ * variants: default
+ * states: default, hover, focus
+ * figmaProps:
+ *   Placeholder: string
+ *   Value: string
+ *   Icon: boolean
+ * tokens: --input-border-default, --input-border-hover, --input-border-focus, --input-background-default, --input-text-placeholder, --input-shadow-default, --input-shadow-focus
+ * figmaId:
+ */
 .filter-input {
   flex: 1;
   min-width: 0;
@@ -865,6 +890,20 @@ h6,
   box-shadow: var(--shadow-hairline);
 }
 
+/* @component
+ * name: ListRow
+ * selector: .list-row
+ * variants: default, accent, primary, read
+ * states: default, hover, selected, read, focus
+ * figmaProps:
+ *   Style: default | accent | primary
+ *   Read: boolean
+ *   Selected: boolean
+ *   Title: string
+ *   Meta: string
+ * tokens: --color-surface-default, --border-subtle, --state-selected-background, --state-selected-border, --color-brand-ring
+ * figmaId:
+ */
 .list-row {
   all: unset;
   box-sizing: border-box;
@@ -3033,6 +3072,19 @@ h6,
 
 /* Icon-only: gleiche Bevel-Logik wie Secondary, aber quadratisch für
    Toolbar-/kompakte Stellen, kein Text. */
+/* @component
+ * name: IconButton
+ * selector: .btn--icon
+ * variants: primary, secondary, ghost, destructive, ai
+ * states: default, hover, active, pressed, disabled, focus
+ * figmaProps:
+ *   Style: primary | secondary | ghost | destructive | ai
+ *   Icon: string
+ *   Active: boolean
+ *   Tooltip: string
+ * tokens: --button-primary-background-default, --button-secondary-background-default, --button-ghost-text, --btn-size
+ * figmaId:
+ */
 .btn--icon {
   width: var(--btn-size, 34px);
   height: var(--btn-size, 34px);
@@ -3066,6 +3118,17 @@ h6,
   filter: none;
 }
 
+/* @component
+ * name: AIButton
+ * selector: .btn--ai
+ * variants: default, icon
+ * states: default, hover, active, disabled
+ * figmaProps:
+ *   Icon: boolean
+ *   Label: string
+ * tokens: --button-ai-text, --button-ai-background-default, --button-ai-background-hover, --button-ai-background-active, --button-ai-border, --button-ai-icon, --button-glass-highlight, --button-glass-blur
+ * figmaId:
+ */
 .btn--ai {
   --button-ai-current-background: var(--button-ai-background-default);
   --button-ai-gradient-position: 0% 50%;
@@ -3118,6 +3181,19 @@ h6,
   flex: 0 0 var(--btn-icon-size, 18px);
 }
 
+/* @component
+ * name: SplitButton
+ * selector: .split-button
+ * variants: primary, secondary, destructive
+ * states: default, hover, active, pressed, disabled
+ * figmaProps:
+ *   Style: primary | secondary | destructive
+ *   Label: string
+ *   Icon: boolean
+ *   MenuOpen: boolean
+ * tokens: --button-primary-background-default, --button-secondary-background-default, --button-destructive-background, --split-button-divider, --btn-size, --button-radius
+ * figmaId:
+ */
 .split-button {
   position: relative;
   display: inline-flex;
@@ -5457,6 +5533,20 @@ button.chip--choice.is-hover {
   color: var(--text-primary);
 }
 
+/* @component
+ * name: FormInput
+ * selector: .form-input
+ * variants: default, with-icon
+ * states: default, hover, focus, disabled, error
+ * figmaProps:
+ *   Placeholder: string
+ *   Value: string
+ *   LeadingIcon: boolean
+ *   TrailingIcon: boolean
+ *   Error: boolean
+ * tokens: --input-background-default, --input-border-default, --input-border-hover, --input-border-focus, --input-shadow-default, --input-shadow-focus, --input-text-placeholder
+ * figmaId:
+ */
 .form-input {
   display: flex;
   align-items: center;

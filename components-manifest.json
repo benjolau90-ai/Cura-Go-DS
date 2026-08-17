@@ -1,4 +1,122 @@
 {
+  "NavItem": {
+    "name": "NavItem",
+    "selector": ".sidebar-icon",
+    "variants": [
+      "default",
+      "selected"
+    ],
+    "states": [
+      "default",
+      "hover",
+      "selected",
+      "focus"
+    ],
+    "figmaProps": {
+      "Label": [
+        "string"
+      ],
+      "Icon": [
+        "string"
+      ],
+      "Selected": [
+        "boolean"
+      ],
+      "Expanded": [
+        "boolean"
+      ]
+    },
+    "tokens": [
+      "--nav-item-text-default",
+      "--nav-item-text-active",
+      "--nav-item-background-active",
+      "--icon-primary"
+    ],
+    "figmaId": null,
+    "hash": "f9285f610199",
+    "updatedAt": "2026-08-17T08:21:49.400Z"
+  },
+  "SearchInput": {
+    "name": "SearchInput",
+    "selector": ".filter-input",
+    "variants": [
+      "default"
+    ],
+    "states": [
+      "default",
+      "hover",
+      "focus"
+    ],
+    "figmaProps": {
+      "Placeholder": [
+        "string"
+      ],
+      "Value": [
+        "string"
+      ],
+      "Icon": [
+        "boolean"
+      ]
+    },
+    "tokens": [
+      "--input-border-default",
+      "--input-border-hover",
+      "--input-border-focus",
+      "--input-background-default",
+      "--input-text-placeholder",
+      "--input-shadow-default",
+      "--input-shadow-focus"
+    ],
+    "figmaId": null,
+    "hash": "7fbbfe434e86",
+    "updatedAt": "2026-08-17T08:21:49.401Z"
+  },
+  "ListRow": {
+    "name": "ListRow",
+    "selector": ".list-row",
+    "variants": [
+      "default",
+      "accent",
+      "primary",
+      "read"
+    ],
+    "states": [
+      "default",
+      "hover",
+      "selected",
+      "read",
+      "focus"
+    ],
+    "figmaProps": {
+      "Style": [
+        "default",
+        "accent",
+        "primary"
+      ],
+      "Read": [
+        "boolean"
+      ],
+      "Selected": [
+        "boolean"
+      ],
+      "Title": [
+        "string"
+      ],
+      "Meta": [
+        "string"
+      ]
+    },
+    "tokens": [
+      "--color-surface-default",
+      "--border-subtle",
+      "--state-selected-background",
+      "--state-selected-border",
+      "--color-brand-ring"
+    ],
+    "figmaId": null,
+    "hash": "607094c1d4f2",
+    "updatedAt": "2026-08-17T08:21:49.401Z"
+  },
   "Button": {
     "name": "Button",
     "selector": ".btn",
@@ -43,8 +161,132 @@
       "--button-ghost-text"
     ],
     "figmaId": null,
-    "hash": "25f3c5b5f115",
-    "updatedAt": "2026-08-17T07:47:53.342Z"
+    "hash": "1de73f0bbc03",
+    "updatedAt": "2026-08-17T08:21:49.401Z"
+  },
+  "IconButton": {
+    "name": "IconButton",
+    "selector": ".btn--icon",
+    "variants": [
+      "primary",
+      "secondary",
+      "ghost",
+      "destructive",
+      "ai"
+    ],
+    "states": [
+      "default",
+      "hover",
+      "active",
+      "pressed",
+      "disabled",
+      "focus"
+    ],
+    "figmaProps": {
+      "Style": [
+        "primary",
+        "secondary",
+        "ghost",
+        "destructive",
+        "ai"
+      ],
+      "Icon": [
+        "string"
+      ],
+      "Active": [
+        "boolean"
+      ],
+      "Tooltip": [
+        "string"
+      ]
+    },
+    "tokens": [
+      "--button-primary-background-default",
+      "--button-secondary-background-default",
+      "--button-ghost-text",
+      "--btn-size"
+    ],
+    "figmaId": null,
+    "hash": "dfa8ad0857ca",
+    "updatedAt": "2026-08-17T08:21:49.401Z"
+  },
+  "AIButton": {
+    "name": "AIButton",
+    "selector": ".btn--ai",
+    "variants": [
+      "default",
+      "icon"
+    ],
+    "states": [
+      "default",
+      "hover",
+      "active",
+      "disabled"
+    ],
+    "figmaProps": {
+      "Icon": [
+        "boolean"
+      ],
+      "Label": [
+        "string"
+      ]
+    },
+    "tokens": [
+      "--button-ai-text",
+      "--button-ai-background-default",
+      "--button-ai-background-hover",
+      "--button-ai-background-active",
+      "--button-ai-border",
+      "--button-ai-icon",
+      "--button-glass-highlight",
+      "--button-glass-blur"
+    ],
+    "figmaId": null,
+    "hash": "ddef6f2bf99d",
+    "updatedAt": "2026-08-17T08:21:49.402Z"
+  },
+  "SplitButton": {
+    "name": "SplitButton",
+    "selector": ".split-button",
+    "variants": [
+      "primary",
+      "secondary",
+      "destructive"
+    ],
+    "states": [
+      "default",
+      "hover",
+      "active",
+      "pressed",
+      "disabled"
+    ],
+    "figmaProps": {
+      "Style": [
+        "primary",
+        "secondary",
+        "destructive"
+      ],
+      "Label": [
+        "string"
+      ],
+      "Icon": [
+        "boolean"
+      ],
+      "MenuOpen": [
+        "boolean"
+      ]
+    },
+    "tokens": [
+      "--button-primary-background-default",
+      "--button-secondary-background-default",
+      "--button-destructive-background",
+      "--split-button-divider",
+      "--btn-size",
+      "--button-radius"
+    ],
+    "figmaId": null,
+    "hash": "14270a4f1857",
+    "updatedAt": "2026-08-17T08:21:49.402Z"
   },
   "ActionMenu": {
     "name": "ActionMenu",
@@ -78,7 +320,7 @@
     ],
     "figmaId": null,
     "hash": "93742cabf852",
-    "updatedAt": "2026-08-17T07:47:53.343Z"
+    "updatedAt": "2026-08-17T08:21:49.402Z"
   },
   "Chip": {
     "name": "Chip",
@@ -125,7 +367,7 @@
     ],
     "figmaId": null,
     "hash": "8bd46405fe1c",
-    "updatedAt": "2026-08-17T07:47:53.343Z"
+    "updatedAt": "2026-08-17T08:21:49.402Z"
   },
   "Tooltip": {
     "name": "Tooltip",
@@ -156,7 +398,7 @@
     ],
     "figmaId": null,
     "hash": "5813f9e7dd0a",
-    "updatedAt": "2026-08-17T07:47:53.343Z"
+    "updatedAt": "2026-08-17T08:21:49.402Z"
   },
   "Modal": {
     "name": "Modal",
@@ -188,7 +430,51 @@
       "--color-scrim"
     ],
     "figmaId": null,
-    "hash": "e4c670f94b89",
-    "updatedAt": "2026-08-17T07:47:53.343Z"
+    "hash": "2596f64409cc",
+    "updatedAt": "2026-08-17T08:21:49.403Z"
+  },
+  "FormInput": {
+    "name": "FormInput",
+    "selector": ".form-input",
+    "variants": [
+      "default",
+      "with-icon"
+    ],
+    "states": [
+      "default",
+      "hover",
+      "focus",
+      "disabled",
+      "error"
+    ],
+    "figmaProps": {
+      "Placeholder": [
+        "string"
+      ],
+      "Value": [
+        "string"
+      ],
+      "LeadingIcon": [
+        "boolean"
+      ],
+      "TrailingIcon": [
+        "boolean"
+      ],
+      "Error": [
+        "boolean"
+      ]
+    },
+    "tokens": [
+      "--input-background-default",
+      "--input-border-default",
+      "--input-border-hover",
+      "--input-border-focus",
+      "--input-shadow-default",
+      "--input-shadow-focus",
+      "--input-text-placeholder"
+    ],
+    "figmaId": null,
+    "hash": "74c4e46a83b5",
+    "updatedAt": "2026-08-17T08:21:49.403Z"
   }
 }
