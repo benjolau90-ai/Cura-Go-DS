@@ -7,7 +7,8 @@
     "start": "electron .",
     "capture:surfaces": "electron scripts/capture-surface-screenshots.js",
     "capture:components": "electron scripts/capture-component-screenshots.js",
-    "manifest": "node scripts/parse-components.mjs"
+    "manifest": "node scripts/parse-components.mjs",
+    "changes": "node scripts/parse-components.mjs && node scripts/detect-changes.mjs"
   },
   "devDependencies": {
     "electron": "^43.2.0"

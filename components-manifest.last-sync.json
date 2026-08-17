@@ -44,7 +44,7 @@
     ],
     "figmaId": null,
     "hash": "25f3c5b5f115",
-    "updatedAt": "2026-08-17T07:47:53.342Z"
+    "updatedAt": "2026-08-17T07:47:43.041Z"
   },
   "ActionMenu": {
     "name": "ActionMenu",
@@ -78,7 +78,7 @@
     ],
     "figmaId": null,
     "hash": "93742cabf852",
-    "updatedAt": "2026-08-17T07:47:53.343Z"
+    "updatedAt": "2026-08-17T07:47:43.042Z"
   },
   "Chip": {
     "name": "Chip",
@@ -125,7 +125,7 @@
     ],
     "figmaId": null,
     "hash": "8bd46405fe1c",
-    "updatedAt": "2026-08-17T07:47:53.343Z"
+    "updatedAt": "2026-08-17T07:47:43.042Z"
   },
   "Tooltip": {
     "name": "Tooltip",
@@ -156,7 +156,7 @@
     ],
     "figmaId": null,
     "hash": "5813f9e7dd0a",
-    "updatedAt": "2026-08-17T07:47:53.343Z"
+    "updatedAt": "2026-08-17T07:47:43.042Z"
   },
   "Modal": {
     "name": "Modal",
@@ -189,6 +189,6 @@
     ],
     "figmaId": null,
     "hash": "e4c670f94b89",
-    "updatedAt": "2026-08-17T07:47:53.343Z"
+    "updatedAt": "2026-08-17T07:47:43.042Z"
   }
 }
