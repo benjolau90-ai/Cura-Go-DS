@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component Playground - Modal Dialog</title>
+  <link rel="stylesheet" href="tokens.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=17" />
+  <link rel="stylesheet" href="modal-playground.css?v=3" />
+</head>
+<body class="modal-playground-body">
+  <main class="modal-playground">
+    <section class="modal-playground__stage" aria-label="Modal Dialog Playground">
+      <div class="modal-playground__app" data-modal-app>
+        <aside class="modal-playground__sidebar">
+          <strong>go.vital</strong>
+          <span>Übersicht</span>
+          <span>Messblatt</span>
+          <span>Auswertung</span>
+          <span class="is-active">Planung</span>
+          <span>Einstellungen</span>
+        </aside>
+        <section class="modal-playground__list">
+          <header>
+            <h1>Planung für</h1>
+            <span class="modal-playground__search">Dieter Rump</span>
+            <button class="btn btn--secondary" type="button" data-modal-open>Planung hinzufügen</button>
+          </header>
+          <div class="modal-playground__rows">
+            <article><span class="chip chip--status chip--error">Herzfrequenz</span><strong>jede Stunde</strong></article>
+            <article><span class="chip chip--status chip--error">Sauerstoffsättigung</span><strong>Alle 6h</strong></article>
+            <article><span class="chip chip--status chip--success">Absaugen von Sekret</span><strong>Alle 6h</strong></article>
+            <article><span class="chip chip--status chip--success">Lagerung</span><strong>Alle 12h</strong></article>
+            <article><span class="chip chip--status chip--error">Blutdruck</span><strong>Alle 4h</strong></article>
+          </div>
+        </section>
+        <aside class="modal-playground__timeline">
+          <h2>Tagesvorschau</h2>
+          <div><strong>06:00</strong><span>Herzfrequenz</span><span>Blutdruck</span></div>
+          <div><strong>09:00</strong><span>Herzfrequenz</span></div>
+          <div><strong>12:00</strong><span>Blutzucker</span><span>Lagerung</span></div>
+          <div><strong>14:00</strong><span>Herzfrequenz</span><span>Körpertemperatur</span></div>
+        </aside>
+      </div>
+
+      <div class="modal-playground__scrim" aria-hidden="true" data-modal-scrim></div>
+
+      <div class="modal modal-playground__dialog" role="dialog" aria-modal="true" aria-labelledby="modalPlaygroundTitle" data-modal-dialog>
+        <div class="modal__header">
+          <div class="modal__header-title">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+            <span id="modalPlaygroundTitle">Neue Planung</span>
+          </div>
+          <button class="btn btn--icon btn--ghost" type="button" aria-label="Dialog schließen" data-modal-close>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="modal__body modal-playground__body">
+          <div class="modal__card modal-playground__card">
+            <label class="modal-playground-field modal-playground-field--full">
+              <span class="form-label">Typ</span>
+              <span class="modal-playground-select" data-modal-select>
+              <button class="form-input modal-playground-input" type="button" aria-haspopup="listbox" aria-expanded="false" data-modal-select-trigger>
+                <span class="form-input__value" data-modal-select-value>Blutzucker</span>
+                <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+                <span class="menu-surface modal-playground-select__menu" role="listbox" aria-label="Typ auswählen" data-modal-select-menu hidden>
+                  <button type="button" role="option" data-modal-select-option="Blutzucker" aria-selected="true" class="is-selected"><span>Blutzucker</span></button>
+                  <button type="button" role="option" data-modal-select-option="Herzfrequenz"><span>Herzfrequenz</span></button>
+                  <button type="button" role="option" data-modal-select-option="Sauerstoffsättigung"><span>Sauerstoffsättigung</span></button>
+                  <button type="button" role="option" data-modal-select-option="Blutdruck"><span>Blutdruck</span></button>
+                </span>
+              </span>
+            </label>
+
+            <div class="form-row">
+              <label class="modal-playground-field">
+                <span class="form-label">Startdatum</span>
+                <span class="form-input modal-playground-input">
+                  <input class="modal-playground-native-input" type="text" value="Heute" aria-label="Startdatum" />
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="17" rx="3" stroke="currentColor" stroke-width="2" />
+                    <path d="M3 9H21" stroke="currentColor" stroke-width="2" />
+                    <path d="M8 2V6M16 2V6" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                  </svg>
+                </span>
+              </label>
+              <label class="modal-playground-field">
+                <span class="form-label">Enddatum</span>
+                <span class="form-input modal-playground-input">
+                  <input class="modal-playground-native-input" type="text" value="" placeholder="Kein Enddatum (fortlaufend)" aria-label="Enddatum" />
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="17" rx="3" stroke="currentColor" stroke-width="2" />
+                    <path d="M3 9H21" stroke="currentColor" stroke-width="2" />
+                    <path d="M8 2V6M16 2V6" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                  </svg>
+                </span>
+              </label>
+            </div>
+
+            <div class="modal-playground-frequency-block modal-playground-row--floating">
+              <span class="form-label">Häufigkeit</span>
+              <span class="modal-playground-frequency-builder" data-frequency-control>
+                <span class="modal-playground-frequency-builder__row modal-playground-frequency-builder__row--cadence">
+                  <span class="modal-playground-frequency-builder__prefix" data-frequency-prefix>Alle</span>
+                  <span class="modal-playground-stepper">
+                    <button class="modal-playground-stepper__button" type="button" aria-label="Intervall verringern" data-frequency-step="-1">
+                      <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 12H18" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                      </svg>
+                    </button>
+                    <input type="number" value="3" min="1" inputmode="numeric" aria-label="Intervall-Anzahl" data-frequency-amount />
+                    <button class="modal-playground-stepper__button" type="button" aria-label="Intervall erhöhen" data-frequency-step="1">
+                      <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 6V18M6 12H18" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                      </svg>
+                    </button>
+                  </span>
+                  <select aria-label="Intervall-Einheit" data-frequency-unit>
+                    <option value="minutes" data-singular="Minute" data-plural="Minuten" data-every="Jede">Minuten</option>
+                    <option value="hours" data-singular="Stunde" data-plural="Stunden" data-every="Jede">Stunden</option>
+                    <option value="days" data-singular="Tag" data-plural="Tage" data-every="Jeden" selected>Tage</option>
+                    <option value="weeks" data-singular="Woche" data-plural="Wochen" data-every="Jede">Wochen</option>
+                    <option value="months" data-singular="Monat" data-plural="Monate" data-every="Jeden">Monate</option>
+                  </select>
+                </span>
+                <span class="modal-playground-frequency-builder__row modal-playground-frequency-builder__row--time">
+                  <span class="modal-playground-frequency-builder__join" data-frequency-time-prefix>um</span>
+                  <span class="form-input modal-playground-input modal-playground-time-input modal-playground-time-input--with-suffix">
+                    <input class="modal-playground-native-input" type="text" value="00:00" aria-label="Startzeit" data-start-time />
+                    <span class="modal-playground-time-suffix" aria-hidden="true">Uhr</span>
+                  </span>
+                  <span class="modal-playground-frequency-builder__end" data-frequency-inline-end aria-hidden="true">
+                    <span class="modal-playground-frequency-builder__join">bis</span>
+                    <span class="form-input modal-playground-input modal-playground-time-input modal-playground-time-input--with-suffix">
+                      <input class="modal-playground-native-input" type="text" value="" placeholder="Automatisch am Tagesende" aria-label="Intervall Ende" data-interval-end />
+                      <span class="modal-playground-time-suffix" aria-hidden="true">Uhr</span>
+                    </span>
+                  </span>
+                </span>
+                <span class="modal-playground-frequency-note" data-frequency-note hidden>Endet täglich am Ende des Zeitfensters und startet am nächsten Tag wieder zur Startzeit.</span>
+              </span>
+
+              <div class="modal-playground-weekday-section" data-frequency-weekdays aria-hidden="true">
+              <span class="form-label">Tage auswählen</span>
+              <span class="modal-playground-weekdays">
+                <button class="chip chip--status" type="button" aria-pressed="false">Mo</button>
+                <button class="chip chip--status is-active" type="button" aria-pressed="true">Di</button>
+                <button class="chip chip--status" type="button" aria-pressed="false">Mi</button>
+                <button class="chip chip--status" type="button" aria-pressed="false">Do</button>
+                <button class="chip chip--status is-active" type="button" aria-pressed="true">Fr</button>
+                <button class="chip chip--status" type="button" aria-pressed="false">Sa</button>
+                <button class="chip chip--status" type="button" aria-pressed="false">So</button>
+              </span>
+              </div>
+            </div>
+
+            <section class="modal-playground-preview" aria-live="polite">
+              <strong>Vorschau</strong>
+              <span data-frequency-preview>Täglich um 00:00 Uhr.</span>
+            </section>
+          </div>
+        </div>
+
+        <div class="modal__footer">
+          <button class="btn btn--secondary" type="button" data-modal-close>Abbrechen</button>
+          <div class="modal__footer-actions">
+            <button class="btn btn--primary" type="button" data-modal-close>Planung anlegen</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const app = document.querySelector("[data-modal-app]");
+    const dialog = document.querySelector("[data-modal-dialog]");
+    const scrim = document.querySelector("[data-modal-scrim]");
+    const openButton = document.querySelector("[data-modal-open]");
+    const closeButtons = document.querySelectorAll("[data-modal-close]");
+    const selects = document.querySelectorAll("[data-modal-select]");
+    const frequencyControl = document.querySelector("[data-frequency-control]");
+
+    const closeSelects = () => {
+      document.querySelectorAll("[data-modal-select-menu]").forEach((menu) => {
+        menu.hidden = true;
+        menu.closest("[data-modal-select]")?.querySelector("[data-modal-select-trigger]")?.setAttribute("aria-expanded", "false");
+        menu.closest("[data-modal-select]")?.querySelector("[data-modal-select-trigger]")?.classList.remove("modal-playground-input--focus");
+      });
+    };
+
+    const setModalOpen = (open) => {
+      dialog.hidden = !open;
+      scrim.hidden = !open;
+      app?.setAttribute("aria-hidden", String(open));
+      if (open) {
+        dialog.querySelector("[data-modal-select-trigger]")?.focus();
+      } else {
+        closeSelects();
+      }
+    };
+
+    openButton?.addEventListener("click", () => setModalOpen(true));
+    scrim?.addEventListener("click", () => setModalOpen(false));
+    closeButtons.forEach((button) => button.addEventListener("click", () => setModalOpen(false)));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeSelects();
+        setModalOpen(false);
+      }
+    });
+
+    selects.forEach((select) => {
+      const trigger = select.querySelector("[data-modal-select-trigger]");
+      const menu = select.querySelector("[data-modal-select-menu]");
+      const value = select.querySelector("[data-modal-select-value]");
+      const options = select.querySelectorAll("[data-modal-select-option]");
+
+      const setSelectOpen = (open) => {
+        trigger.setAttribute("aria-expanded", String(open));
+        trigger.classList.toggle("modal-playground-input--focus", open);
+        menu.hidden = !open;
+        if (open) {
+          window.requestAnimationFrame(() => {
+            trigger.focus({ preventScroll: true });
+          });
+        }
+      };
+
+      trigger.addEventListener("click", () => {
+        const shouldOpen = menu.hidden;
+        closeSelects();
+        setSelectOpen(shouldOpen);
+      });
+
+      options.forEach((option) => {
+        option.addEventListener("click", (event) => {
+          event.stopPropagation();
+          value.textContent = option.dataset.modalSelectOption;
+          value.classList.remove("form-input__value--placeholder");
+          options.forEach((item) => {
+            const selected = item === option;
+            item.classList.toggle("is-selected", selected);
+            item.setAttribute("aria-selected", String(selected));
+          });
+          setSelectOpen(false);
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!select.contains(event.target)) {
+          setSelectOpen(false);
+        }
+      });
+    });
+
+    const updateFrequencyCopy = () => {
+      if (!frequencyControl) return;
+      const input = frequencyControl.querySelector("[data-frequency-amount]");
+      const unitSelect = frequencyControl.querySelector("[data-frequency-unit]");
+      const prefix = frequencyControl.querySelector("[data-frequency-prefix]");
+      const timePrefix = frequencyControl.querySelector("[data-frequency-time-prefix]");
+      const inlineEnd = frequencyControl.querySelector("[data-frequency-inline-end]");
+      const note = frequencyControl.querySelector("[data-frequency-note]");
+      const weekdays = document.querySelector("[data-frequency-weekdays]");
+      const startTime = document.querySelector("[data-start-time]");
+      const intervalEnd = document.querySelector("[data-interval-end]");
+      const preview = document.querySelector("[data-frequency-preview]");
+      const amount = Math.max(Number(input.min || 1), Number(input.value || input.min || 1));
+      const selectedOption = unitSelect.selectedOptions[0];
+      const isSingular = amount === 1;
+      const hasDailyInterval = unitSelect.value === "minutes" || unitSelect.value === "hours";
+      const isTimeValue = (value) => /^\s*\d{1,2}([:.]\d{2})?\s*$/.test(value);
+
+      [startTime, intervalEnd].forEach((field) => {
+        const wrapper = field?.closest(".modal-playground-time-input");
+        wrapper?.classList.toggle("has-time-value", Boolean(field?.value.trim() && isTimeValue(field.value)));
+      });
+
+      frequencyControl.classList.toggle("is-daily-interval", hasDailyInterval);
+
+      unitSelect.querySelectorAll("option").forEach((option) => {
+        option.textContent = isSingular ? option.dataset.singular : option.dataset.plural;
+      });
+
+      if (isSingular) {
+        prefix.textContent = selectedOption.dataset.every;
+      } else {
+        prefix.textContent = "Alle";
+      }
+
+      if (weekdays) {
+        const showWeekdays = unitSelect.value === "weeks";
+        weekdays.classList.toggle("is-visible", showWeekdays);
+        weekdays.setAttribute("aria-hidden", String(!showWeekdays));
+      }
+
+      if (timePrefix) {
+        timePrefix.textContent = hasDailyInterval ? "von" : "um";
+      }
+
+      if (inlineEnd) {
+        inlineEnd.classList.toggle("is-visible", hasDailyInterval);
+        inlineEnd.setAttribute("aria-hidden", String(!hasDailyInterval));
+      }
+
+      if (note) {
+        note.hidden = !hasDailyInterval;
+      }
+
+      if (preview) {
+        const time = startTime?.value || "00:00";
+        const selectedWeekdays = Array.from(document.querySelectorAll("[data-frequency-weekdays] .chip.is-active"))
+          .map((chip) => chip.textContent.trim());
+        const cadence = isSingular
+          ? `${selectedOption.dataset.every} ${selectedOption.dataset.singular}`.replace("Jeden Tag", "Täglich").replace("Jede Woche", "Wöchentlich").replace("Jeden Monat", "Monatlich")
+          : `Alle ${amount} ${selectedOption.dataset.plural}`;
+        const weekdayText = unitSelect.value === "weeks" && selectedWeekdays.length
+          ? ` (${selectedWeekdays.join(", ")})`
+          : "";
+        const endValue = intervalEnd?.value.trim();
+        const endLabel = endValue ? `${endValue} Uhr` : "Tagesende";
+        const timeText = hasDailyInterval
+          ? ` von ${time} bis ${endLabel}.`
+          : ` um ${time} Uhr.`;
+        preview.textContent = `${cadence}${weekdayText}${timeText}`;
+      }
+    };
+
+    frequencyControl?.querySelectorAll("[data-frequency-step]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const input = frequencyControl.querySelector("[data-frequency-amount]");
+        const step = Number(button.dataset.frequencyStep);
+        const nextValue = Math.max(Number(input.min || 1), Number(input.value || input.min || 1) + step);
+        input.value = String(nextValue);
+        updateFrequencyCopy();
+      });
+    });
+
+    frequencyControl?.querySelector("[data-frequency-amount]")?.addEventListener("input", updateFrequencyCopy);
+    frequencyControl?.querySelector("[data-frequency-unit]")?.addEventListener("change", updateFrequencyCopy);
+    document.querySelector("[data-start-time]")?.addEventListener("input", updateFrequencyCopy);
+    document.querySelector("[data-interval-end]")?.addEventListener("input", updateFrequencyCopy);
+    frequencyControl?.querySelector("[data-frequency-amount]")?.addEventListener("blur", (event) => {
+      const input = event.currentTarget;
+      input.value = String(Math.max(Number(input.min || 1), Number(input.value || input.min || 1)));
+      updateFrequencyCopy();
+    });
+
+    document.querySelectorAll("[data-frequency-weekdays] .chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const nextPressed = chip.getAttribute("aria-pressed") !== "true";
+        chip.setAttribute("aria-pressed", String(nextPressed));
+        chip.classList.toggle("is-active", nextPressed);
+        updateFrequencyCopy();
+      });
+    });
+
+    updateFrequencyCopy();
+    setModalOpen(true);
+  </script>
+</body>
+</html>

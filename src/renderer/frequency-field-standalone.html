@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standalone Frequency Field</title>
+  <style>
+    :root {
+      --brand: #2b5bdc;
+      --text: #151922;
+      --text-muted: #667085;
+      --text-soft: #8b94a3;
+      --surface: #fff;
+      --surface-soft: #f6f8fb;
+      --border: #cfd7e3;
+      --border-subtle: #e3e8ef;
+      --focus: 0 0 0 3px rgb(43 91 220 / 22%);
+      --radius: 10px;
+      --shadow-inset: inset 0 1px 0 rgb(255 255 255 / 80%);
+      font-family: "Open Sans", system-ui, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      background: linear-gradient(135deg, #eef3ff, #fff7f4);
+      color: var(--text);
+    }
+
+    .field-demo {
+      width: min(560px, calc(100vw - 32px));
+      display: grid;
+      gap: 14px;
+      padding: 24px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      background: rgb(255 255 255 / 82%);
+      box-shadow: 0 16px 38px rgb(29 36 53 / 12%);
+      backdrop-filter: blur(18px);
+    }
+
+    .field-label {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .frequency-control {
+      display: grid;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow-inset);
+    }
+
+    .frequency-control:focus-within {
+      border-color: var(--brand);
+      box-shadow: var(--shadow-inset), var(--focus);
+    }
+
+    .frequency-row {
+      display: grid;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .frequency-row--cadence {
+      grid-template-columns: 56px 136px minmax(132px, 1fr);
+    }
+
+    .frequency-row--time {
+      grid-template-columns: 56px minmax(132px, 1fr);
+    }
+
+    .frequency-control.is-daily-interval .frequency-row--time {
+      grid-template-columns: 56px minmax(112px, 1fr) auto minmax(132px, 1fr);
+    }
+
+    .frequency-word {
+      color: var(--text-muted);
+      font-size: 14px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .stepper {
+      display: inline-flex;
+      width: 136px;
+      height: 44px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow-inset);
+      transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .stepper button {
+      width: 40px;
+      border: 0;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .stepper button:hover {
+      background: var(--surface-soft);
+      color: var(--text);
+    }
+
+    .stepper input {
+      width: 56px;
+      border: 0;
+      border-inline: 1px solid var(--border-subtle);
+      outline: 0;
+      text-align: center;
+      font: inherit;
+    }
+
+    .input,
+    select {
+      height: 44px;
+      min-width: 0;
+      box-sizing: border-box;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow-inset);
+      color: var(--text);
+      font: inherit;
+      transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    select {
+      width: 100%;
+      padding-inline: 10px;
+    }
+
+    .input {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 6px;
+      padding-inline: 10px;
+    }
+
+    .input.has-time-value {
+      grid-template-columns: 5ch auto;
+      justify-content: start;
+    }
+
+    .input.has-time-value input {
+      width: 5ch;
+    }
+
+    .input input {
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+    }
+
+    .input input::placeholder {
+      color: var(--text-soft);
+    }
+
+    .time-suffix {
+      display: none;
+      color: var(--text-soft);
+      pointer-events: none;
+    }
+
+    .input.has-time-value .time-suffix {
+      display: inline;
+    }
+
+    .frequency-end {
+      display: none;
+      contents: none;
+    }
+
+    .frequency-end.is-visible {
+      display: contents;
+    }
+
+    .frequency-note {
+      padding-left: 64px;
+      color: var(--text-soft);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .frequency-note[hidden] {
+      display: none;
+    }
+
+    .preview {
+      display: grid;
+      gap: 6px;
+      padding: 14px 16px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .preview strong {
+      font-size: 13px;
+    }
+
+    @media (max-width: 560px) {
+      .frequency-row--cadence,
+      .frequency-row--time,
+      .frequency-control.is-daily-interval .frequency-row--time {
+        grid-template-columns: 1fr;
+      }
+
+      .frequency-word {
+        text-align: left;
+      }
+
+      .frequency-note {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="field-demo">
+    <label class="field-label" for="frequencyAmount">Häufigkeit</label>
+    <section class="frequency-control" data-frequency-control>
+      <div class="frequency-row frequency-row--cadence">
+        <span class="frequency-word" data-frequency-prefix>Alle</span>
+        <span class="stepper">
+          <button type="button" aria-label="Intervall verringern" data-frequency-step="-1">−</button>
+          <input id="frequencyAmount" type="number" min="1" value="3" inputmode="numeric" aria-label="Intervall-Anzahl" data-frequency-amount />
+          <button type="button" aria-label="Intervall erhöhen" data-frequency-step="1">+</button>
+        </span>
+        <select aria-label="Intervall-Einheit" data-frequency-unit>
+          <option value="minutes" data-singular="Minute" data-plural="Minuten" data-every="Jede">Minuten</option>
+          <option value="hours" data-singular="Stunde" data-plural="Stunden" data-every="Jede">Stunden</option>
+          <option value="days" data-singular="Tag" data-plural="Tage" data-every="Jeden" selected>Tage</option>
+          <option value="weeks" data-singular="Woche" data-plural="Wochen" data-every="Jede">Wochen</option>
+          <option value="months" data-singular="Monat" data-plural="Monate" data-every="Jeden">Monate</option>
+        </select>
+      </div>
+
+      <div class="frequency-row frequency-row--time">
+        <span class="frequency-word" data-frequency-time-prefix>um</span>
+        <span class="input time-input">
+          <input type="text" value="00:00" aria-label="Startzeit" data-start-time />
+          <span class="time-suffix" aria-hidden="true">Uhr</span>
+        </span>
+        <span class="frequency-end" data-frequency-inline-end aria-hidden="true">
+          <span class="frequency-word">bis</span>
+          <span class="input time-input">
+            <input type="text" value="" placeholder="Automatisch am Tagesende" aria-label="Intervall Ende" data-interval-end />
+            <span class="time-suffix" aria-hidden="true">Uhr</span>
+          </span>
+        </span>
+      </div>
+
+      <span class="frequency-note" data-frequency-note hidden>Endet täglich am Ende des Zeitfensters und startet am nächsten Tag wieder zur Startzeit.</span>
+    </section>
+
+    <section class="preview" aria-live="polite">
+      <strong>Vorschau</strong>
+      <span data-frequency-preview>Täglich um 00:00 Uhr.</span>
+    </section>
+  </main>
+
+  <script>
+    const control = document.querySelector("[data-frequency-control]");
+    const amountInput = control.querySelector("[data-frequency-amount]");
+    const unitSelect = control.querySelector("[data-frequency-unit]");
+    const prefix = control.querySelector("[data-frequency-prefix]");
+    const timePrefix = control.querySelector("[data-frequency-time-prefix]");
+    const inlineEnd = control.querySelector("[data-frequency-inline-end]");
+    const note = control.querySelector("[data-frequency-note]");
+    const startTime = control.querySelector("[data-start-time]");
+    const intervalEnd = control.querySelector("[data-interval-end]");
+    const preview = document.querySelector("[data-frequency-preview]");
+
+    const isTimeValue = (value) => /^\s*\d{1,2}([:.]\d{2})?\s*$/.test(value);
+
+    function updateFrequency() {
+      const amount = Math.max(Number(amountInput.min || 1), Number(amountInput.value || amountInput.min || 1));
+      const option = unitSelect.selectedOptions[0];
+      const isSingular = amount === 1;
+      const hasDailyInterval = unitSelect.value === "minutes" || unitSelect.value === "hours";
+
+      control.classList.toggle("is-daily-interval", hasDailyInterval);
+      prefix.textContent = isSingular ? option.dataset.every : "Alle";
+      timePrefix.textContent = hasDailyInterval ? "von" : "um";
+      inlineEnd.classList.toggle("is-visible", hasDailyInterval);
+      inlineEnd.setAttribute("aria-hidden", String(!hasDailyInterval));
+      note.hidden = !hasDailyInterval;
+
+      unitSelect.querySelectorAll("option").forEach((item) => {
+        item.textContent = isSingular ? item.dataset.singular : item.dataset.plural;
+      });
+
+      [startTime, intervalEnd].forEach((field) => {
+        field.closest(".input").classList.toggle("has-time-value", Boolean(field.value.trim() && isTimeValue(field.value)));
+      });
+
+      const cadence = isSingular
+        ? `${option.dataset.every} ${option.dataset.singular}`
+            .replace("Jeden Tag", "Täglich")
+            .replace("Jede Woche", "Wöchentlich")
+            .replace("Jeden Monat", "Monatlich")
+        : `Alle ${amount} ${option.dataset.plural}`;
+      const start = startTime.value || "00:00";
+      const end = intervalEnd.value.trim() ? `${intervalEnd.value.trim()} Uhr` : "Tagesende";
+      preview.textContent = hasDailyInterval
+        ? `${cadence} von ${start} bis ${end}.`
+        : `${cadence} um ${start} Uhr.`;
+    }
+
+    control.querySelectorAll("[data-frequency-step]").forEach((button) => {
+      button.addEventListener("click", () => {
+        amountInput.value = String(Math.max(1, Number(amountInput.value || 1) + Number(button.dataset.frequencyStep)));
+        updateFrequency();
+      });
+    });
+
+    [amountInput, unitSelect, startTime, intervalEnd].forEach((field) => {
+      field.addEventListener("input", updateFrequency);
+      field.addEventListener("change", updateFrequency);
+    });
+
+    amountInput.addEventListener("blur", () => {
+      amountInput.value = String(Math.max(1, Number(amountInput.value || 1)));
+      updateFrequency();
+    });
+
+    updateFrequency();
+  </script>
+</body>
+</html>

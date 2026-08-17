@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cura web - Rollenmanagement</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="style.css?v=17" />
+  <link rel="stylesheet" href="cura-web.css?v=14" />
+</head>
+<body class="cura-web-body">
+  <div class="main-view cura-app" aria-label="cura web Rollenmanagement">
+    <div class="bg-decoration" aria-hidden="true"></div>
+
+    <header class="title-bar">
+      <div class="title-bar__title">cura web - Rollenmanagement</div>
+      <div class="title-bar__controls">
+        <button class="caption-btn" aria-label="Minimieren">
+          <svg viewBox="0 0 10 1" width="10" height="1"><rect width="10" height="1" fill="currentColor" /></svg>
+        </button>
+        <button class="caption-btn" aria-label="Maximieren">
+          <svg viewBox="0 0 10 10" width="10" height="10"><rect x="0.5" y="0.5" width="9" height="9" fill="none" stroke="currentColor" /></svg>
+        </button>
+        <button class="caption-btn caption-btn--close" aria-label="Schließen">
+          <svg viewBox="0 0 10 10" width="10" height="10"><path d="M0 0 L10 10 M10 0 L0 10" stroke="currentColor" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <aside class="cura-sidebar sidebar sidebar--expanded" aria-label="Hauptnavigation">
+        <div class="sidebar__top">
+          <a class="cura-brand sidebar-icon" href="#benutzer" aria-label="cura web Start">
+            <span class="cura-brand__mark" aria-hidden="true">
+              <img src="assets/logo-cura.svg" alt="" />
+            </span>
+            <span class="cura-brand__text sidebar-icon__label">
+              <strong>cura web</strong>
+              <small>Admin Console</small>
+            </span>
+          </a>
+
+          <div class="sidebar-divider"></div>
+
+          <nav class="cura-nav" aria-label="Bereiche">
+            <button class="cura-nav__item sidebar-icon sidebar-icon--selected" type="button" data-page="benutzer" aria-current="page">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15 19.5C15 17.57 12.31 16 9 16C5.69 16 3 17.57 3 19.5M21 18.5C21 16.99 19.36 15.72 17.1 15.23M13 8.5C13 10.71 11.21 12.5 9 12.5C6.79 12.5 5 10.71 5 8.5C5 6.29 6.79 4.5 9 4.5C11.21 4.5 13 6.29 13 8.5ZM18 5.5C19.66 5.5 21 6.84 21 8.5C21 10.16 19.66 11.5 18 11.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              </svg>
+              <span class="sidebar-icon__label">Benutzer</span>
+            </button>
+            <button class="cura-nav__item sidebar-icon" type="button" data-page="freigaben">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 12L11 14L15.5 9.5M20 12C20 16.42 16.42 20 12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C13.67 4 15.22 4.51 16.5 5.38M18 3V7H14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+              <span class="sidebar-icon__label">Freigaben</span>
+            </button>
+            <button class="cura-nav__item sidebar-icon" type="button" data-page="ki">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M10 7L9.48 8.39C8.81 10.22 8.47 11.14 7.8 11.8C7.14 12.47 6.22 12.81 4.39 13.48L3 14L4.39 14.52C6.22 15.19 7.14 15.53 7.8 16.2C8.47 16.86 8.81 17.78 9.48 19.61L10 21L10.52 19.61C11.19 17.78 11.53 16.86 12.2 16.2C12.86 15.53 13.78 15.19 15.61 14.52L17 14L15.61 13.48C13.78 12.81 12.86 12.47 12.2 11.8C11.53 11.14 11.19 10.22 10.52 8.39L10 7ZM18 3L17.78 3.6C17.49 4.38 17.34 4.77 17.06 5.06C16.77 5.34 16.38 5.49 15.6 5.78L15 6L15.6 6.22C16.38 6.51 16.77 6.66 17.06 6.94C17.34 7.23 17.49 7.62 17.78 8.4L18 9L18.22 8.4C18.51 7.62 18.66 7.23 18.94 6.94C19.23 6.66 19.62 6.51 20.4 6.22L21 6L20.4 5.78C19.62 5.49 19.23 5.34 18.94 5.06C18.66 4.77 18.51 4.38 18.22 3.6L18 3Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+              <span class="sidebar-icon__label">KI Einstellungen</span>
+            </button>
+          </nav>
+        </div>
+
+        <div class="sidebar__bottom">
+          <button class="sidebar-account" type="button" aria-label="Benutzerprofil öffnen">
+            <span class="sidebar-avatar">
+              <img src="assets/sidebar-avatar.png" alt="" />
+            </span>
+            <span class="sidebar-account__details">
+              <span class="sidebar-account__name">Sarafina Carabina</span>
+              <span class="sidebar-account__org">Wenn Engeln pflegen</span>
+            </span>
+            <svg class="sidebar-account__caret icon--xs" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+          </button>
+          <div class="sidebar-divider"></div>
+          <button class="menu-item" aria-label="Hilfe">
+            <span class="sidebar-help-emoji" aria-hidden="true">🛟</span>
+            <span class="menu-item__label">Hilfe</span>
+          </button>
+          <button class="menu-item" aria-label="Info">
+            <!-- Hugeicons: BadgeInfoIcon (stroke-rounded) -->
+            <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14.3942 3.00083L14.1481 2.79115C12.9103 1.73628 11.0897 1.73628 9.85189 2.79115L9.60584 3.00083C8.96518 3.54679 8.16862 3.87674 7.32956 3.9437L7.00731 3.96941C5.38613 4.09878 4.09878 5.38613 3.96941 7.00731L3.9437 7.32956C3.87674 8.16862 3.54679 8.96518 3.00083 9.60584L2.79115 9.85189C1.73628 11.0897 1.73628 12.9103 2.79115 14.1481L3.00083 14.3942C3.54679 15.0348 3.87674 15.8314 3.9437 16.6704L3.96941 16.9927C4.09878 18.6139 5.38613 19.9012 7.00731 20.0306L7.32956 20.0563C8.16862 20.1233 8.96518 20.4532 9.60584 20.9992L9.85188 21.2089C11.0897 22.2637 12.9103 22.2637 14.1481 21.2089L14.3942 20.9992C15.0348 20.4532 15.8314 20.1233 16.6704 20.0563L16.9927 20.0306C18.6139 19.9012 19.9012 18.6139 20.0306 16.9927L20.0563 16.6704C20.1233 15.8314 20.4532 15.0348 20.9992 14.3942L21.2089 14.1481C22.2637 12.9103 22.2637 11.0897 21.2089 9.85188L20.9992 9.60584C20.4532 8.96518 20.1233 8.16862 20.0563 7.32956L20.0306 7.00731C19.9012 5.38613 18.6139 4.09878 16.9927 3.96941L16.6704 3.9437C15.8314 3.87674 15.0348 3.54679 14.3942 3.00083Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <path d="M12 16V12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <path d="M12.125 8.25H12M12.25 8.25C12.25 8.11193 12.1381 8 12 8C11.8619 8 11.75 8.11193 11.75 8.25C11.75 8.38807 11.8619 8.5 12 8.5C12.1381 8.5 12.25 8.38807 12.25 8.25Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+            <span class="menu-item__label">Info</span>
+          </button>
+        </div>
+      </aside>
+
+      <div class="content-shell cura-content-shell">
+        <section class="panel panel--main cura-panel">
+          <header class="cura-topbar">
+        <div>
+          <p class="cura-eyebrow">Rollenmanagement</p>
+          <h1 data-page-title>Benutzer</h1>
+        </div>
+        <div class="cura-topbar__actions">
+          <div class="split-button split-button--primary cura-user-create" data-user-create-split>
+            <button class="split-button__main" type="button" data-primary-action>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15 19.5C15 17.6 13.2 16 11 16H8C5.8 16 4 17.6 4 19.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                <path d="M9.5 12.5C11.4 12.5 13 10.9 13 9C13 7.1 11.4 5.5 9.5 5.5C7.6 5.5 6 7.1 6 9C6 10.9 7.6 12.5 9.5 12.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                <path d="M18 8V14M15 11H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+              <span data-primary-action-label>Neuen Benutzer anlegen</span>
+            </button>
+            <button class="split-button__trigger" type="button" aria-label="Weitere Benutzerarten" aria-haspopup="menu" aria-expanded="false" data-user-create-trigger>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+            </button>
+            <div class="split-button__menu menu-surface cura-user-create__menu" role="menu" aria-label="Benutzerart auswählen" data-user-create-menu hidden>
+              <button type="button" role="menuitem" data-open-user-wizard="technical">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3L19 6V11C19 15.4 16.2 19.2 12 21C7.8 19.2 5 15.4 5 11V6L12 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M9.5 12L11.2 13.7L15 9.8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+                <span>Admin-/technischen Zugang anlegen</span>
+              </button>
+            </div>
+          </div>
+        </div>
+          </header>
+
+          <div class="cura-page-stack">
+        <article class="cura-page cura-page--active" data-page-panel="benutzer">
+          <section class="cura-section cura-section--users">
+            <div class="cura-user-split">
+              <div class="cura-user-table" aria-label="Benutzertabelle">
+                <div class="cura-user-table__head" aria-hidden="true">
+                  <span>Benutzer</span>
+                  <span>Status</span>
+                </div>
+
+                <div class="cura-user-list">
+                  <button class="cura-user-row cura-user-row--selected" type="button" data-user-detail data-user-name="Lisa Bachmann" data-user-role="Person" data-user-email="lisa.bachmann@cura.go" data-user-status="Aktiv" data-user-systems="cura.go und CuraSoft verbunden" data-user-link="Mitarbeiter-Verknüpfung aktiv">
+                    <span class="cura-user-row__person">
+                      <strong>Lisa Bachmann</strong>
+                      <small>Person · lisa.bachmann@cura.go</small>
+                    </span>
+                    <span class="cura-user-row__status">
+                      <span class="cura-user-row__chips" aria-label="Systemverknüpfungen">
+                        <span class="chip chip--status chip--success">
+                          <span class="chip__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                              <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                            </svg>
+                          </span>
+                          cura.go
+                        </span>
+                        <span class="chip chip--status chip--success">
+                          <span class="chip__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                              <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                            </svg>
+                          </span>
+                          CuraSoft
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+
+                  <button class="cura-user-row" type="button" data-user-detail data-user-name="Thomas Fischer" data-user-role="Person" data-user-email="thomas.fischer@cura.go" data-user-status="Aktiv" data-user-systems="cura.go verbunden, CuraSoft fehlt" data-user-link="Mitarbeiter-Verknüpfung offen">
+                    <span class="cura-user-row__person">
+                      <strong>Thomas Fischer</strong>
+                      <small>Person · thomas.fischer@cura.go</small>
+                    </span>
+                    <span class="cura-user-row__status">
+                      <span class="cura-user-row__chips" aria-label="Systemverknüpfungen">
+                        <span class="chip chip--status chip--success">
+                          <span class="chip__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                              <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                            </svg>
+                          </span>
+                          cura.go
+                        </span>
+                        <span class="chip chip--status chip--neutral cura-system-chip--disabled">
+                          <span class="chip__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                            </svg>
+                          </span>
+                          CuraSoft
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+
+                  <button class="cura-user-row" type="button" data-user-detail data-user-name="David Müller" data-user-role="Person" data-user-email="david.mueller@cura.go" data-user-status="Eingeladen" data-user-systems="cura.go Einladung offen" data-user-link="Noch keine Mitarbeiter-Verknüpfung">
+                    <span class="cura-user-row__person">
+                      <strong>David Müller</strong>
+                      <small>Person · david.mueller@cura.go</small>
+                    </span>
+                    <span class="cura-user-row__status">
+                      <span class="cura-user-row__chips" aria-label="Systemverknüpfungen">
+                        <span class="chip chip--status chip--neutral cura-system-chip--disabled">
+                          <span class="chip__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                            </svg>
+                          </span>
+                          cura.go
+                        </span>
+                        <span class="chip chip--status chip--neutral cura-system-chip--disabled">
+                          <span class="chip__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                            </svg>
+                          </span>
+                          CuraSoft
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+
+                  <button class="cura-user-row" type="button" data-user-detail data-user-name="Dienstplanung Nord" data-user-role="Admin" data-user-email="dienstplanung-nord@cura.go" data-user-status="Aktiv" data-user-systems="cura.go verbunden" data-user-link="Kein Mitarbeiterprofil nötig">
+                    <span class="cura-user-row__person">
+                      <strong>Dienstplanung Nord</strong>
+                      <small>Admin · dienstplanung-nord@cura.go</small>
+                    </span>
+                    <span class="cura-user-row__status">
+                      <span class="cura-user-row__chips" aria-label="Systemverknüpfungen">
+                        <span class="chip chip--status chip--success">
+                          <span class="chip__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                              <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                            </svg>
+                          </span>
+                          cura.go
+                        </span>
+                        <span class="chip chip--status chip--neutral cura-system-chip--disabled">
+                          <span class="chip__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                            </svg>
+                          </span>
+                          CuraSoft
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <aside class="cura-user-detail-panel" aria-label="Benutzerdetails">
+                <div class="cura-detail-tabs segmented-control" role="tablist" aria-label="Benutzerdetails">
+                  <button class="cura-detail-tab segmented-control__item is-selected" type="button" role="tab" aria-selected="true" aria-controls="detail-panel-general" data-detail-tab="general">Allgemein</button>
+                  <button class="cura-detail-tab segmented-control__item" type="button" role="tab" aria-selected="false" aria-controls="detail-panel-rights" data-detail-tab="rights">Rechte</button>
+                </div>
+
+                <header class="cura-detail-hero">
+                  <h2 data-detail-name>Lisa Bachmann</h2>
+                  <p data-detail-meta>Person · lisa.bachmann@cura.go</p>
+                </header>
+
+                <div class="cura-detail-content">
+                  <section class="cura-detail-tab-panel" id="detail-panel-general" role="tabpanel" data-detail-tab-panel="general">
+                    <div class="cura-detail-section">
+                      <h3>Zugang</h3>
+                      <div class="cura-detail-kv-list">
+                        <div>
+                          <span>Lebenszyklus</span>
+                          <strong data-detail-status>Aktiv</strong>
+                        </div>
+                        <div>
+                          <span>Rolle</span>
+                          <strong data-detail-role>Person</strong>
+                        </div>
+                        <div>
+                          <span>E-Mail</span>
+                          <strong data-detail-email>lisa.bachmann@cura.go</strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="cura-detail-section">
+                      <h3>Systeme</h3>
+                      <div class="cura-detail-system-list">
+                        <div class="cura-detail-system">
+                          <span class="chip chip--status chip--success" data-detail-cura-chip>cura.go</span>
+                          <strong data-detail-cura-state>Aktiv</strong>
+                        </div>
+                        <div class="cura-detail-system">
+                          <span class="chip chip--status chip--success" data-detail-curasoft-chip>CuraSoft</span>
+                          <strong data-detail-link>Mitarbeiter-Verknüpfung aktiv</strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="cura-detail-section">
+                      <h3>Geräte</h3>
+                      <div class="cura-device-summary">
+                        <strong>Keine aktiven Geräte</strong>
+                        <span>Geräte werden angezeigt, sobald sich die Person anmeldet.</span>
+                      </div>
+                    </div>
+
+                    <div class="cura-detail-actions">
+                      <button class="btn btn--secondary" type="button">Passwort zurücksetzen</button>
+                      <button class="btn btn--ghost" type="button">Sperren</button>
+                    </div>
+                  </section>
+
+                  <section class="cura-detail-tab-panel" id="detail-panel-rights" role="tabpanel" data-detail-tab-panel="rights" hidden>
+                    <div class="cura-detail-section">
+                      <h3>Apps</h3>
+                      <div class="cura-detail-app-row">
+                        <span class="chip chip--status chip--success">cura.go</span>
+                        <span class="chip chip--status chip--success">go.book</span>
+                        <span class="chip chip--status chip--neutral cura-system-chip--disabled">go.tour</span>
+                      </div>
+                    </div>
+
+                    <div class="cura-rights-compact">
+                      <section>
+                        <header>
+                          <strong>Benutzerverwaltung</strong>
+                          <span class="chip chip--status chip--primary">cura.go</span>
+                        </header>
+                        <label><input type="checkbox" checked /> <span>Benutzer einsehen</span></label>
+                        <label><input type="checkbox" checked /> <span>Benutzer anlegen, ändern</span></label>
+                        <label><input type="checkbox" /> <span>Benutzer löschen</span></label>
+                      </section>
+                      <section>
+                        <header>
+                          <strong>Übergabebuch</strong>
+                          <span class="chip chip--status chip--primary">go.book</span>
+                        </header>
+                        <label><input type="checkbox" checked /> <span>Lesen</span></label>
+                        <label><input type="checkbox" checked /> <span>Schreiben</span></label>
+                      </section>
+                    </div>
+                  </section>
+                </div>
+              </aside>
+            </div>
+          </section>
+        </article>
+
+        <article class="cura-page" data-page-panel="freigaben" hidden>
+          <section class="cura-section">
+            <header class="cura-section__header">
+              <div>
+                <h2>Freigaben</h2>
+                <p>Module und sensible Aktionen werden rollenbasiert freigegeben.</p>
+              </div>
+              <span class="chip chip--status chip--warning">2 Prüfungen offen</span>
+            </header>
+
+            <div class="cura-permission-grid">
+              <div class="cura-permission-card">
+                <strong>Übergabebuch</strong>
+                <p>Lesen und Beiträge erstellen.</p>
+                <span class="chip chip--status chip--success">Admin, Pflegeleitung</span>
+              </div>
+              <div class="cura-permission-card">
+                <strong>Messblatt</strong>
+                <p>Messwerte einsehen und Maßnahmen dokumentieren.</p>
+                <span class="chip chip--status chip--primary">Pflege-Team</span>
+              </div>
+              <div class="cura-permission-card">
+                <strong>Einstellungen</strong>
+                <p>Konfiguration von Listen, Einheiten und Regeln.</p>
+                <span class="chip chip--status chip--error">Nur Admin</span>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        <article class="cura-page" data-page-panel="ki" hidden>
+          <section class="cura-section">
+            <header class="cura-section__header">
+              <div>
+                <h2>KI Einstellungen</h2>
+                <p>Steuerung von Assistenzfunktionen, Zugriffen und Protokollierung.</p>
+              </div>
+              <button class="btn btn--ai" type="button">AI Button</button>
+            </header>
+
+            <div class="cura-settings-list">
+              <label class="cura-setting">
+                <span>
+                  <strong>Assistenzvorschläge erlauben</strong>
+                  <small>KI darf Vorschläge in Pflegeberichten vorbereiten.</small>
+                </span>
+                <input type="checkbox" checked />
+              </label>
+              <label class="cura-setting">
+                <span>
+                  <strong>Patientenbezogene Daten nutzen</strong>
+                  <small>Nur für berechtigte Rollen sichtbar und protokolliert.</small>
+                </span>
+                <input type="checkbox" />
+              </label>
+              <label class="cura-setting">
+                <span>
+                  <strong>KI-Aktionen protokollieren</strong>
+                  <small>Alle KI-gestützten Änderungen landen im Audit Log.</small>
+                </span>
+                <input type="checkbox" checked />
+              </label>
+            </div>
+          </section>
+        </article>
+          </div>
+        </section>
+      </div>
+    </div>
+	  </div>
+
+  <div class="modal-overlay cura-modal" data-user-wizard-modal hidden>
+    <div class="cura-modal__scrim" data-close-user-wizard></div>
+    <section class="modal cura-wizard-modal" role="dialog" aria-modal="true" aria-labelledby="user-wizard-title">
+      <header class="modal__header">
+        <div class="modal__header-title cura-wizard-title">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+          </svg>
+          <div>
+            <h2 id="user-wizard-title">cura.go-Zugang erstellen</h2>
+            <p data-wizard-subtitle>Benutzer anlegen.</p>
+          </div>
+        </div>
+        <button class="btn btn--icon btn--ghost" type="button" aria-label="Dialog schließen" data-close-user-wizard>
+          <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+          </svg>
+        </button>
+      </header>
+
+      <div class="modal__body cura-wizard-flow" data-wizard-flow>
+        <div class="modal__card cura-wizard-card">
+          <section class="cura-wizard-panel" data-wizard-step="identity">
+            <h3>Zugangsdaten</h3>
+            <p data-person-copy>Name und E-Mail reichen.</p>
+            <div class="cura-form-stack">
+              <label class="cura-form-field">
+                <span data-name-label>Name</span>
+                <input type="text" value="Maja Schneider" data-identity-name />
+              </label>
+              <label class="cura-form-field">
+                <span>E-Mail</span>
+                <input type="email" value="maja.schneider@cura.go" data-identity-email />
+                <small>Für Einladung und Passwort-Wiederherstellung.</small>
+              </label>
+            </div>
+          </section>
+
+          <section class="cura-wizard-panel" data-wizard-step="password" hidden>
+            <h3>Passwort</h3>
+            <p>Generiertes Passwort ist der Standard.</p>
+            <div class="cura-password-choice">
+              <label class="cura-password-option cura-password-option--active" data-password-option>
+                <input type="radio" name="password-mode" value="generated" checked data-password-mode />
+                <span>
+                  <strong>Passwort generieren</strong>
+                  <small>System erstellt ein Startpasswort.</small>
+                </span>
+              </label>
+              <label class="cura-password-option" data-password-option>
+                <input type="radio" name="password-mode" value="manual" data-password-mode />
+                <span>
+                  <strong>Passwort manuell setzen</strong>
+                  <small>Startpasswort selbst vergeben.</small>
+                </span>
+              </label>
+            </div>
+            <div class="cura-password-fields" data-password-fields hidden>
+              <label class="cura-form-field">
+                <span>Passwort</span>
+                <input type="password" value="Start123!" data-password-input />
+              </label>
+              <label class="cura-form-field">
+                <span>Passwort wiederholen</span>
+                <input type="password" value="Start123!" data-password-repeat />
+              </label>
+            </div>
+          </section>
+
+          <section class="cura-wizard-panel" data-wizard-step="permissions" hidden>
+            <h3>Apps & Rechte</h3>
+            <p>Apps wählen, Rechte darunter setzen.</p>
+            <div class="cura-app-picker" aria-label="Apps auswählen">
+              <button class="cura-app-chip cura-app-chip--active" type="button" data-app-toggle="cura-go" aria-pressed="true">cura.go</button>
+              <button class="cura-app-chip cura-app-chip--active" type="button" data-app-toggle="go-book" aria-pressed="true">go.book</button>
+              <button class="cura-app-chip" type="button" data-app-toggle="go-tour" aria-pressed="false">go.tour</button>
+            </div>
+            <div class="cura-rights-stack">
+              <section class="cura-rights-group" data-rights-group="cura-go">
+                <header>
+                  <strong>cura.go</strong>
+                  <span class="chip chip--status chip--primary">App aktiv</span>
+                </header>
+                <label><input type="checkbox" checked data-right-label="Benutzer einsehen" /> <span>Benutzer einsehen</span><small>go.user.read</small></label>
+                <label><input type="checkbox" data-right-label="Benutzer verwalten" /> <span>Benutzer verwalten</span><small>go.user.manage</small></label>
+                <label><input type="checkbox" data-right-label="Passwörter ändern" /> <span>Passwörter ändern</span><small>go.user.password</small></label>
+              </section>
+              <section class="cura-rights-group" data-rights-group="go-book">
+                <header>
+                  <strong>go.book</strong>
+                  <span class="chip chip--status chip--primary">App aktiv</span>
+                </header>
+                <label><input type="checkbox" checked data-right-label="Übergabebuch lesen" /> <span>Übergabebuch lesen</span><small>go.book.read</small></label>
+                <label><input type="checkbox" checked data-right-label="Übergabebuch schreiben" /> <span>Übergabebuch schreiben</span><small>go.book.write</small></label>
+              </section>
+              <section class="cura-rights-group" data-rights-group="go-tour" hidden>
+                <header>
+                  <strong>go.tour</strong>
+                  <span class="chip chip--status chip--primary">App aktiv</span>
+                </header>
+                <label><input type="checkbox" data-right-label="Touren erfassen" /> <span>Touren erfassen</span><small>go.tour.create</small></label>
+                <label><input type="checkbox" data-right-label="Patienteneinsätze hinzufügen" /> <span>Patienteneinsätze hinzufügen</span><small>go.tour.patient.add</small></label>
+              </section>
+            </div>
+            <div class="cura-cs-note">
+              <strong>CuraSoft</strong>
+              <span>CuraSoft-Zugänge und Rechte werden im Altsystem verwaltet und hier nur als Verknüpfung sichtbar.</span>
+            </div>
+          </section>
+
+          <section class="cura-wizard-panel" data-wizard-step="invite" hidden>
+            <h3>Prüfen</h3>
+            <p>Kurz prüfen, dann anlegen.</p>
+            <div class="cura-summary-list">
+              <div><span>Zugang</span><strong data-summary-access>Person: Maja Schneider</strong></div>
+              <div><span>Kontakt</span><strong data-summary-email>maja.schneider@cura.go</strong></div>
+              <div><span>Apps</span><strong data-summary-apps>cura.go, go.book</strong></div>
+              <div><span>Rechte</span><strong data-summary-rights>Benutzer einsehen, Übergabebuch lesen, Übergabebuch schreiben</strong></div>
+              <div><span>Passwort</span><strong data-summary-password>Generiert</strong></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <section class="modal__body cura-wizard-success" data-wizard-success hidden>
+        <div class="cura-success-content">
+          <span class="cura-success-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+          </span>
+          <h3 data-success-title>Zugang wurde angelegt</h3>
+          <p data-success-copy>Eine E-Mail wurde versendet.</p>
+        </div>
+      </section>
+
+      <footer class="modal__footer cura-wizard-footer" data-wizard-footer>
+        <button class="btn btn--secondary" type="button" data-close-user-wizard>Abbrechen</button>
+        <div class="cura-wizard-dots" data-wizard-dots aria-label="Wizard Fortschritt"></div>
+        <div class="modal__footer-actions">
+          <button class="btn btn--secondary" type="button" data-wizard-back>Zurück</button>
+          <button class="btn btn--primary" type="button" data-wizard-next>Weiter</button>
+        </div>
+      </footer>
+      <footer class="modal__footer cura-success-footer" data-success-footer hidden>
+        <span data-success-footer-message>Maja Schneider wurde angelegt</span>
+        <button class="btn btn--primary" type="button" data-close-user-wizard>Schließen</button>
+      </footer>
+    </section>
+  </div>
+
+  <script src="cura-web.js?v=12"></script>
+</body>
+</html>

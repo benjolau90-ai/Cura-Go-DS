@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component Playground - Components</title>
+  <link rel="stylesheet" href="tokens.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=17" />
+  <link rel="stylesheet" href="component-playground.css?v=8" />
+</head>
+<body class="component-playground-body">
+  <main class="component-playground">
+    <div class="component-playground__shell">
+      <header class="component-playground__header">
+        <div>
+          <p class="component-playground__eyebrow">Component Playground</p>
+          <h1>Components</h1>
+          <p class="component-playground__intro">
+            Arbeitsseite für echtes App-Styling. Alles hier nutzt <code>tokens.css</code>
+            und <code>style.css</code>; diese Seite ergänzt nur Layout und simulierte
+            States für den direkten Vergleich.
+          </p>
+        </div>
+        <div class="component-playground__meta" aria-label="Button-Basiswerte">
+          <span class="chip chip--status chip--neutral">28 / 34 / 40px</span>
+          <span class="chip chip--status chip--neutral">radius 10px</span>
+          <span class="chip chip--status chip--neutral">icons 18px</span>
+          <span class="chip chip--status chip--neutral">stroke 2px</span>
+        </div>
+      </header>
+
+      <section class="playground-card" aria-labelledby="input-fields">
+        <div class="playground-card__header">
+          <h2 id="input-fields">Inputs</h2>
+          <p class="playground-card__note">Arbeitsstand für Formularfelder aus Modal- und Settings-Kontexten.</p>
+        </div>
+        <div class="playground-input-layout">
+          <article class="playground-input-preview" aria-label="Input Beispiel im Modal">
+            <div class="playground-device-preview__topline">
+              <strong>Modal Form</strong>
+              <span>Labels außen, Werte in weißer Fläche</span>
+            </div>
+            <div class="playground-input-form">
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Maßnahme</span>
+                <span class="playground-select-demo" data-playground-select>
+                  <button class="playground-input-control playground-input-control--select" type="button" aria-haspopup="listbox" aria-expanded="false" data-playground-select-trigger>
+                    <span class="playground-input-control__badge">C°</span>
+                    <span class="playground-input-control__value" data-playground-select-value>Temperatur</span>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                  </button>
+                  <span class="menu-surface playground-select-menu" role="listbox" aria-label="Maßnahme auswählen" data-playground-select-menu hidden>
+                    <button type="button" role="option" aria-selected="true" class="is-selected" data-playground-select-option="Temperatur">
+                      <span class="playground-input-control__badge">C°</span>
+                      <span>Temperatur</span>
+                    </button>
+                    <button type="button" role="option" data-playground-select-option="Puls">
+                      <span class="playground-input-control__badge">P</span>
+                      <span>Puls</span>
+                    </button>
+                    <button type="button" role="option" data-playground-select-option="Sauerstoffsättigung">
+                      <span class="playground-input-control__badge">%</span>
+                      <span>Sauerstoffsättigung</span>
+                    </button>
+                  </span>
+                </span>
+              </label>
+
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Name</span>
+                <span class="playground-input-control">
+                  <input type="text" value="Maja Schneider" />
+                </span>
+              </label>
+
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Startdatum</span>
+                <span class="playground-input-control">
+                  <input type="text" value="Heute 31.05.2026" />
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M7 3V6M17 3V6M4 9H20M6 5H18C19.1 5 20 5.9 20 7V19C20 20.1 19.1 21 18 21H6C4.9 21 4 20.1 4 19V7C4 5.9 4.9 5 6 5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </span>
+              </label>
+
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Enddatum</span>
+                <span class="playground-input-control">
+                  <input type="text" value="" placeholder="Kein Enddatum (fortlaufend)" />
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M7 3V6M17 3V6M4 9H20M6 5H18C19.1 5 20 5.9 20 7V19C20 20.1 19.1 21 18 21H6C4.9 21 4 20.1 4 19V7C4 5.9 4.9 5 6 5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </span>
+              </label>
+
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Häufigkeit</span>
+                <span class="playground-input-control playground-input-control--select">
+                  <span class="playground-input-control__value">Benutzerdefiniert</span>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </span>
+              </label>
+
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Startzeit</span>
+                <span class="playground-input-control playground-input-control--select">
+                  <input type="text" value="09:00" />
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </span>
+              </label>
+            </div>
+          </article>
+
+          <article class="playground-input-preview" aria-label="Input Varianten">
+            <div class="playground-device-preview__topline">
+              <strong>Varianten</strong>
+              <span>Text, Select, Combo, Area</span>
+            </div>
+            <div class="playground-input-stack">
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Text Input</span>
+                <span class="playground-input-control">
+                  <input type="text" value="Lisa Bachmann" />
+                </span>
+              </label>
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Search</span>
+                <span class="playground-input-control">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M11 19C15.42 19 19 15.42 19 11C19 6.58 15.42 3 11 3C6.58 3 3 6.58 3 11C3 15.42 6.58 19 11 19ZM21 21L16.65 16.65" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                  <input type="search" value="" placeholder="Benutzer suchen..." />
+                </span>
+              </label>
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Select</span>
+                <span class="playground-input-control playground-input-control--select">
+                  <span class="playground-input-control__value">Pflegefachkraft</span>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </span>
+              </label>
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Combobox</span>
+                <span class="playground-select-demo" data-playground-combobox>
+                  <span class="playground-input-control playground-input-control--select">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M11 19C15.42 19 19 15.42 19 11C19 6.58 15.42 3 11 3C6.58 3 3 6.58 3 11C3 15.42 6.58 19 11 19ZM21 21L16.65 16.65" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                    <input type="text" value="Thomas Fischer" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="playgroundComboboxMenu" data-playground-combobox-input />
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                  </span>
+                  <span class="menu-surface playground-select-menu" id="playgroundComboboxMenu" role="listbox" aria-label="Person auswählen" data-playground-combobox-menu hidden>
+                    <button type="button" role="option" aria-selected="true" class="is-selected" data-playground-combobox-option="Thomas Fischer"><span>Thomas Fischer</span></button>
+                    <button type="button" role="option" data-playground-combobox-option="Lisa Bachmann"><span>Lisa Bachmann</span></button>
+                    <button type="button" role="option" data-playground-combobox-option="Maja Schneider"><span>Maja Schneider</span></button>
+                  </span>
+                </span>
+              </label>
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Password</span>
+                <span class="playground-input-control">
+                  <input type="password" value="Start123!" />
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M2.5 12C4.5 7.8 7.7 5.7 12 5.7C16.3 5.7 19.5 7.8 21.5 12C19.5 16.2 16.3 18.3 12 18.3C7.7 18.3 4.5 16.2 2.5 12Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2" />
+                    <path d="M12 15A3 3 0 1 0 12 9A3 3 0 0 0 12 15Z" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                </span>
+              </label>
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Number + Einheit</span>
+                <span class="playground-input-control">
+                  <input type="number" value="37.5" />
+                  <span class="playground-input-control__suffix">°C</span>
+                </span>
+              </label>
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Einheit als Chip</span>
+                <span class="playground-input-control">
+                  <span class="playground-input-control__badge">C°</span>
+                  <input type="text" value="Temperatur" />
+                </span>
+              </label>
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Readonly</span>
+                <span class="playground-input-control play-input--readonly">
+                  <input type="text" value="Aus CuraSoft synchronisiert" readonly />
+                </span>
+              </label>
+              <label class="playground-input-field">
+                <span class="playground-input-field__label">Textarea</span>
+                <span class="playground-input-control playground-input-control--textarea">
+                  <textarea rows="3">Bitte Fahrdienst bis morgen bestellen.</textarea>
+                </span>
+              </label>
+              <label class="playground-input-field playground-input-field--error">
+                <span class="playground-input-field__label">E-Mail</span>
+                <span class="playground-input-control play-input--error">
+                  <input type="email" value="maja@" />
+                </span>
+                <small>Bitte eine vollständige E-Mail-Adresse eingeben.</small>
+              </label>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="playground-card" aria-labelledby="inline-edit-inputs">
+        <div class="playground-card__header">
+          <h2 id="inline-edit-inputs">Inline Edit</h2>
+          <p class="playground-card__note">Normaler Text wird direkt im Kontext bearbeitet.</p>
+        </div>
+        <div class="playground-inline-grid">
+          <article class="playground-inline-demo">
+            <div class="playground-device-preview__topline">
+              <strong>Commit on blur / Enter</strong>
+              <span>ohne sichtbaren Submit</span>
+            </div>
+            <div class="inline-edit" data-inline-edit>
+              <span class="inline-edit__label">Anzeigename</span>
+              <button class="inline-edit__value" type="button" data-inline-display aria-label="Anzeigename bearbeiten">Maja Schneider</button>
+              <span class="playground-input-control inline-edit__control" hidden>
+                <input type="text" value="Maja Schneider" data-inline-input />
+              </span>
+            </div>
+            <p class="playground-inline-note">Klick öffnet das Feld. Enter oder Blur übernimmt, Escape verwirft.</p>
+          </article>
+
+          <article class="playground-inline-demo">
+            <div class="playground-device-preview__topline">
+              <strong>Explicit Submit</strong>
+              <span>mit kleinen Actions</span>
+            </div>
+            <div class="inline-edit inline-edit--explicit" data-inline-edit data-inline-explicit>
+              <span class="inline-edit__label">Benutzername</span>
+              <button class="inline-edit__value" type="button" data-inline-display aria-label="Benutzername bearbeiten">m.schneider</button>
+              <span class="playground-input-control inline-edit__control" hidden>
+                <input type="text" value="m.schneider" data-inline-input />
+                <button class="btn btn--sm btn--icon btn--primary" type="button" aria-label="Übernehmen" data-inline-commit>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 14L8.5 17.5L19 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </button>
+                <button class="btn btn--sm btn--icon btn--ghost" type="button" aria-label="Abbrechen" data-inline-cancel>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </button>
+              </span>
+            </div>
+            <p class="playground-inline-note">Für riskantere Werte oder technische Felder mit klarer Bestätigung.</p>
+          </article>
+
+          <article class="playground-inline-demo">
+            <div class="playground-device-preview__topline">
+              <strong>States</strong>
+              <span>ruhig im Lesemodus</span>
+            </div>
+            <div class="playground-inline-state-stack">
+              <div class="inline-edit"><span class="inline-edit__label">Default</span><button class="inline-edit__value" type="button">Thomas Fischer</button></div>
+              <div class="inline-edit"><span class="inline-edit__label">Hover</span><button class="inline-edit__value inline-edit__value--hover" type="button">Lisa Bachmann</button></div>
+              <div class="inline-edit"><span class="inline-edit__label">Editing</span><span class="playground-input-control inline-edit__control"><input type="text" value="David Müller" /></span></div>
+              <div class="inline-edit inline-edit--error"><span class="inline-edit__label">Error</span><span class="playground-input-control inline-edit__control play-input--error"><input type="email" value="maja@" /></span><small>Ungültige E-Mail.</small></div>
+              <div class="inline-edit"><span class="inline-edit__label">Readonly</span><button class="inline-edit__value inline-edit__value--readonly" type="button" disabled>Aus CuraSoft</button></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="playground-card" aria-labelledby="input-states">
+        <div class="playground-card__header">
+          <h2 id="input-states">Input States</h2>
+          <p class="playground-card__note">Preview-Klassen simulieren Zustände nebeneinander.</p>
+        </div>
+        <div class="playground-input-state-grid">
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">State</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Preview</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Regel</div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Default</div>
+          <div class="playground-button-grid__cell"><span class="playground-input-control"><input type="text" value="Temperatur" /></span></div>
+          <div class="playground-button-grid__cell"><code>input-background-default + input-border-default</code></div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Hover</div>
+          <div class="playground-button-grid__cell"><span class="playground-input-control play-input--hover"><input type="text" value="Temperatur" /></span></div>
+          <div class="playground-button-grid__cell">Border wird etwas präsenter, keine neue Fläche.</div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Focus</div>
+          <div class="playground-button-grid__cell"><span class="playground-input-control play-input--focus"><input type="text" value="Temperatur" /></span></div>
+          <div class="playground-button-grid__cell"><code>input-border-focus</code> plus Focus Ring.</div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Placeholder</div>
+          <div class="playground-button-grid__cell"><span class="playground-input-control"><input type="text" value="" placeholder="Kein Enddatum (fortlaufend)" /></span></div>
+          <div class="playground-button-grid__cell"><code>input-text-placeholder</code>, kein Disabled-Look.</div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Disabled</div>
+          <div class="playground-button-grid__cell"><span class="playground-input-control play-input--disabled"><input type="text" value="Nicht änderbar" disabled /></span></div>
+          <div class="playground-button-grid__cell">Leiser, aber Text bleibt lesbar.</div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Error</div>
+          <div class="playground-button-grid__cell"><span class="playground-input-control play-input--error"><input type="email" value="maja@" /></span></div>
+          <div class="playground-button-grid__cell">Error-Border plus kurze Hilfszeile außerhalb des Feldes.</div>
+        </div>
+      </section>
+
+      <section class="playground-card" aria-labelledby="button-sizes">
+        <div class="playground-card__header">
+          <h2 id="button-sizes">Größen</h2>
+          <p class="playground-card__note">Small für dichte UI, Default für normale Actions, Big für prominente Aktionen.</p>
+        </div>
+        <div class="playground-size-grid">
+          <div class="playground-size-grid__label">
+            <strong>Small</strong>
+            <span><code>.btn--sm</code> · 28px</span>
+          </div>
+          <div class="playground-button-row">
+            <button class="btn btn--sm btn--primary" type="button">Speichern</button>
+            <button class="btn btn--sm btn--secondary" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7H20M7 12H17M10 17H14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+              Filtern
+            </button>
+            <button class="btn btn--sm btn--icon btn--secondary" type="button" aria-label="Mehr Optionen">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 12.5V12M18 12.5V12M12 12.5V12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="playground-size-grid__label">
+            <strong>Default</strong>
+            <span><code>.btn</code> · 34px</span>
+          </div>
+          <div class="playground-button-row">
+            <button class="btn btn--primary" type="button">Speichern</button>
+            <button class="btn btn--secondary" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7H20M7 12H17M10 17H14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+              Filtern
+            </button>
+            <button class="btn btn--icon btn--secondary" type="button" aria-label="Mehr Optionen">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 12.5V12M18 12.5V12M12 12.5V12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="playground-size-grid__label">
+            <strong>Big</strong>
+            <span><code>.btn--lg</code> · 40px</span>
+          </div>
+          <div class="playground-button-row">
+            <button class="btn btn--lg btn--primary" type="button">Speichern</button>
+            <button class="btn btn--lg btn--secondary" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7H20M7 12H17M10 17H14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+              Filtern
+            </button>
+            <button class="btn btn--lg btn--icon btn--secondary" type="button" aria-label="Mehr Optionen">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 12.5V12M18 12.5V12M12 12.5V12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="playground-card" aria-labelledby="button-device-contexts">
+        <div class="playground-card__header">
+          <h2 id="button-device-contexts">Desktop / Tablet</h2>
+          <p class="playground-card__note">Gleiche Komponente in realistischen Eingabe-Kontexten.</p>
+        </div>
+        <div class="playground-device-grid">
+          <article class="playground-device-preview" aria-label="Desktop Toolbar Beispiel">
+            <div class="playground-device-preview__topline">
+              <strong>Desktop Toolbar</strong>
+              <span>Maus · hohe Dichte</span>
+            </div>
+            <div class="playground-desktop-toolbar">
+              <button class="btn btn--sm btn--secondary" type="button">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 7H20M7 12H17M10 17H14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+                Filtern
+              </button>
+              <button class="btn btn--sm btn--secondary" type="button">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M15.2 3.8A8.5 8.5 0 0 0 4.7 16.6M8.8 20.2A8.5 8.5 0 0 0 19.3 7.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path d="M15.5 8V3.5H20M8.5 16V20.5H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Aktualisieren
+              </button>
+              <button class="btn btn--sm btn--icon btn--ghost" type="button" aria-label="Mehr Optionen">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 12.5V12M18 12.5V12M12 12.5V12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+                </svg>
+              </button>
+              <span class="playground-device-preview__spacer"></span>
+              <button class="btn btn--sm btn--primary" type="button">Hinzufügen</button>
+            </div>
+            <div class="playground-list-strip" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </article>
+
+          <article class="playground-device-preview playground-device-preview--tablet" aria-label="Tablet Actionbar Beispiel">
+            <div class="playground-device-preview__topline">
+              <strong>Tablet Actionbar</strong>
+              <span>Touch · 44px Ziel</span>
+            </div>
+            <div class="playground-tablet-actionbar">
+              <span class="playground-touch-target">
+                <button class="btn btn--icon btn--secondary" type="button" aria-label="Zurück">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </button>
+              </span>
+              <div class="playground-tablet-actionbar__title">
+                <strong>Maßnahmen</strong>
+                <span>3 offene Einträge</span>
+              </div>
+              <span class="playground-touch-target">
+                <button class="btn btn--icon btn--secondary" type="button" aria-label="Filtern">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7H20M7 12H17M10 17H14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </button>
+              </span>
+              <button class="btn btn--lg btn--primary" type="button">Hinzufügen</button>
+            </div>
+            <div class="playground-tablet-cards" aria-hidden="true">
+              <span></span><span></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="playground-card" aria-labelledby="button-variants">
+        <div class="playground-card__header">
+          <h2 id="button-variants">Varianten</h2>
+          <p class="playground-card__note">Grundtypen aus Figma; Ghost entspricht unserem Tertiary.</p>
+        </div>
+        <div class="playground-button-row">
+          <button class="btn btn--primary" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 14L8.5 17.5L19 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+            Speichern
+          </button>
+          <button class="btn btn--secondary" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7H20M7 12H17M10 17H14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+            Filtern
+          </button>
+          <button class="btn btn--ghost" type="button">Abbrechen</button>
+          <button class="btn btn--destructive" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M19.5 5.5L18.88 15.53C18.72 18.09 18.64 19.37 18 20.29C17.68 20.74 17.27 21.13 16.8 21.42C15.84 22 14.56 22 11.99 22C9.42 22 8.14 22 7.18 21.41C6.7 21.13 6.3 20.74 5.98 20.28C5.34 19.36 5.26 18.08 5.1 15.52L4.5 5.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              <path d="M3 5.5H21M9.5 16.5V10.5M14.5 16.5V10.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+            </svg>
+            Löschen
+          </button>
+          <button class="btn btn--ai" type="button">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="ai-icon-gradient-text" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+                  <stop offset="0.28" stop-color="#ffb932" />
+                  <stop offset="0.54" stop-color="#f00" />
+                  <stop offset="0.74" stop-color="#d123ab" />
+                </linearGradient>
+              </defs>
+              <path d="M10 7L9.48 8.39C8.81 10.22 8.47 11.14 7.8 11.8C7.14 12.47 6.22 12.81 4.39 13.48L3 14L4.39 14.52C6.22 15.19 7.14 15.53 7.8 16.2C8.47 16.86 8.81 17.78 9.48 19.61L10 21L10.52 19.61C11.19 17.78 11.53 16.86 12.2 16.2C12.86 15.53 13.78 15.19 15.61 14.52L17 14L15.61 13.48C13.78 12.81 12.86 12.47 12.2 11.8C11.53 11.14 11.19 10.22 10.52 8.39L10 7Z" stroke="url(#ai-icon-gradient-text)" stroke-linejoin="round" stroke-width="2" />
+              <path d="M18 3L17.78 3.6C17.49 4.38 17.34 4.77 17.06 5.06C16.77 5.34 16.38 5.49 15.6 5.78L15 6L15.6 6.22C16.38 6.51 16.77 6.66 17.06 6.94C17.34 7.23 17.49 7.62 17.78 8.4L18 9L18.22 8.4C18.51 7.62 18.66 7.23 18.94 6.94C19.23 6.66 19.62 6.51 20.4 6.22L21 6L20.4 5.78C19.62 5.49 19.23 5.34 18.94 5.06C18.66 4.77 18.51 4.38 18.22 3.6L18 3Z" stroke="url(#ai-icon-gradient-text)" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+            Assistieren
+          </button>
+        </div>
+      </section>
+
+      <section class="playground-card" aria-labelledby="button-icon-only">
+        <div class="playground-card__header">
+          <h2 id="button-icon-only">Icon Buttons</h2>
+          <p class="playground-card__note">Gleiche Button-Familie, nur quadratisch.</p>
+        </div>
+        <div class="playground-button-row">
+          <button class="btn btn--icon btn--primary" type="button" aria-label="Hinzufügen">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+          </button>
+          <button class="btn btn--icon btn--secondary" type="button" aria-label="Aktualisieren">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M15.2 3.8A8.5 8.5 0 0 0 4.7 16.6M8.8 20.2A8.5 8.5 0 0 0 19.3 7.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M15.5 8V3.5H20M8.5 16V20.5H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button class="btn btn--icon btn--ghost" type="button" aria-label="Weitere Optionen">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 12.5V12M18 12.5V12M12 12.5V12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+            </svg>
+          </button>
+          <button class="btn btn--icon btn--destructive" type="button" aria-label="Entfernen">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M19.5 5.5L18.88 15.53C18.72 18.09 18.64 19.37 18 20.29C17.68 20.74 17.27 21.13 16.8 21.42C15.84 22 14.56 22 11.99 22C9.42 22 8.14 22 7.18 21.41C6.7 21.13 6.3 20.74 5.98 20.28C5.34 19.36 5.26 18.08 5.1 15.52L4.5 5.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              <path d="M3 5.5H21M9.5 16.5V10.5M14.5 16.5V10.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+            </svg>
+          </button>
+          <button class="btn btn--icon btn--ai" type="button" aria-label="Assistieren">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="ai-icon-gradient-only" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+                  <stop offset="0.28" stop-color="#ffb932" />
+                  <stop offset="0.54" stop-color="#f00" />
+                  <stop offset="0.74" stop-color="#d123ab" />
+                </linearGradient>
+              </defs>
+              <path d="M10 7L9.48 8.39C8.81 10.22 8.47 11.14 7.8 11.8C7.14 12.47 6.22 12.81 4.39 13.48L3 14L4.39 14.52C6.22 15.19 7.14 15.53 7.8 16.2C8.47 16.86 8.81 17.78 9.48 19.61L10 21L10.52 19.61C11.19 17.78 11.53 16.86 12.2 16.2C12.86 15.53 13.78 15.19 15.61 14.52L17 14L15.61 13.48C13.78 12.81 12.86 12.47 12.2 11.8C11.53 11.14 11.19 10.22 10.52 8.39L10 7Z" stroke="url(#ai-icon-gradient-only)" stroke-linejoin="round" stroke-width="2" />
+              <path d="M18 3L17.78 3.6C17.49 4.38 17.34 4.77 17.06 5.06C16.77 5.34 16.38 5.49 15.6 5.78L15 6L15.6 6.22C16.38 6.51 16.77 6.66 17.06 6.94C17.34 7.23 17.49 7.62 17.78 8.4L18 9L18.22 8.4C18.51 7.62 18.66 7.23 18.94 6.94C19.23 6.66 19.62 6.51 20.4 6.22L21 6L20.4 5.78C19.62 5.49 19.23 5.34 18.94 5.06C18.66 4.77 18.51 4.38 18.22 3.6L18 3Z" stroke="url(#ai-icon-gradient-only)" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="playground-card" aria-labelledby="split-buttons">
+        <div class="playground-card__header">
+          <h2 id="split-buttons">Split Buttons</h2>
+          <p class="playground-card__note">Zwei Varianten: ohne Divider öffnet die gesamte Fläche ein Action Menu; mit Divider sind Main Action und Pfeil getrennte Klickflächen.</p>
+        </div>
+
+        <div class="playground-split-showcase">
+          <article class="playground-split-context">
+            <div class="playground-device-preview__topline">
+              <strong>Ohne Divider</strong>
+              <span>ganzer Button öffnet Action Menu</span>
+            </div>
+            <div class="playground-button-row">
+              <div class="split-button split-button--primary split-button--menu">
+                <button class="split-button__main" type="button" aria-haspopup="menu" aria-expanded="false">
+                  <span class="split-button__label">Aktion wählen</span>
+                  <span class="split-button__caret" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                      <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <div class="split-button split-button--secondary split-button--menu">
+                <button class="split-button__main" type="button" aria-haspopup="menu" aria-expanded="false">
+                  <span class="split-button__label">Exportieren</span>
+                  <span class="split-button__caret" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                      <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+
+              <div class="split-button split-button--destructive split-button--menu">
+                <button class="split-button__main" type="button" aria-haspopup="menu" aria-expanded="false">
+                  <span class="split-button__label">Löschen</span>
+                  <span class="split-button__caret" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                      <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="playground-split-context">
+            <div class="playground-device-preview__topline">
+              <strong>Mit Divider</strong>
+              <span>Main Action + alternative Aktionen</span>
+            </div>
+            <div class="playground-button-row">
+              <div class="split-button split-button--primary">
+                <button class="split-button__main" type="button">Speichern</button>
+                <button class="split-button__trigger" type="button" aria-label="Alternative Speicheraktionen" aria-haspopup="menu" aria-expanded="false">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </button>
+              </div>
+
+              <div class="split-button split-button--secondary">
+                <button class="split-button__main" type="button">Exportieren</button>
+                <button class="split-button__trigger" type="button" aria-label="Alternative Exportaktionen" aria-haspopup="menu" aria-expanded="false">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </button>
+              </div>
+
+              <div class="split-button split-button--destructive">
+                <button class="split-button__main" type="button">Löschen</button>
+                <button class="split-button__trigger" type="button" aria-label="Alternative Löschaktionen" aria-haspopup="menu" aria-expanded="false">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="playground-split-context playground-split-context--open">
+            <div class="playground-device-preview__topline">
+              <strong>Open State</strong>
+              <span>ohne Divider, Menu geöffnet</span>
+            </div>
+            <div class="playground-split-open-area">
+              <div class="split-button split-button--secondary split-button--menu is-open">
+                <button class="split-button__main" type="button" aria-haspopup="menu" aria-expanded="true">
+                  <span class="split-button__label">Exportieren</span>
+                  <span class="split-button__caret" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                      <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                  </span>
+                </button>
+                <div class="split-button__menu menu-surface" role="menu" aria-label="Exportformat">
+                  <button type="button" role="menuitem">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M7 3H14L19 8V21H7V3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                      <path d="M14 3V8H19M9.5 15H16.5M9.5 18H14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                    <span>Als PDF exportieren</span>
+                  </button>
+                  <button type="button" role="menuitem">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M4 5H20V19H4V5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                      <path d="M4 10H20M9 5V19M15 5V19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                    <span>Als CSV exportieren</span>
+                  </button>
+                  <button type="button" role="menuitem">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M7 8V3H17V8M7 17H5C3.9 17 3 16.1 3 15V11C3 9.9 3.9 9 5 9H19C20.1 9 21 9.9 21 11V15C21 16.1 20.1 17 19 17H17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                      <path d="M7 14H17V21H7V14Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                    <span>Druckansicht öffnen</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="playground-split-rules" aria-label="Split Button Varianten">
+          <div>
+            <strong>Ohne Divider</strong>
+            <span>Eine klickbare Fläche. Label und Caret gehören zusammen und öffnen immer das Action Menu.</span>
+          </div>
+          <div>
+            <strong>Mit Divider</strong>
+            <span>Zwei klickbare Flächen. Links führt die Hauptaktion aus, rechts öffnet Alternativen.</span>
+          </div>
+        </div>
+
+        <div class="playground-split-grid">
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Variante</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Default</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Hover</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Pressed</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Open</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Disabled</div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Primary</div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--primary"><button class="split-button__main" type="button">Speichern</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--primary is-hover"><button class="split-button__main" type="button">Speichern</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--primary is-pressed"><button class="split-button__main" type="button">Speichern</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--primary is-open"><button class="split-button__main" type="button">Speichern</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--primary is-disabled"><button class="split-button__main" type="button">Speichern</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Secondary</div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--secondary"><button class="split-button__main" type="button">Exportieren</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--secondary is-hover"><button class="split-button__main" type="button">Exportieren</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--secondary is-pressed"><button class="split-button__main" type="button">Exportieren</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--secondary is-open"><button class="split-button__main" type="button">Exportieren</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--secondary is-disabled"><button class="split-button__main" type="button">Exportieren</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Destructive</div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--destructive"><button class="split-button__main" type="button">Löschen</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--destructive is-hover"><button class="split-button__main" type="button">Löschen</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--destructive is-pressed"><button class="split-button__main" type="button">Löschen</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--destructive is-open"><button class="split-button__main" type="button">Löschen</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+          <div class="playground-button-grid__cell"><div class="split-button split-button--destructive is-disabled"><button class="split-button__main" type="button">Löschen</button><button class="split-button__trigger" type="button" aria-label="Weitere Aktionen"><svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></button></div></div>
+        </div>
+      </section>
+
+      <section class="playground-card" aria-labelledby="button-states">
+        <div class="playground-card__header">
+          <h2 id="button-states">States</h2>
+          <p class="playground-card__note">Preview-Klassen simulieren Zustände nebeneinander.</p>
+        </div>
+        <div class="playground-button-grid">
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Variante</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Default</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Hover</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Pressed</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Disabled</div>
+          <div class="playground-button-grid__cell playground-button-grid__cell--head">Focus Visible</div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Primary</div>
+          <div class="playground-button-grid__cell"><button class="btn btn--primary" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--primary play-state--hover" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--primary play-state--pressed" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--primary" type="button" disabled>Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--primary play-state--focus" type="button">Button</button></div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Secondary</div>
+          <div class="playground-button-grid__cell"><button class="btn btn--secondary" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--secondary play-state--hover" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--secondary play-state--pressed" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--secondary" type="button" disabled>Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--secondary play-state--focus" type="button">Button</button></div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Ghost</div>
+          <div class="playground-button-grid__cell"><button class="btn btn--ghost" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--ghost play-state--hover" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--ghost play-state--pressed" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--ghost" type="button" disabled>Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--ghost play-state--focus" type="button">Button</button></div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">Destructive</div>
+          <div class="playground-button-grid__cell"><button class="btn btn--destructive" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--destructive play-state--hover" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--destructive play-state--pressed" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--destructive" type="button" disabled>Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--destructive play-state--focus" type="button">Button</button></div>
+
+          <div class="playground-button-grid__cell playground-button-grid__cell--label">AI</div>
+          <div class="playground-button-grid__cell"><button class="btn btn--ai" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--ai play-state--hover" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--ai play-state--pressed" type="button">Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--ai" type="button" disabled>Button</button></div>
+          <div class="playground-button-grid__cell"><button class="btn btn--ai play-state--focus" type="button">Button</button></div>
+        </div>
+      </section>
+
+      <section class="playground-card" aria-labelledby="button-specs">
+        <div class="playground-card__header">
+          <h2 id="button-specs">Arbeitswerte</h2>
+          <p class="playground-card__note">Aktuelle CSS-Werte, die wir jetzt gemeinsam feinziehen können.</p>
+        </div>
+        <div class="playground-specs">
+          <div class="playground-spec"><strong>Small</strong><span>28px · 10px</span></div>
+          <div class="playground-spec"><strong>Default</strong><span>34px · 14px</span></div>
+          <div class="playground-spec"><strong>Big</strong><span>40px · 16px</span></div>
+          <div class="playground-spec"><strong>Radius</strong><span>10px für alle Größen</span></div>
+          <div class="playground-spec"><strong>Font</strong><span>--type-body-strong</span></div>
+          <div class="playground-spec"><strong>Gap</strong><span>--spacing-6</span></div>
+          <div class="playground-spec"><strong>Icon</strong><span>18px in allen Größen</span></div>
+          <div class="playground-spec"><strong>Focus</strong><span>3px ring</span></div>
+          <div class="playground-spec"><strong>Shadow</strong><span>none</span></div>
+          <div class="playground-spec"><strong>Typen</strong><span>Primary / Secondary / Ghost / Destructive / AI</span></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script>
+    document.querySelectorAll("[data-playground-select]").forEach((select) => {
+      const trigger = select.querySelector("[data-playground-select-trigger]");
+      const menu = select.querySelector("[data-playground-select-menu]");
+      const value = select.querySelector("[data-playground-select-value]");
+      const options = select.querySelectorAll("[data-playground-select-option]");
+
+      const setOpen = (open) => {
+        trigger.setAttribute("aria-expanded", String(open));
+        trigger.classList.toggle("play-input--focus", open);
+        menu.hidden = !open;
+      };
+
+      trigger.addEventListener("click", () => {
+        setOpen(menu.hidden);
+      });
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          value.textContent = option.dataset.playgroundSelectOption;
+          options.forEach((item) => {
+            const selected = item === option;
+            item.classList.toggle("is-selected", selected);
+            item.setAttribute("aria-selected", String(selected));
+          });
+          setOpen(false);
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!select.contains(event.target)) {
+          setOpen(false);
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-playground-combobox]").forEach((combobox) => {
+      const input = combobox.querySelector("[data-playground-combobox-input]");
+      const menu = combobox.querySelector("[data-playground-combobox-menu]");
+      const options = [...combobox.querySelectorAll("[data-playground-combobox-option]")];
+
+      const setOpen = (open) => {
+        input.setAttribute("aria-expanded", String(open));
+        input.closest(".playground-input-control").classList.toggle("play-input--focus", open);
+        menu.hidden = !open;
+      };
+
+      const filterOptions = () => {
+        const query = input.value.trim().toLowerCase();
+        let visibleCount = 0;
+        options.forEach((option) => {
+          const visible = option.dataset.playgroundComboboxOption.toLowerCase().includes(query);
+          option.hidden = !visible;
+          visibleCount += visible ? 1 : 0;
+        });
+        setOpen(visibleCount > 0);
+      };
+
+      input.addEventListener("focus", () => setOpen(true));
+      input.addEventListener("input", filterOptions);
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setOpen(false);
+      });
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          input.value = option.dataset.playgroundComboboxOption;
+          options.forEach((item) => {
+            const selected = item === option;
+            item.classList.toggle("is-selected", selected);
+            item.setAttribute("aria-selected", String(selected));
+          });
+          setOpen(false);
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!combobox.contains(event.target)) {
+          setOpen(false);
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-inline-edit]").forEach((inlineEdit) => {
+      const display = inlineEdit.querySelector("[data-inline-display]");
+      const input = inlineEdit.querySelector("[data-inline-input]");
+      const control = inlineEdit.querySelector(".inline-edit__control");
+      const commitButton = inlineEdit.querySelector("[data-inline-commit]");
+      const cancelButton = inlineEdit.querySelector("[data-inline-cancel]");
+      let previousValue = input?.value || display?.textContent || "";
+
+      const open = () => {
+        previousValue = display.textContent;
+        input.value = previousValue;
+        display.hidden = true;
+        control.hidden = false;
+        inlineEdit.classList.add("inline-edit--editing");
+        input.focus();
+        input.select();
+      };
+
+      const close = (commit) => {
+        if (commit) {
+          display.textContent = input.value.trim() || previousValue;
+        } else {
+          input.value = previousValue;
+        }
+        control.hidden = true;
+        display.hidden = false;
+        inlineEdit.classList.remove("inline-edit--editing");
+      };
+
+      display?.addEventListener("click", open);
+      input?.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") close(true);
+        if (event.key === "Escape") close(false);
+      });
+
+      input?.addEventListener("blur", (event) => {
+        if (inlineEdit.hasAttribute("data-inline-explicit")) return;
+        close(true);
+      });
+
+      commitButton?.addEventListener("click", () => close(true));
+      cancelButton?.addEventListener("click", () => close(false));
+    });
+  </script>
+</body>
+</html>

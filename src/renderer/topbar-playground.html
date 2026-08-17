@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data:" />
+  <title>Topbar Playground</title>
+  <link rel="stylesheet" href="tokens.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=17" />
+  <style>
+    html {
+      height: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      height: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
+      color: var(--color-text-primary);
+      font: var(--type-body);
+      background:
+        radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--color-brand-default) 16%, transparent) 0 220px, transparent 420px),
+        radial-gradient(circle at 92% 18%, color-mix(in srgb, var(--color-accent-default) 10%, transparent) 0 180px, transparent 390px),
+        var(--color-background-secondary);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .topbar-playground {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: var(--spacing-32);
+    }
+
+    .topbar-playground__intro {
+      margin: 0 0 var(--spacing-24);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--spacing-24);
+    }
+
+    .topbar-playground__eyebrow {
+      margin: 0 0 var(--spacing-4);
+      color: var(--color-brand-default);
+      font: var(--type-label);
+      text-transform: uppercase;
+    }
+
+    .topbar-playground__intro h1 {
+      margin: 0;
+      font: var(--type-heading-display);
+    }
+
+    .topbar-playground__intro p {
+      max-width: 660px;
+      margin: var(--spacing-8) 0 0;
+      color: var(--color-text-secondary);
+      font: var(--type-body);
+    }
+
+    .topbar-playground__tokens {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-8);
+      justify-content: flex-end;
+    }
+
+    .topbar-token {
+      height: 28px;
+      padding: 0 var(--spacing-10);
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-full);
+      background: var(--glass-card);
+      color: var(--color-text-secondary);
+      font: var(--type-meta);
+      white-space: nowrap;
+    }
+
+    .topbar-playground__shell {
+      overflow: visible;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--glass-elevation-lg-radius);
+      background: var(--glass-card);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-specimen {
+      border-bottom: 1px solid var(--color-border-subtle);
+      background: var(--color-surface-default);
+    }
+
+    .topbar-specimen:last-child {
+      border-bottom: 0;
+    }
+
+    .topbar-specimen__meta {
+      min-height: 42px;
+      padding: 0 var(--spacing-20);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-16);
+      color: var(--color-text-secondary);
+      font: var(--type-meta);
+      border-bottom: 1px solid var(--color-border-subtle);
+      background: var(--color-surface-raised);
+    }
+
+    .topbar-specimen__name {
+      color: var(--color-text-primary);
+      font: var(--type-body-strong);
+    }
+
+    .topbar {
+      min-height: 64px;
+      padding: var(--spacing-0) var(--spacing-20);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: var(--spacing-16);
+      border-bottom: 1px solid var(--color-border-default);
+      background: color-mix(in srgb, var(--color-surface-default) 88%, transparent);
+    }
+
+    .topbar--floating {
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--color-surface-default) 82%, transparent);
+      box-shadow: var(--shadow-surface);
+      backdrop-filter: blur(16px);
+    }
+
+    .topbar--compact {
+      min-height: 56px;
+    }
+
+    .topbar__left,
+    .topbar__right {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-10);
+    }
+
+    .topbar__right {
+      justify-content: flex-end;
+    }
+
+    .topbar__title-group {
+      min-width: 0;
+      display: grid;
+      gap: 1px;
+    }
+
+    .topbar__eyebrow {
+      color: var(--color-brand-default);
+      font: var(--type-label);
+      text-transform: uppercase;
+    }
+
+    .topbar__title {
+      overflow: hidden;
+      color: var(--color-text-primary);
+      font: var(--type-heading-section);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .topbar__subtitle {
+      overflow: hidden;
+      color: var(--color-text-secondary);
+      font: var(--type-meta);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .topbar__divider {
+      width: 1px;
+      height: 28px;
+      background: var(--color-border-default);
+      flex: 0 0 auto;
+    }
+
+    .topbar-icon-link {
+      color: var(--color-text-secondary);
+    }
+
+    .topbar-icon-link svg,
+    .topbar svg.icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+    }
+
+    .topbar-context {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-10);
+    }
+
+    .topbar-context__root {
+      color: var(--color-text-secondary);
+      font: var(--type-heading-section);
+      white-space: nowrap;
+    }
+
+    .topbar-context__slash {
+      color: var(--color-text-tertiary);
+      font: var(--type-heading-section);
+    }
+
+    .topbar-skeleton {
+      width: 152px;
+      height: 18px;
+      border-radius: var(--radius-full);
+      background: var(--color-border-subtle);
+    }
+
+    .topbar-skeleton--short {
+      width: 28px;
+    }
+
+    .topbar-context-button {
+      height: 28px;
+      padding: 0 var(--spacing-8);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-8);
+      border: 0;
+      border-radius: var(--radius-md);
+      background: transparent;
+      color: var(--color-text-secondary);
+      font: var(--type-body-strong);
+      cursor: pointer;
+      transition: var(--button-transition);
+      white-space: nowrap;
+    }
+
+    .topbar-context-button:hover {
+      background: var(--button-ghost-background-hover);
+    }
+
+    .topbar-search {
+      width: min(360px, 28vw);
+      min-width: 220px;
+      height: 36px;
+      padding: 0 var(--spacing-12);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-8);
+      border: 1px solid var(--input-border-default);
+      border-radius: var(--radius-md);
+      background: var(--input-background-default);
+      color: var(--input-text-placeholder);
+      font: var(--type-control);
+      box-shadow: var(--input-shadow-default);
+    }
+
+    .topbar-empty-space {
+      min-height: 140px;
+      background: var(--color-surface-default);
+    }
+
+    .topbar-floating-stage {
+      min-height: 168px;
+      padding: var(--spacing-20);
+      display: grid;
+      align-content: start;
+      background:
+        linear-gradient(90deg, transparent calc(50% - 1px), var(--color-border-subtle) calc(50% - 1px), var(--color-border-subtle) 50%, transparent 50%),
+        var(--color-surface-default);
+    }
+
+    .topbar-action-menu {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .topbar-action-menu .menu-surface {
+      position: absolute;
+      top: calc(100% + var(--spacing-6));
+      right: 0;
+      z-index: 8;
+    }
+
+    .is-open > .menu-surface {
+      display: grid;
+    }
+
+    .topbar-rule-grid {
+      padding: var(--spacing-20);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--spacing-12);
+      background: var(--color-surface-raised);
+    }
+
+    .topbar-rule {
+      padding: var(--spacing-14);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+      background: var(--color-surface-default);
+    }
+
+    .topbar-rule strong {
+      display: block;
+      margin-bottom: var(--spacing-6);
+      font: var(--type-body-strong);
+    }
+
+    .topbar-rule span {
+      color: var(--color-text-secondary);
+      font: var(--type-meta);
+    }
+
+    @media (max-width: 920px) {
+      .topbar-playground {
+        padding: var(--spacing-16);
+      }
+
+      .topbar-playground__intro,
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar__right {
+        justify-content: flex-start;
+      }
+
+      .topbar-search {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .topbar-rule-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar-rule-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar__left,
+      .topbar__right,
+      .topbar-context {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="topbar-playground">
+    <header class="topbar-playground__intro">
+      <div>
+        <p class="topbar-playground__eyebrow">Component Playground</p>
+        <h1>Topbar</h1>
+        <p>Arbeitsfläche für obere Kontextleisten: Navigation, Titel, Suche und Actions. Die Beispiele nutzen die gleichen Button-, Menu- und Input-Tokens wie die Desktop-App.</p>
+      </div>
+      <div class="topbar-playground__tokens" aria-label="Topbar Eckwerte">
+        <span class="topbar-token">attached / floating</span>
+        <span class="topbar-token">56 / 64px Höhe</span>
+        <span class="topbar-token">spacing-20 außen</span>
+        <span class="topbar-token">border-default unten</span>
+        <span class="topbar-token">Actions rechts</span>
+      </div>
+    </header>
+
+    <section class="topbar-playground__shell" aria-label="Topbar Varianten">
+      <article class="topbar-specimen">
+        <div class="topbar-specimen__meta">
+          <span class="topbar-specimen__name">Attached Context Topbar</span>
+          <span>Teil der Content-Fläche, mit Unterkante an den Inhalt angebunden.</span>
+        </div>
+        <header class="topbar">
+          <div class="topbar__left">
+            <nav class="topbar-context" aria-label="Kontext">
+              <span class="topbar-context__root">Alle Verträge</span>
+              <span class="topbar-context__slash">/</span>
+              <button class="topbar-context-button" type="button">
+                <span class="topbar-skeleton" aria-hidden="true"></span>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+              <span class="topbar-context__slash">/</span>
+              <button class="topbar-context-button" type="button">
+                <span class="topbar-skeleton" aria-hidden="true"></span>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+              <span class="topbar-context__slash">/</span>
+              <span class="topbar-skeleton topbar-skeleton--short" aria-hidden="true"></span>
+              <span class="topbar-skeleton" aria-hidden="true"></span>
+              <button class="btn btn--ghost btn--icon btn--sm" type="button" aria-label="Kontext bearbeiten">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M14.2 4.8L19.2 9.8M4 20H9.5L20 9.5C21.4 8.1 21.4 5.9 20 4.5L19.5 4C18.1 2.6 15.9 2.6 14.5 4L4 14.5V20Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+            </nav>
+          </div>
+          <div class="topbar__right">
+            <button class="btn btn--primary btn--lg" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              </svg>
+              Bereit für Test
+            </button>
+            <div class="topbar-action-menu">
+              <button class="btn btn--ghost btn--icon" type="button" aria-label="Weitere Optionen" data-topbar-menu>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12H5.01M12 12H12.01M19 12H19.01" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+                </svg>
+              </button>
+              <div class="menu-surface" hidden role="menu">
+                <button type="button" role="menuitem">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M8 7H16M8 12H16M8 17H13M6 3H18C19.1 3 20 3.9 20 5V19C20 20.1 19.1 21 18 21H6C4.9 21 4 20.1 4 19V5C4 3.9 4.9 3 6 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                  Protokoll anzeigen
+                </button>
+                <button type="button" role="menuitem">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M7 7H17V17H7V7ZM4 4H14M10 20H20V10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                  Duplizieren
+                </button>
+              </div>
+            </div>
+            <button class="btn btn--ghost btn--icon" type="button" aria-label="Sortieren">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 4V20M7 20L4 17M7 20L10 17M17 20V4M17 4L14 7M17 4L20 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+            </button>
+          </div>
+        </header>
+        <div class="topbar-empty-space" aria-hidden="true"></div>
+      </article>
+
+      <article class="topbar-specimen">
+        <div class="topbar-specimen__meta">
+          <span class="topbar-specimen__name">Attached List Topbar</span>
+          <span>Titel links, Suche und Listen-Actions rechts.</span>
+        </div>
+        <header class="topbar topbar--compact">
+          <div class="topbar__left">
+            <div class="topbar__title-group">
+              <span class="topbar__eyebrow">Rollenmanagement</span>
+              <strong class="topbar__title">Benutzer</strong>
+            </div>
+          </div>
+          <div class="topbar__right">
+            <label class="topbar-search">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              </svg>
+              Benutzer suchen...
+            </label>
+            <button class="btn btn--secondary" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 6H20M7 12H17M10 18H14" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              </svg>
+              Filtern
+            </button>
+            <button class="btn btn--secondary btn--icon" type="button" aria-label="Aktualisieren">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 12C20 16.4183 16.4183 20 12 20C9.193 20 6.725 18.553 5.296 16.364M4 12C4 7.58172 7.58172 4 12 4C14.807 4 17.275 5.447 18.704 7.636M18.704 7.636V4.636M18.704 7.636H15.704M5.296 16.364V19.364M5.296 16.364H8.296" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+            </button>
+            <button class="btn btn--primary" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              </svg>
+              Neu
+            </button>
+          </div>
+        </header>
+        <div class="topbar-empty-space" aria-hidden="true"></div>
+      </article>
+
+      <article class="topbar-specimen">
+        <div class="topbar-specimen__meta">
+          <span class="topbar-specimen__name">Attached Detail Topbar</span>
+          <span>Zurück, Entität, Status und kontextuelle Aktionen.</span>
+        </div>
+        <header class="topbar topbar--compact">
+          <div class="topbar__left">
+            <button class="btn btn--secondary btn--icon" type="button" aria-label="Zurück">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+            </button>
+            <div class="topbar__title-group">
+              <strong class="topbar__title">Lisa Bachmann</strong>
+              <span class="topbar__subtitle">Person · lisa.bachmann@cura.go</span>
+            </div>
+          </div>
+          <div class="topbar__right">
+            <span class="chip chip--status chip--success">Aktiv</span>
+            <span class="chip chip--status">cura.go</span>
+            <span class="topbar__divider" aria-hidden="true"></span>
+            <button class="btn btn--secondary" type="button">Passwort zurücksetzen</button>
+            <div class="split-button split-button--secondary" aria-label="Weitere Aktionen">
+              <button class="split-button__main" type="button">
+                <span class="split-button__label">Bearbeiten</span>
+              </button>
+              <button class="split-button__trigger" type="button" aria-label="Weitere Bearbeiten-Aktionen">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </header>
+        <div class="topbar-empty-space" aria-hidden="true"></div>
+      </article>
+
+      <article class="topbar-specimen">
+        <div class="topbar-specimen__meta">
+          <span class="topbar-specimen__name">Floating Topbar</span>
+          <span>Losgelöst über dem Content, mit eigener Surface und Shadow.</span>
+        </div>
+        <div class="topbar-floating-stage">
+          <header class="topbar topbar--floating topbar--compact">
+            <div class="topbar__left">
+              <button class="btn btn--secondary btn--icon" type="button" aria-label="Zurück">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+              <div class="topbar__title-group">
+                <strong class="topbar__title">Neue Planung</strong>
+                <span class="topbar__subtitle">Modal- oder Editor-Kontext</span>
+              </div>
+            </div>
+            <div class="topbar__right">
+              <button class="btn btn--secondary" type="button">Abbrechen</button>
+              <button class="btn btn--primary" type="button">Übernehmen</button>
+            </div>
+          </header>
+        </div>
+      </article>
+
+      <div class="topbar-rule-grid" aria-label="Topbar Regeln">
+        <div class="topbar-rule">
+          <strong>Attached</strong>
+          <span>Ist Teil der Content Shell und trennt sich nur über die untere Border vom Inhalt.</span>
+        </div>
+        <div class="topbar-rule">
+          <strong>Floating</strong>
+          <span>Hat eigene Surface, Radius und Shadow, wenn sie über Content schwebt.</span>
+        </div>
+        <div class="topbar-rule">
+          <strong>Links ist Kontext</strong>
+          <span>Titel, Breadcrumbs, Zurück oder aktueller Datensatz. Keine losen Actions dort.</span>
+        </div>
+        <div class="topbar-rule">
+          <strong>Rechts sind Aktionen</strong>
+          <span>Primary zuerst, danach Icon-/Overflow-Actions. Nur echte Screen-Actions.</span>
+        </div>
+        <div class="topbar-rule">
+          <strong>64 oder 56px</strong>
+          <span>64px für komplexen Kontext, 56px für kompakte Listen und Detailflächen.</span>
+        </div>
+        <div class="topbar-rule">
+          <strong>Leise Trennung</strong>
+          <span>Unterkante mit border-default. Starke Linien nur ohne räumliche Trennung.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const menuTriggers = document.querySelectorAll("[data-topbar-menu]");
+
+    function closeMenus(except) {
+      menuTriggers.forEach((trigger) => {
+        const wrapper = trigger.closest(".topbar-action-menu");
+        const menu = wrapper?.querySelector(".menu-surface");
+        if (!wrapper || !menu || wrapper === except) return;
+        wrapper.classList.remove("is-open");
+        menu.hidden = true;
+      });
+    }
+
+    menuTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const wrapper = trigger.closest(".topbar-action-menu");
+        const menu = wrapper?.querySelector(".menu-surface");
+        if (!wrapper || !menu) return;
+        const nextOpen = !wrapper.classList.contains("is-open");
+        closeMenus(wrapper);
+        wrapper.classList.toggle("is-open", nextOpen);
+        menu.hidden = !nextOpen;
+      });
+    });
+
+    document.addEventListener("click", () => closeMenus());
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenus();
+    });
+  </script>
+</body>
+</html>

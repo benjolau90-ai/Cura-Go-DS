@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'" />
+  <title>Intensiv Visual Design – Styling Test</title>
+  <link rel="stylesheet" href="tokens.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=17" />
+</head>
+<body>
+  <div class="main-view">
+    <!-- Bg: unscharfer Glass-Hintergrund -->
+    <div class="bg-decoration" aria-hidden="true"></div>
+
+    <!-- topBar: Titelzeile (Windows-Style, da frame:false) -->
+    <header class="title-bar">
+      <div class="title-bar__title" id="titleBarTitle">Issue</div>
+      <div class="title-bar__controls">
+        <button class="caption-btn" data-action="minimize" aria-label="Minimieren">
+          <svg viewBox="0 0 10 1" width="10" height="1"><rect width="10" height="1" fill="currentColor" /></svg>
+        </button>
+        <button class="caption-btn" data-action="maximize" aria-label="Maximieren">
+          <svg viewBox="0 0 10 10" width="10" height="10"><rect x="0.5" y="0.5" width="9" height="9" fill="none" stroke="currentColor" /></svg>
+        </button>
+        <button class="caption-btn caption-btn--close" data-action="close" aria-label="Schließen">
+          <svg viewBox="0 0 10 10" width="10" height="10"><path d="M0 0 L10 10 M10 0 L0 10" stroke="currentColor" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Nur sichtbar <= 767px: Phone-Bottom-Nav ist ein erster Entwurf, noch
+         nicht final abgestimmt (im Gegensatz zu iPad, das steht). -->
+    <div class="responsive-disclaimer" role="note">
+      Phone-Navigation: erster Entwurf, noch nicht final abgestimmt
+    </div>
+
+    <!-- Sidebar + Content -->
+    <div class="app-body">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__top">
+          <a class="sidebar-brand" href="#start" aria-label="CuraSoft Start">
+            <img src="assets/logo-cura.svg" alt="" />
+            <span class="sidebar-icon__label">CuraSoft</span>
+          </a>
+
+          <div class="sidebar-divider"></div>
+
+          <div class="sidebar-layouts" id="sidebarLayouts">
+            <button class="sidebar-icon sidebar-icon--selected sidebar-layouts__trigger" aria-label="Layouts" aria-expanded="false" aria-controls="sidebarLayoutMenu" type="button">
+              <!-- Hugeicons: LayoutTwoColumnIcon (stroke-rounded) -->
+              <svg class="icon" viewBox="0 0 24 24" fill="none">
+                <path d="M3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                <path d="M12 2.5V21.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              </svg>
+              <span class="sidebar-icon__label">Layouts</span>
+              <svg class="sidebar-layouts__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+            </button>
+            <div class="sidebar-layouts__menu" id="sidebarLayoutMenu">
+              <button class="sidebar-subitem sidebar-subitem--selected" type="button" data-view="split" data-title="Layout 1 – Split View">
+                <span class="sidebar-subitem__index">1</span>
+                <span class="sidebar-subitem__label">Split View</span>
+              </button>
+              <button class="sidebar-subitem" type="button" data-view="table-block" data-title="Layout 2 – Tabellenblock">
+                <span class="sidebar-subitem__index">2</span>
+                <span class="sidebar-subitem__label">Tabellenblock</span>
+              </button>
+              <button class="sidebar-subitem" type="button" data-view="split-seamless" data-title="Layout 3 – Seamless Split">
+                <span class="sidebar-subitem__index">3</span>
+                <span class="sidebar-subitem__label">Seamless Split</span>
+              </button>
+              <button class="sidebar-subitem" type="button" data-view="column-grid" data-title="Layout 4 – Spalten-Grid">
+                <span class="sidebar-subitem__index">4</span>
+                <span class="sidebar-subitem__label">Spalten-Grid</span>
+              </button>
+              <button class="sidebar-subitem" type="button" data-view="detail-topbar" data-title="Layout 5 – Breadcrumbs &amp; Actions">
+                <span class="sidebar-subitem__index">5</span>
+                <span class="sidebar-subitem__label">Breadcrumbs &amp; Actions</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Component-Showcase -->
+          <div class="sidebar-divider"></div>
+
+          <button class="sidebar-icon" aria-label="Components" data-view="components" data-title="Components">
+            <!-- Blocks-Konzept (Hugeicons "blocks"): vier getrennte Bausteine statt eine geteilte Fläche -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <rect x="13" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <rect x="3" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <rect x="13" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+            <span class="sidebar-icon__label">Components</span>
+          </button>
+          <div class="sidebar-layouts" id="sidebarSurfaces">
+            <button class="sidebar-icon sidebar-layouts__trigger" aria-label="Surfaces & Elevation" aria-expanded="false" aria-controls="sidebarSurfaceMenu" type="button">
+              <!-- Hugeicons-inspiriert: geschichtete Flächen -->
+              <svg class="icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3L21 8L12 13L3 8L12 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                <path d="M5 12L12 16L19 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                <path d="M5 16L12 20L19 16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+              <span class="sidebar-icon__label">Surfaces & Elevation</span>
+              <svg class="sidebar-layouts__chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8 10L12 14L16 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+            </button>
+            <div class="sidebar-layouts__menu" id="sidebarSurfaceMenu">
+              <button class="sidebar-subitem" type="button" data-view="surfaces" data-title="Surfaces & Elevation – App Background" data-surface-target="app-bg">
+                <span class="sidebar-subitem__index">0</span>
+                <span class="sidebar-subitem__label">App Background</span>
+              </button>
+              <button class="sidebar-subitem" type="button" data-view="surfaces" data-title="Surfaces & Elevation – Navigation / App Chrome" data-surface-target="app-chrome">
+                <span class="sidebar-subitem__index">1</span>
+                <span class="sidebar-subitem__label">Navigation / Chrome</span>
+              </button>
+              <button class="sidebar-subitem" type="button" data-view="surfaces" data-title="Surfaces & Elevation – Content Shell" data-surface-target="content-shell">
+                <span class="sidebar-subitem__index">2</span>
+                <span class="sidebar-subitem__label">Content Shell</span>
+              </button>
+              <button class="sidebar-subitem" type="button" data-view="surfaces" data-title="Surfaces & Elevation – Content Surfaces" data-surface-target="content-surfaces">
+                <span class="sidebar-subitem__index">3</span>
+                <span class="sidebar-subitem__label">Content Surfaces</span>
+              </button>
+              <button class="sidebar-subitem" type="button" data-view="surfaces" data-title="Surfaces & Elevation – Overlay / Modal" data-surface-target="modal-overlay">
+                <span class="sidebar-subitem__index">4</span>
+                <span class="sidebar-subitem__label">Overlay / Modal</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Beispielseiten: echte, befüllte Produkt-Screens -->
+          <div class="sidebar-divider"></div>
+
+          <button class="sidebar-icon sidebar-icon--selected" aria-label="Issue" data-view="contract-issues" data-title="Issue">
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M4 3H3C2.44772 3 2 3.44772 2 4V18L3.5 21L5 18V4C5 3.44772 4.55228 3 4 3Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M21 12.0013V8.00072C21 5.64336 21 4.46468 20.2678 3.73234C19.5355 3 18.357 3 16 3H13C10.643 3 9.46447 3 8.73223 3.73234C8 4.46468 8 5.64336 8 8.00072V16.0019C8 18.3592 8 19.5379 8.73223 20.2703C9.35264 20.8908 10.2934 20.9855 12 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M12 7H17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M12 11H17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M14 19C14 19 15.5 19.5 16.5 21C16.5 21 18 17 22 15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M2 7H5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            </svg>
+            <span class="sidebar-icon__label">Issue</span>
+          </button>
+          <button class="sidebar-icon" aria-label="Verträge" data-view="contract-overview" data-title="Verträge">
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M3 14V10C3 6.22876 3 4.34315 4.17157 3.17157C5.34315 2 7.22876 2 11 2H13C16.7712 2 18.6569 2 19.8284 3.17157C21 4.34315 21 6.22876 21 10V14C21 17.7712 21 19.6569 19.8284 20.8284C18.6569 22 16.7712 22 13 22H11C7.22876 22 5.34315 22 4.17157 20.8284C3 19.6569 3 17.7712 3 14Z" stroke="currentColor" stroke-width="1.5" />
+              <path d="M11.3333 10.6667C12.3883 11.7216 13.7778 12.7937 13.7778 12.7937L15.6825 10.8889C15.6825 10.8889 14.6105 9.49939 13.5556 8.44444C12.5006 7.3895 11.1111 6.31746 11.1111 6.31746L9.20635 8.22222C9.20635 8.22222 10.2784 9.61172 11.3333 10.6667ZM11.3333 10.6667L8 14M16 10.5714L13.4603 13.1111M11.4286 6L8.88889 8.53968" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M8 18H16" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" />
+            </svg>
+            <span class="sidebar-icon__label">Verträge</span>
+          </button>
+          <button class="sidebar-icon" aria-label="Testbench" data-view="contract-detail" data-title="Testbench">
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M17 17L21 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19C15.4183 19 19 15.4183 19 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M8.99998 13.5C8.99998 13.5 6.5 11.6588 6.5 11C6.49999 10.3412 9 8.50002 9 8.50002" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M13 13.5C13 13.5 15.5 11.6588 15.5 11C15.5 10.3412 13 8.5 13 8.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            </svg>
+            <span class="sidebar-icon__label">Testbench</span>
+          </button>
+          <button class="sidebar-icon" aria-label="Messblatt" data-view="measure-sheet" data-title="Messblatt">
+            <!-- Hugeicons-inspiriert: Messblatt / Daily Task -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M7 3.5H17C18.6569 3.5 20 4.84315 20 6.5V17.5C20 19.1569 18.6569 20.5 17 20.5H7C5.34315 20.5 4 19.1569 4 17.5V6.5C4 4.84315 5.34315 3.5 7 3.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <path d="M8 8H16M8 12H12.5M8 16H10.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              <path d="M15 15.5L16.2 16.7L18.5 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+            <span class="sidebar-icon__label">Messblatt</span>
+          </button>
+          <button class="sidebar-icon" aria-label="Beispiel: Übergabebuch" data-view="example-patients" data-title="Beispiel: Übergabebuch">
+            <!-- Hugeicons: MedicalFileIcon (stroke-rounded) -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M19 9V7.81818C19 6.12494 19 5.27832 18.7478 4.60214C18.3424 3.5151 17.4849 2.65765 16.3979 2.2522C15.7217 2 14.8751 2 13.1818 2C10.2186 2 8.73706 2 7.55375 2.44135C5.65142 3.15088 4.15088 4.65142 3.44135 6.55375C3 7.73706 3 9.21865 3 12.1818L3 14.7273C3 17.7966 3 19.3313 3.79783 20.3971C4.02643 20.7025 4.29752 20.9736 4.60289 21.2022C5.66867 22 7.20336 22 10.2727 22H11C12.1698 22 14.5 22 14.5 22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <path d="M11 14.3333H11.8403C12.5019 14.3333 12.8326 14.3333 13.0985 14.5076C13.3643 14.6818 13.5122 14.9956 13.8081 15.6232L15.4 19L17.6 12L19.1919 15.3768C19.4878 16.0044 19.6357 16.3182 19.9015 16.4924C20.1674 16.6667 20.4981 16.6667 21.1597 16.6667H22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <path d="M3 12C3 10.1591 4.49238 8.66667 6.33333 8.66667H7.44444C7.9611 8.66667 8.21942 8.66667 8.43137 8.60988C9.00652 8.45577 9.45576 8.00652 9.60988 7.43137C9.66667 7.21942 9.66667 6.9611 9.66667 6.44444V5.33333C9.66667 3.49238 11.1591 2 13 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+            <span class="sidebar-icon__label">Beispiel: Übergabebuch</span>
+          </button>
+          <button class="sidebar-icon" aria-label="Einstellungen" data-view="example-settings" data-title="Einstellungen">
+            <!-- Hugeicons: Settings02Icon (stroke-rounded) -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M15.5 12C15.5 13.933 13.933 15.5 12 15.5C10.067 15.5 8.5 13.933 8.5 12C8.5 10.067 10.067 8.5 12 8.5C13.933 8.5 15.5 10.067 15.5 12Z" stroke="currentColor" stroke-width="2" />
+              <path d="M21.011 14.0965C21.5329 13.9558 21.7939 13.8854 21.8969 13.7508C22 13.6163 22 13.3998 22 12.9669V11.0332C22 10.6003 22 10.3838 21.8969 10.2493C21.7938 10.1147 21.5329 10.0443 21.011 9.90358C19.0606 9.37759 17.8399 7.33851 18.3433 5.40087C18.4817 4.86799 18.5509 4.60156 18.4848 4.44529C18.4187 4.28902 18.2291 4.18134 17.8497 3.96596L16.125 2.98673C15.7528 2.77539 15.5667 2.66972 15.3997 2.69222C15.2326 2.71472 15.0442 2.90273 14.6672 3.27873C13.208 4.73448 10.7936 4.73442 9.33434 3.27864C8.95743 2.90263 8.76898 2.71463 8.60193 2.69212C8.43489 2.66962 8.24877 2.77529 7.87653 2.98663L6.15184 3.96587C5.77253 4.18123 5.58287 4.28891 5.51678 4.44515C5.45068 4.6014 5.51987 4.86787 5.65825 5.4008C6.16137 7.3385 4.93972 9.37763 2.98902 9.9036C2.46712 10.0443 2.20617 10.1147 2.10308 10.2492C2 10.3838 2 10.6003 2 11.0332V12.9669C2 13.3998 2 13.6163 2.10308 13.7508C2.20615 13.8854 2.46711 13.9558 2.98902 14.0965C4.9394 14.6225 6.16008 16.6616 5.65672 18.5992C5.51829 19.1321 5.44907 19.3985 5.51516 19.5548C5.58126 19.7111 5.77092 19.8188 6.15025 20.0341L7.87495 21.0134C8.24721 21.2247 8.43334 21.3304 8.6004 21.3079C8.76746 21.2854 8.95588 21.0973 9.33271 20.7213C10.7927 19.2644 13.2088 19.2643 14.6689 20.7212C15.0457 21.0973 15.2341 21.2853 15.4012 21.3078C15.5682 21.3303 15.7544 21.2246 16.1266 21.0133L17.8513 20.034C18.2307 19.8187 18.4204 19.711 18.4864 19.5547C18.5525 19.3984 18.4833 19.132 18.3448 18.5991C17.8412 16.6616 19.0609 14.6226 21.011 14.0965Z" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+            </svg>
+            <span class="sidebar-icon__label">Einstellungen</span>
+          </button>
+          <!-- Bottom-Bar (<=1024px): max. 5 sichtbare Primär-Items, alles
+               danach klappt hinter "Mehr" auf (iOS/Material-Konvention).
+               Auf Desktop unsichtbar/inert (.sidebar-more = display:contents),
+               dort bleibt "Beispiel: Leistungsübersicht" ein normales Item. -->
+          <div class="sidebar-more" id="sidebarMore">
+            <button class="sidebar-icon sidebar-more__trigger" aria-label="Mehr" aria-expanded="false" aria-controls="sidebarMoreMenu" type="button">
+              <svg class="icon" viewBox="0 0 24 24" fill="none">
+                <circle cx="5" cy="12" r="1.6" fill="currentColor" />
+                <circle cx="12" cy="12" r="1.6" fill="currentColor" />
+                <circle cx="19" cy="12" r="1.6" fill="currentColor" />
+              </svg>
+              <span class="sidebar-icon__label">Mehr</span>
+            </button>
+            <div class="sidebar-more__menu" id="sidebarMoreMenu">
+              <button class="sidebar-icon" aria-label="Vertragsdetail" data-view="contract-detail" data-title="Vertragsdetail">
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 6C4 3.79086 5.79086 2 8 2H14L20 8V18C20 20.2091 18.2091 22 16 22H8C5.79086 22 4 20.2091 4 18V6Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M14 2.5V7C14 7.55228 14.4477 8 15 8H19.5" stroke="currentColor" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M8 12H16M8 15.5H16M8 19H12" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                </svg>
+                <span class="sidebar-icon__label">Vertragsdetail</span>
+              </button>
+              <button class="sidebar-icon" aria-label="Beispiel: Leistungsübersicht" data-view="example-contract" data-title="Beispiel: Leistungsübersicht">
+                <!-- Hugeicons: Briefcase01Icon (stroke-rounded) -->
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M3 12H21" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                </svg>
+                <span class="sidebar-icon__label">Beispiel: Leistungsübersicht</span>
+              </button>
+              <button class="sidebar-icon" aria-label="Kundenportal (Konzept)" data-view="customer-portal" data-title="Kundenportal (Konzept)">
+                <!-- Hugeicons: UserAccountIcon (stroke-rounded) -->
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 21C6 17.6863 8.68629 15 12 15C15.3137 15 18 17.6863 18 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <span class="sidebar-icon__label">Kundenportal (Konzept)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar__bottom">
+          <button class="sidebar-account" type="button" aria-label="Benutzerprofil öffnen">
+            <span class="sidebar-avatar">
+              <img src="assets/sidebar-avatar.png" alt="" />
+            </span>
+            <span class="sidebar-account__details">
+              <span class="sidebar-account__name">Sarafina Carabina</span>
+              <span class="sidebar-account__org">Wenn Engeln pflegen</span>
+            </span>
+            <svg class="sidebar-account__caret icon--xs" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+          </button>
+          <div class="sidebar-divider"></div>
+          <div class="sidebar-menu">
+            <button class="menu-item" aria-label="Hilfe">
+              <span class="sidebar-help-emoji" aria-hidden="true">🛟</span>
+              <span class="sidebar-icon__label">Hilfe</span>
+            </button>
+            <button class="menu-item" aria-label="Info">
+              <!-- Hugeicons: BadgeInfoIcon (stroke-rounded) -->
+              <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none">
+                <path d="M14.3942 3.00083L14.1481 2.79115C12.9103 1.73628 11.0897 1.73628 9.85189 2.79115L9.60584 3.00083C8.96518 3.54679 8.16862 3.87674 7.32956 3.9437L7.00731 3.96941C5.38613 4.09878 4.09878 5.38613 3.96941 7.00731L3.9437 7.32956C3.87674 8.16862 3.54679 8.96518 3.00083 9.60584L2.79115 9.85189C1.73628 11.0897 1.73628 12.9103 2.79115 14.1481L3.00083 14.3942C3.54679 15.0348 3.87674 15.8314 3.9437 16.6704L3.96941 16.9927C4.09878 18.6139 5.38613 19.9012 7.00731 20.0306L7.32956 20.0563C8.16862 20.1233 8.96518 20.4532 9.60584 20.9992L9.85188 21.2089C11.0897 22.2637 12.9103 22.2637 14.1481 21.2089L14.3942 20.9992C15.0348 20.4532 15.8314 20.1233 16.6704 20.0563L16.9927 20.0306C18.6139 19.9012 19.9012 18.6139 20.0306 16.9927L20.0563 16.6704C20.1233 15.8314 20.4532 15.0348 20.9992 14.3942L21.2089 14.1481C22.2637 12.9103 22.2637 11.0897 21.2089 9.85188L20.9992 9.60584C20.4532 8.96518 20.1233 8.16862 20.0563 7.32956L20.0306 7.00731C19.9012 5.38613 18.6139 4.09878 16.9927 3.96941L16.6704 3.9437C15.8314 3.87674 15.0348 3.54679 14.3942 3.00083Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                <path d="M12 16V12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                <path d="M12.125 8.25H12M12.25 8.25C12.25 8.11193 12.1381 8 12 8C11.8619 8 11.75 8.11193 11.75 8.25C11.75 8.38807 11.8619 8.5 12 8.5C12.1381 8.5 12.25 8.38807 12.25 8.25Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+              <span class="sidebar-icon__label">Info</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <div class="content-shell" id="view-split" hidden>
+        <section class="panel panel--main panel--list" id="emptyListPanel">
+          <div class="list-panel-inner">
+            <div class="filter-bar">
+              <div class="filter-input">
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none"><path d="M8.85746 12.5061C6.36901 10.6456 4.59564 8.59915 3.62734 7.44867C3.3276 7.09253 3.22938 6.8319 3.17033 6.3728C2.96811 4.8008 2.86701 4.0148 3.32795 3.5074C3.7889 3 4.60404 3 6.23433 3H17.7657C19.396 3 20.2111 3 20.672 3.5074C21.133 4.0148 21.0319 4.8008 20.8297 6.37281C20.7706 6.83191 20.6724 7.09254 20.3726 7.44867C19.403 8.60062 17.6261 10.6507 15.1326 12.5135C14.907 12.6821 14.7583 12.9567 14.7307 13.2614C14.4837 15.992 14.2559 17.4876 14.1141 18.2442C13.8853 19.4657 12.1532 20.2006 11.226 20.8563C10.6741 21.2466 10.0043 20.782 9.93278 20.1778C9.79643 19.0261 9.53961 16.6864 9.25927 13.2614C9.23409 12.9539 9.08486 12.6761 8.85746 12.5061Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                <input type="text" placeholder="Suchen…" />
+              </div>
+              <button class="btn btn--icon btn--secondary" aria-label="Aktualisieren">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M15.1667 0.999756L15.7646 2.11753C16.1689 2.87322 16.371 3.25107 16.2374 3.41289C16.1037 3.57471 15.6635 3.44402 14.7831 3.18264C13.9029 2.92131 12.9684 2.78071 12 2.78071C6.75329 2.78071 2.5 6.90822 2.5 11.9998C2.5 13.6789 2.96262 15.2533 3.77093 16.6093M8.83333 22.9998L8.23536 21.882C7.83108 21.1263 7.62894 20.7484 7.7626 20.5866C7.89627 20.4248 8.33649 20.5555 9.21689 20.8169C10.0971 21.0782 11.0316 21.2188 12 21.2188C17.2467 21.2188 21.5 17.0913 21.5 11.9998C21.5 10.3206 21.0374 8.74623 20.2291 7.39023" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+              <button class="btn btn--icon btn--secondary" aria-label="Mehr Optionen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M11.9967 12.5V12M11.9967 6.5V6M11.9967 18.5V18M12.9967 12.5C12.9967 11.9477 12.549 11.5 11.9967 11.5C11.4444 11.5 10.9967 11.9477 10.9967 12.5C10.9967 13.0523 11.4444 13.5 11.9967 13.5C12.549 13.5 12.9967 13.0523 12.9967 12.5ZM12.9967 6.5C12.9967 5.94772 12.549 5.5 11.9967 5.5C11.4444 5.5 10.9967 5.94772 10.9967 6.5C10.9967 7.05228 11.4444 7.5 11.9967 7.5C12.549 7.5 12.9967 7.05228 12.9967 6.5ZM12.9967 18.5C12.9967 17.9477 12.549 17.5 11.9967 17.5C11.4444 17.5 10.9967 17.9477 10.9967 18.5C10.9967 19.0523 11.4444 19.5 11.9967 19.5C12.549 19.5 12.9967 19.0523 12.9967 18.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+              </div>
+            <div class="list-groups panel__placeholder-fill">
+              <div class="panel__placeholder">Liste</div>
+            </div>
+          </div>
+        </section>
+        <div class="resize-handle" id="resizeHandleLayout1" aria-hidden="true"></div>
+        <section class="panel panel--side panel--detail panel__placeholder-fill">
+          <div class="panel__placeholder">Detail</div>
+        </section>
+      </div>
+
+      <div class="content-shell" id="view-table-block" hidden>
+        <div class="settings-card">
+          <div class="settings-card__header">
+            <span class="bar bar--title"></span>
+          </div>
+          <div class="settings-grid">
+            <!-- Vier gleich aufgebaute, neutrale Blöcke – reine Grid-Struktur -->
+            <section class="settings-section" style="grid-column: 1; grid-row: 1;">
+              <header class="settings-section__header">
+                <div class="settings-section__label">
+                  <span class="bar bar--label"></span>
+                </div>
+                <span class="bar bar--btn"></span>
+              </header>
+              <div class="settings-rows">
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+              </div>
+            </section>
+            <section class="settings-section" style="grid-column: 2; grid-row: 1;">
+              <header class="settings-section__header">
+                <div class="settings-section__label">
+                  <span class="bar bar--label"></span>
+                </div>
+                <span class="bar bar--btn"></span>
+              </header>
+              <div class="settings-rows">
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+              </div>
+            </section>
+            <section class="settings-section" style="grid-column: 1; grid-row: 2;">
+              <header class="settings-section__header">
+                <div class="settings-section__label">
+                  <span class="bar bar--label"></span>
+                </div>
+                <span class="bar bar--btn"></span>
+              </header>
+              <div class="settings-rows">
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+              </div>
+            </section>
+            <section class="settings-section" style="grid-column: 2; grid-row: 2;">
+              <header class="settings-section__header">
+                <div class="settings-section__label">
+                  <span class="bar bar--label"></span>
+                </div>
+                <span class="bar bar--btn"></span>
+              </header>
+              <div class="settings-rows">
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+                <div class="settings-row settings-row--cols3"><span class="bar bar--col"></span><span class="bar bar--col"></span><span class="bar bar--col"></span></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-shell" id="view-split-seamless" hidden>
+        <div class="panel panel--seamless-group">
+          <div class="detail-topbar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-text">Alle Elemente</span>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                <span class="bar bar--breadcrumb"></span>
+                <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                <span class="breadcrumb-pill__icon"></span>
+                <span class="bar bar--breadcrumb bar--breadcrumb-lg"></span>
+                <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M8.5 1.5L10.5 3.5L4 10L1.5 10.5L2 8L8.5 1.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+            </div>
+            <div class="detail-actions">
+              <button class="btn btn--primary">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M8 6H21M8 12H21M8 18H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M3 6L4 7L6 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+                Aktion
+              </button>
+              <button class="btn btn--icon btn--ghost" aria-label="Mehr Optionen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M6.00449 12.5V12M18.0045 12.5V12M12.0045 12.5V12M7.00449 12.5C7.00449 11.9477 6.55677 11.5 6.00449 11.5C5.4522 11.5 5.00449 11.9477 5.00449 12.5C5.00449 13.0523 5.4522 13.5 6.00449 13.5C6.55677 13.5 7.00449 13.0523 7.00449 12.5ZM19.0045 12.5C19.0045 11.9477 18.5568 11.5 18.0045 11.5C17.4522 11.5 17.0045 11.9477 17.0045 12.5C17.0045 13.0523 17.4522 13.5 18.0045 13.5C18.5568 13.5 19.0045 13.0523 19.0045 12.5ZM13.0045 12.5C13.0045 11.9477 12.5568 11.5 12.0045 11.5C11.4522 11.5 11.0045 11.9477 11.0045 12.5C11.0045 13.0523 11.4522 13.5 12.0045 13.5C12.5568 13.5 13.0045 13.0523 13.0045 12.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="seamless-row">
+            <section class="seamless-block seamless-block--main">
+              <div class="panel__placeholder">Block A</div>
+            </section>
+            <div class="resize-handle resize-handle--seamless" id="resizeHandleSeamless" aria-hidden="true"></div>
+            <section class="seamless-block seamless-block--side" id="seamlessSide">
+              <div class="panel__placeholder">Block B</div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-shell" id="view-column-grid" hidden>
+        <div class="panel grid-panel">
+          <!-- Reines Zellen-Raster, keine Inhalte: 9 Zeilen (Kopf + 8 Slots) x 4 Spalten -->
+          <div class="g-grid g-grid--9x4">
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+          </div>
+
+          <!-- Zweites Raster darunter: 4 Zeilen x 4 Spalten -->
+          <div class="g-grid g-grid--4x4">
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+            <div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div><div class="g-cell"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-shell" id="view-components" hidden>
+        <section class="panel panel--main components-panel">
+          <div class="components-section">
+            <div class="updates-header">Buttons</div>
+            <div class="btn-showcase">
+              <button class="btn btn--primary">
+                <!-- Hugeicons: Tick02Icon (stroke-rounded) -->
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 14L8.5 17.5L19 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+                Primary
+              </button>
+              <button class="btn btn--secondary">
+                <!-- Hugeicons: Tick02Icon (stroke-rounded) -->
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 14L8.5 17.5L19 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+                Secondary
+              </button>
+              <button class="btn btn--ghost">Ghost</button>
+              <button class="btn btn--icon btn--secondary" aria-label="Mehr Optionen" data-tooltip="Weitere Optionen">
+                <!-- Hugeicons: MoreHorizontalIcon (stroke-rounded) -->
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M6.00449 12.5V12M18.0045 12.5V12M12.0045 12.5V12M7.00449 12.5C7.00449 11.9477 6.55677 11.5 6.00449 11.5C5.4522 11.5 5.00449 11.9477 5.00449 12.5C5.00449 13.0523 5.4522 13.5 6.00449 13.5C6.55677 13.5 7.00449 13.0523 7.00449 12.5ZM19.0045 12.5C19.0045 11.9477 18.5568 11.5 18.0045 11.5C17.4522 11.5 17.0045 11.9477 17.0045 12.5C17.0045 13.0523 17.4522 13.5 18.0045 13.5C18.5568 13.5 19.0045 13.0523 19.0045 12.5ZM13.0045 12.5C13.0045 11.9477 12.5568 11.5 12.0045 11.5C11.4522 11.5 11.0045 11.9477 11.0045 12.5C11.0045 13.0523 11.4522 13.5 12.0045 13.5C12.5568 13.5 13.0045 13.0523 13.0045 12.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+              <button class="btn btn--icon btn--secondary is-active" aria-label="Automatisch aktualisieren (aktiv)" aria-pressed="true" data-tooltip="Automatisch aktualisieren: an">
+                <!-- Hugeicons: RefreshIcon (stroke-rounded) -->
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M15.2 3.8A8.5 8.5 0 0 0 4.7 16.6M8.8 20.2A8.5 8.5 0 0 0 19.3 7.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path d="M15.5 8V3.5H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M8.5 16V20.5H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <button class="btn btn--destructive">
+                <!-- Hugeicons: Delete02Icon (stroke-rounded) -->
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                  <path d="M3 5.5H21M16.0557 5.5L15.3731 4.09173C14.9196 3.15626 14.6928 2.68852 14.3017 2.39681C14.215 2.3321 14.1231 2.27454 14.027 2.2247C13.5939 2 13.0741 2 12.0345 2C10.9688 2 10.436 2 9.99568 2.23412C9.8981 2.28601 9.80498 2.3459 9.71729 2.41317C9.32164 2.7167 9.10063 3.20155 8.65861 4.17126L8.05292 5.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                  <path d="M9.5 16.5L9.5 10.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                  <path d="M14.5 16.5L14.5 10.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                </svg>
+                Löschen
+              </button>
+              <button class="btn btn--secondary" id="openFeedbackModal">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+                Modal öffnen
+              </button>
+            </div>
+          </div>
+
+          <div class="components-section">
+            <div class="updates-header">Chips</div>
+            <div class="btn-showcase">
+              <span class="chip chip--status chip--neutral">Neutral</span>
+              <span class="chip chip--status chip--primary">
+                <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+                Primary
+              </span>
+              <span class="chip chip--status chip--accent">Accent</span>
+              <span class="chip chip--status chip--success">
+                <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+                Erledigt
+              </span>
+              <span class="chip chip--status chip--warning">
+                <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" /><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+                Offen
+              </span>
+              <span class="chip chip--status chip--error">
+                <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" /></svg></span>
+                Fehler
+              </span>
+              <span class="chip chip--status">Tag</span>
+              <span class="chip chip--status chip--solid chip--primary">
+                <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+                Hinzugefügt
+              </span>
+            </div>
+          </div>
+
+          <div class="components-section">
+            <div class="updates-header">Breadcrumbs</div>
+            <div class="btn-showcase">
+              <div class="breadcrumbs">
+                <span class="breadcrumb-text">Alle Verträge</span>
+                <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                  <span class="bar bar--breadcrumb"></span>
+                  <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+                <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                  <span class="bar bar--breadcrumb"></span>
+                  <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+                <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                  <span class="breadcrumb-pill__icon"></span>
+                  <span class="bar bar--breadcrumb bar--breadcrumb-lg"></span>
+                  <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M8.5 1.5L10.5 3.5L4 10L1.5 10.5L2 8L8.5 1.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="components-section">
+            <div class="updates-header">Form Inputs</div>
+            <div class="components-form-row">
+              <div class="form-field">
+                <span class="form-label">Label</span>
+                <div class="form-input">
+                  <span class="form-input__value">Wert</span>
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </div>
+              </div>
+              <div class="form-field">
+                <span class="form-label">Label</span>
+                <div class="form-input">
+                  <span class="form-input__value form-input__value--placeholder">Platzhalter</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="components-section">
+            <div class="updates-header">Tooltip</div>
+            <div class="btn-showcase">
+              <button class="btn btn--icon btn--secondary" aria-label="Mehr Optionen" data-tooltip="Weitere Optionen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M6.00449 12.5V12M18.0045 12.5V12M12.0045 12.5V12M7.00449 12.5C7.00449 11.9477 6.55677 11.5 6.00449 11.5C5.4522 11.5 5.00449 11.9477 5.00449 12.5C5.00449 13.0523 5.4522 13.5 6.00449 13.5C6.55677 13.5 7.00449 13.0523 7.00449 12.5ZM19.0045 12.5C19.0045 11.9477 18.5568 11.5 18.0045 11.5C17.4522 11.5 17.0045 11.9477 17.0045 12.5C17.0045 13.0523 17.4522 13.5 18.0045 13.5C18.5568 13.5 19.0045 13.0523 19.0045 12.5ZM13.0045 12.5C13.0045 11.9477 12.5568 11.5 12.0045 11.5C11.4522 11.5 11.0045 11.9477 11.0045 12.5C11.0045 13.0523 11.4522 13.5 12.0045 13.5C12.5568 13.5 13.0045 13.0523 13.0045 12.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+              <button class="btn btn--secondary" aria-disabled="true" data-tooltip="Erst verfügbar, wenn alle Pflichtfelder ausgefüllt sind">Absenden</button>
+            </div>
+          </div>
+
+          <div class="components-section">
+            <div class="updates-header">Action Menu</div>
+            <div class="btn-showcase">
+              <div class="action-menu" data-action-menu>
+                <button class="btn btn--icon btn--secondary" aria-label="Mehr Optionen" data-tooltip="Weitere Optionen" data-action-menu-trigger>
+                  <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                    <path d="M6.00449 12.5V12M18.0045 12.5V12M12.0045 12.5V12M7.00449 12.5C7.00449 11.9477 6.55677 11.5 6.00449 11.5C5.4522 11.5 5.00449 11.9477 5.00449 12.5C5.00449 13.0523 5.4522 13.5 6.00449 13.5C6.55677 13.5 7.00449 13.0523 7.00449 12.5ZM19.0045 12.5C19.0045 11.9477 18.5568 11.5 18.0045 11.5C17.4522 11.5 17.0045 11.9477 17.0045 12.5C17.0045 13.0523 17.4522 13.5 18.0045 13.5C18.5568 13.5 19.0045 13.0523 19.0045 12.5ZM13.0045 12.5C13.0045 11.9477 12.5568 11.5 12.0045 11.5C11.4522 11.5 11.0045 11.9477 11.0045 12.5C11.0045 13.0523 11.4522 13.5 12.0045 13.5C12.5568 13.5 13.0045 13.0523 13.0045 12.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </button>
+                <div class="menu-surface" hidden>
+                  <div class="menu-surface__header">Eintrag</div>
+                  <button type="button">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 20h9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Bearbeiten</span>
+                    <span class="menu-surface__shortcut">⌘E</span>
+                  </button>
+                  <button type="button">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                      <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="2" />
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Duplizieren</span>
+                  </button>
+                  <button type="button" disabled>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span>Als Vorlage speichern</span>
+                  </button>
+                  <div class="menu-surface__divider" role="separator"></div>
+                  <button type="button" class="is-danger">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none">
+                      <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>Löschen</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="content-shell" id="view-surfaces" hidden>
+        <section class="panel panel--main surfaces-panel">
+          <div class="surface-example">
+            <div class="surface-foundation">
+              <aside class="surface-step-list" role="tablist" aria-label="Surface Elevation">
+                <button class="surface-step surface-step--active" type="button" role="tab" aria-selected="true" data-surface-page="app-bg">
+                  <span class="surface-step__index">0</span>
+                  <span class="surface-step__title">App Background</span>
+                  <span class="surface-step__body">Nur Raum. Keine eigene Fläche.</span>
+                </button>
+                <button class="surface-step" type="button" role="tab" aria-selected="false" data-surface-page="app-chrome">
+                  <span class="surface-step__index">1</span>
+                  <span class="surface-step__title">Navigation / Chrome</span>
+                  <span class="surface-step__body">Sidebar und App-Bedienung liegen direkt auf dem Hintergrund.</span>
+                </button>
+                <button class="surface-step" type="button" role="tab" aria-selected="false" data-surface-page="content-shell">
+                  <span class="surface-step__index">2</span>
+                  <span class="surface-step__title">Content Shell</span>
+                  <span class="surface-step__body">Glass hält den Arbeitsraum, aber keine langen Inhalte.</span>
+                </button>
+                <button class="surface-step" type="button" role="tab" aria-selected="false" data-surface-page="content-surfaces">
+                  <span class="surface-step__index">3</span>
+                  <span class="surface-step__title">Content Surfaces</span>
+                  <span class="surface-step__body">Weiße Flächen für Lesen, Tabellen und Formulare.</span>
+                </button>
+                <button class="surface-step" type="button" role="tab" aria-selected="false" data-surface-page="modal-overlay">
+                  <span class="surface-step__index">4</span>
+                  <span class="surface-step__title">Overlay / Modal</span>
+                  <span class="surface-step__body">Scrim plus Dialog über dem aktuellen Kontext.</span>
+                </button>
+              </aside>
+
+              <div class="surface-foundation__stage">
+                <div class="surface-page surface-page--active" data-surface-page-panel="app-bg">
+                  <div class="surface-anatomy surface-anatomy--bg">
+                    <span class="surface-anatomy__label">0 App Background</span>
+                  </div>
+                </div>
+
+                <div class="surface-page" data-surface-page-panel="app-chrome" hidden>
+                  <div class="surface-anatomy">
+                    <div class="surface-anatomy__chrome-nav">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="surface-anatomy__chrome-top"></div>
+                    <span class="surface-anatomy__label">1 Navigation / App Chrome</span>
+                  </div>
+                </div>
+
+                <div class="surface-page" data-surface-page-panel="content-shell" hidden>
+                  <div class="surface-anatomy">
+                    <div class="surface-anatomy__chrome-nav">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="surface-anatomy__chrome-top"></div>
+                    <div class="surface-anatomy__shell">
+                      <span>2 Content Shell</span>
+                    </div>
+                    <span class="surface-anatomy__label">1 + 2</span>
+                  </div>
+                </div>
+
+                <div class="surface-page" data-surface-page-panel="content-surfaces" hidden>
+                  <div class="surface-anatomy">
+                    <div class="surface-anatomy__chrome-nav">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="surface-anatomy__chrome-top"></div>
+                    <div class="surface-anatomy__shell">
+                      <div class="surface-anatomy__content surface-anatomy__content--main">
+                        <span>3 Content Surface</span>
+                      </div>
+                      <div class="surface-anatomy__content surface-anatomy__content--side">
+                        <span>Table Box</span>
+                      </div>
+                      <div class="surface-anatomy__content surface-anatomy__content--footer">
+                        <span>Detail Card</span>
+                      </div>
+                    </div>
+                    <span class="surface-anatomy__label">1 + 2 + 3</span>
+                  </div>
+                </div>
+
+                <div class="surface-page" data-surface-page-panel="modal-overlay" hidden>
+                  <div class="surface-anatomy">
+                    <div class="surface-anatomy__chrome-nav">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="surface-anatomy__chrome-top"></div>
+                    <div class="surface-anatomy__shell">
+                      <div class="surface-anatomy__content surface-anatomy__content--main"></div>
+                      <div class="surface-anatomy__content surface-anatomy__content--side"></div>
+                      <div class="surface-anatomy__content surface-anatomy__content--footer"></div>
+                    </div>
+                    <div class="surface-anatomy__scrim"></div>
+                    <div class="surface-anatomy__modal">
+                      <span>4 Modal Dialog</span>
+                    </div>
+                    <span class="surface-anatomy__label">Overlay + Scrim</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="surface-page" data-surface-page-panel="overview" hidden>
+              <div class="surface-overview-grid">
+              <button class="surface-overview-card" type="button" data-surface-goto="background">
+                  <span class="surface-overview-card__head">
+                    <span class="surface-overview-card__index">0</span>
+                    <span class="surface-overview-card__name">Background</span>
+                  </span>
+                  <span class="surface-overview-card__swatch surface-overview-card__swatch--background"></span>
+                  <span class="surface-overview-card__desc">Keine eigene Fläche, kein Shadow. Trennt nur durch Abstand.</span>
+              </button>
+              <button class="surface-overview-card" type="button" data-surface-goto="chrome">
+                  <span class="surface-overview-card__head">
+                    <span class="surface-overview-card__index">1</span>
+                    <span class="surface-overview-card__name">Chrome</span>
+                  </span>
+                  <span class="surface-overview-card__swatch surface-overview-card__swatch--chrome"></span>
+                  <span class="surface-overview-card__desc">Glass, subtiler Glow. Navigation, Filter, dauerhafte App-Ränder.</span>
+              </button>
+              <button class="surface-overview-card" type="button" data-surface-goto="content">
+                  <span class="surface-overview-card__head">
+                    <span class="surface-overview-card__index">2</span>
+                    <span class="surface-overview-card__name">Content Panel</span>
+                  </span>
+                  <span class="surface-overview-card__swatch surface-overview-card__swatch--content"></span>
+                  <span class="surface-overview-card__desc">Solide Fläche, feiner Shadow. Lesen, Formulare, Detailseiten.</span>
+              </button>
+              <button class="surface-overview-card" type="button" data-surface-goto="items">
+                  <span class="surface-overview-card__head">
+                    <span class="surface-overview-card__index">3</span>
+                    <span class="surface-overview-card__name">Raised Item</span>
+                  </span>
+                  <span class="surface-overview-card__swatch surface-overview-card__swatch--items"></span>
+                  <span class="surface-overview-card__desc">Stärkerer Shadow. Auswählbare, vergleichbare Rows/Cards.</span>
+              </button>
+              <button class="surface-overview-card" type="button" data-surface-goto="overlay">
+                  <span class="surface-overview-card__head">
+                    <span class="surface-overview-card__index">4</span>
+                    <span class="surface-overview-card__name">Overlay</span>
+                  </span>
+                  <span class="surface-overview-card__swatch surface-overview-card__swatch--overlay"></span>
+                  <span class="surface-overview-card__desc">Glass/Modal-Fläche über dem Kontext. Popover, Menüs, Dialoge.</span>
+              </button>
+              <button class="surface-overview-card" type="button" data-surface-goto="interaction">
+                  <span class="surface-overview-card__head">
+                    <span class="surface-overview-card__index">5</span>
+                    <span class="surface-overview-card__name">Interaction</span>
+                  </span>
+                  <span class="surface-overview-card__swatch surface-overview-card__swatch--interaction"></span>
+                  <span class="surface-overview-card__desc">Fokus, Auswahl, Pressed/Hover. Keine dauerhafte Layout-Ebene.</span>
+              </button>
+              </div>
+            </div>
+
+            <div class="surface-page" data-surface-page-panel="background" hidden>
+              <section class="surface-background-band">
+                <div class="surface-callout">
+                  <span class="surface-callout__title">0 Background</span>
+                  <span class="surface-callout__body">freie Arbeitsfläche; trennt Bereiche durch Raum statt durch noch eine Karte</span>
+                </div>
+                <span class="surface-background-band__hint">keine eigene Elevation</span>
+              </section>
+              <section class="surface-guidance-card">
+                <div class="surface-guidance">
+                  <span class="surface-guidance__label">Anwenden wenn</span>
+                  <span class="surface-guidance__text">Bereiche nur durch Abstand, Rhythmus oder Layout getrennt werden sollen.</span>
+                </div>
+                <div class="surface-guidance">
+                  <span class="surface-guidance__label">Nicht anwenden wenn</span>
+                  <span class="surface-guidance__text">Inhalt zusammengehalten, fokussiert oder als eigenständiges Objekt klickbar sein soll.</span>
+                </div>
+                <div class="surface-guidance">
+                  <span class="surface-guidance__label">Typische Beispiele</span>
+                  <span class="surface-guidance__text">App-Canvas, Zwischenräume, leere Zustandsflächen, Layout-Zonen ohne eigene Interaktion.</span>
+                </div>
+              </section>
+            </div>
+
+            <div class="surface-page" data-surface-page-panel="chrome" hidden>
+              <div class="surface-two-column">
+                <aside class="surface-app-nav">
+                  <div class="surface-callout">
+                    <span class="surface-callout__title">1 Glass Chrome</span>
+                    <span class="surface-callout__body">dauerhafte Navigation, Filter, App-Ränder</span>
+                  </div>
+                  <button class="surface-nav-pill surface-nav-pill--active" type="button" data-surface-filter="today">
+                    <span>Heute</span>
+                    <strong>3</strong>
+                  </button>
+                  <button class="surface-nav-pill" type="button" data-surface-filter="urgent">
+                    <span>Wichtig</span>
+                    <strong>1</strong>
+                  </button>
+                  <button class="surface-nav-pill" type="button" data-surface-filter="done">
+                    <span>Erledigt</span>
+                    <strong>2</strong>
+                  </button>
+                </aside>
+                <section class="surface-rule-card">
+                  <span class="surface-rule-card__title">Warum Glass?</span>
+                  <span class="surface-rule-card__body">Chrome ist dauerhaft da, aber nicht der eigentliche Inhalt. Die Fläche darf deshalb leichter und durchlässiger wirken.</span>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Anwenden wenn</span>
+                    <span class="surface-guidance__text">Navigation, Filter oder Fenster-Chrome den Inhalt begleiten, aber nicht dominieren sollen.</span>
+                  </div>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Nicht anwenden wenn</span>
+                    <span class="surface-guidance__text">lange Texte, Formulare oder Datenlisten darauf liegen. Dafür braucht es Solid Content.</span>
+                  </div>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Typische Beispiele</span>
+                    <span class="surface-guidance__text">Sidebar, Topbar, Filterrail, schmale Toolbereiche, dauerhafte App-Ränder.</span>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <div class="surface-page" data-surface-page-panel="content" hidden>
+              <div class="surface-two-column surface-two-column--content">
+                <main class="surface-content-card">
+                  <div class="surface-content-header">
+                    <div>
+                      <div class="surface-callout">
+                        <span class="surface-callout__title">2 Solid Content</span>
+                        <span class="surface-callout__body">Lesen, Schreiben, lange Inhalte</span>
+                      </div>
+                      <h3 id="surfaceReportTitle">Pflegebericht</h3>
+                      <span class="surface-report-meta" id="surfaceReportMeta">Margarete Schulz · heute 9:24 Uhr</span>
+                    </div>
+                    <button class="btn btn--secondary" type="button" id="surfaceActionsButton">Aktionen</button>
+                  </div>
+
+                  <div class="surface-reading-block" id="surfaceReportBody">
+                    <p>Ihr Termin zur Nachkontrolle findet am Mittwoch um 10:30 Uhr statt. Bitte bestellen Sie den Fahrdienst und bringen Sie die Unterlagen mit.</p>
+                  </div>
+                </main>
+                <section class="surface-rule-card">
+                  <span class="surface-rule-card__title">Wann vollflächig weiß?</span>
+                  <span class="surface-rule-card__body">Wenn Inhalt gelesen, bearbeitet oder verglichen wird. Die Fläche soll ruhig sein und nicht mit der Navigation konkurrieren.</span>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Anwenden wenn</span>
+                    <span class="surface-guidance__text">Nutzer längere Inhalte erfassen, Eingaben machen oder mehrere Werte zuverlässig scannen müssen.</span>
+                  </div>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Nicht anwenden wenn</span>
+                    <span class="surface-guidance__text">die Fläche nur dekoriert oder eine kurzlebige Aktion trägt. Dann wirkt Weiß zu schwer.</span>
+                  </div>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Typische Beispiele</span>
+                    <span class="surface-guidance__text">Detailseiten, Tabellen, Formulare, Berichtstexte, Hauptlisten und Editorflächen.</span>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <div class="surface-page" data-surface-page-panel="items" hidden>
+              <div class="surface-two-column surface-two-column--items">
+                <section class="surface-items-stage">
+                <div class="surface-callout surface-callout--inline">
+                  <span class="surface-callout__title">3 Raised Item</span>
+                  <span class="surface-callout__body">Rows sind einzelne Objekte; Auswahl bekommt eine eigene Interaction-Elevation (siehe Tab 5), nicht die ganze Content-Fläche</span>
+                </div>
+
+                <div class="surface-raised-list" id="surfaceEntryList">
+                  <button class="surface-raised-row surface-raised-row--selected" type="button" data-surface-entry="transport">
+                    <div>
+                      <span class="surface-row-title">Fahrdienst bestellen</span>
+                      <span class="surface-row-note">Margarete Schulz · Termin · offen</span>
+                    </div>
+                    <span class="chip chip--status chip--warning">Offen</span>
+                  </button>
+                  <button class="surface-raised-row" type="button" data-surface-entry="meds">
+                    <div>
+                      <span class="surface-row-title">Medikation nachtragen</span>
+                      <span class="surface-row-note">Jonas Richter · Pflege · wichtig</span>
+                    </div>
+                    <span class="chip chip--status chip--error">Wichtig</span>
+                  </button>
+                  <button class="surface-raised-row" type="button" data-surface-entry="done">
+                    <div>
+                      <span class="surface-row-title">Verbandswechsel dokumentiert</span>
+                      <span class="surface-row-note">Elisabeth Weber · Wunde · erledigt</span>
+                    </div>
+                    <span class="chip chip--status chip--success">Erledigt</span>
+                  </button>
+                </div>
+                </section>
+                <section class="surface-rule-card">
+                  <span class="surface-rule-card__title">Wann anheben?</span>
+                  <span class="surface-rule-card__body">Wenn ein Element als eigener Gegenstand wahrgenommen werden soll: Row, auswählbare Karte, Drag-Ziel oder lokaler Fokus.</span>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Anwenden wenn</span>
+                    <span class="surface-guidance__text">ein Element auswählbar, verschiebbar, vergleichbar oder als Einheit vom Rest getrennt ist.</span>
+                  </div>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Nicht anwenden wenn</span>
+                    <span class="surface-guidance__text">jedes kleine Detail eine eigene Fläche bekäme. Zu viele Raised Items machen die Ansicht unruhig.</span>
+                  </div>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Typische Beispiele</span>
+                    <span class="surface-guidance__text">Listeneinträge, kompakte Cards, Todo-Zeilen, Drag-Ziele, ausgewählte Datensätze.</span>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <div class="surface-page" data-surface-page-panel="overlay" hidden>
+              <div class="surface-two-column">
+                <aside class="surface-overlay-stage">
+                  <div class="surface-callout">
+                    <span class="surface-callout__title">4 Glass Overlay</span>
+                    <span class="surface-callout__body">kurze Entscheidung, bleibt über dem Kontext</span>
+                  </div>
+                  <div class="surface-popover surface-popover--open" id="surfacePopover">
+                    <div class="surface-callout">
+                      <span class="surface-callout__title">Aktionsmenü</span>
+                      <span class="surface-callout__body" id="surfacePopoverText">kurze Entscheidung über dem Kontext</span>
+                    </div>
+                    <div class="surface-popover__actions">
+                      <button class="btn btn--primary" type="button" id="surfaceEscalateButton">Priorität setzen</button>
+                      <button class="btn btn--secondary" type="button" id="surfaceClosePopover">Später</button>
+                    </div>
+                  </div>
+                </aside>
+                <section class="surface-rule-card">
+                  <span class="surface-rule-card__title">Warum Overlay?</span>
+                  <span class="surface-rule-card__body">Ein Overlay ist temporär und sitzt über der aktuellen Aufgabe. Höhere Elevation heißt: erst diese Entscheidung, dann zurück zum Inhalt.</span>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Anwenden wenn</span>
+                    <span class="surface-guidance__text">eine kurze Entscheidung, Auswahl oder Bestätigung den aktuellen Kontext braucht.</span>
+                  </div>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Nicht anwenden wenn</span>
+                    <span class="surface-guidance__text">der Inhalt dauerhaft sichtbar bleiben muss oder mehrere Schritte/Validierungen enthält.</span>
+                  </div>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Typische Beispiele</span>
+                    <span class="surface-guidance__text">Popover, Aktionsmenü, Dialog, Floating Footer, temporäre Auswahlhilfe.</span>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+            <div class="surface-page" data-surface-page-panel="interaction" hidden>
+              <div class="surface-two-column">
+                <section class="surface-interaction-stage">
+                  <div class="surface-callout">
+                    <span class="surface-callout__title">5 Interaction</span>
+                    <span class="surface-callout__body">temporäre Rückmeldung sitzt nahe am Workflow, aber nicht als neue Inhaltsfläche</span>
+                  </div>
+                  <footer class="surface-floating-bar">
+                    <span id="surfaceFooterText">Gelesen von Lisa Bachmann und 3 weiteren</span>
+                    <button class="btn btn--secondary" type="button" id="surfaceReadButton">Als gelesen markieren</button>
+                  </footer>
+                </section>
+                <section class="surface-rule-card">
+                  <span class="surface-rule-card__title">Wann Interaction-Elevation?</span>
+                  <span class="surface-rule-card__body">Nur während ein Zustand aktiv ist: Fokus, Auswahl, Pressed, Hover oder temporäre Bestätigung.</span>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Anwenden wenn</span>
+                    <span class="surface-guidance__text">die Oberfläche zeigen muss, wo der Nutzer gerade handelt oder was eben passiert ist.</span>
+                  </div>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Nicht anwenden wenn</span>
+                    <span class="surface-guidance__text">der Zustand dauerhaft Struktur erklären soll. Dann braucht es Content, Item oder Overlay.</span>
+                  </div>
+                  <div class="surface-guidance">
+                    <span class="surface-guidance__label">Typische Beispiele</span>
+                    <span class="surface-guidance__text">Focus-Ring, ausgewählte Row, Pressed-State, Snackbar/Floating Feedback, aktive Steuerung.</span>
+                  </div>
+                </section>
+              </div>
+            </div>
+
+          </div>
+        </section>
+        <div class="surface-stage" aria-hidden="true">
+          <div class="surface-stage__shell">
+            <span class="surface-stage__shell-label">Content Shell</span>
+            <div class="surface-stage__surface surface-stage__surface--main">
+              <span>Content Surface</span>
+            </div>
+            <div class="surface-stage__surface surface-stage__surface--side">
+              <span>Table Box</span>
+            </div>
+            <div class="surface-stage__surface surface-stage__surface--footer">
+              <span>Detail Card</span>
+            </div>
+          </div>
+          <div class="surface-stage__scrim"></div>
+          <div class="surface-stage__modal">
+            <span>Modal Dialog</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-shell" id="view-measure-sheet" hidden>
+        <section class="panel panel--main measure-panel">
+          <header class="measure-header">
+            <span class="detail-header__title">Messblatt</span>
+            <label class="measure-toggle">
+              <span class="measure-toggle__track" aria-hidden="true">
+                <span class="measure-toggle__thumb"></span>
+              </span>
+              <span>Erledigte ausblenden</span>
+            </label>
+          </header>
+
+          <div class="measure-grid" aria-label="Messblatt Tagesübersicht">
+            <div class="measure-time measure-cell measure-cell--header"></div>
+
+            <section class="measure-patient measure-cell measure-cell--header">
+              <div>
+                <span class="measure-patient__name">Günther Schröder</span>
+                <span class="measure-patient__meta">Zimmer 12 · Frühdienst</span>
+              </div>
+              <button class="btn btn--icon btn--secondary" aria-label="Messung hinzufügen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+            </section>
+
+            <section class="measure-patient measure-cell measure-cell--header">
+              <div>
+                <span class="measure-patient__name">Wilhelm Bergmann</span>
+                <span class="measure-patient__meta">Zimmer 14 · Frühdienst</span>
+              </div>
+              <button class="btn btn--icon btn--secondary" aria-label="Messung hinzufügen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+            </section>
+
+            <section class="measure-patient measure-cell measure-cell--header">
+              <div>
+                <span class="measure-patient__name">Frieda Baumann</span>
+                <span class="measure-patient__meta">Zimmer 18 · Frühdienst</span>
+              </div>
+              <button class="btn btn--icon btn--secondary" aria-label="Messung hinzufügen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+            </section>
+
+            <div class="measure-time measure-cell measure-time--active measure-cell--selected-row measure-cell--selected-row-start">10:00</div>
+            <div class="measure-slot measure-cell measure-slot--active measure-cell--selected-row">
+              <article class="measure-card">
+                <span class="measure-card__title">Blutdruck</span>
+                <span class="measure-card__value">184/95 mmHg</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Blutdruck</span>
+                <span class="measure-card__value">135/85 mmHg</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Herzfrequenz</span>
+                <span class="measure-card__value">88 /min</span>
+              </article>
+            </div>
+            <div class="measure-slot measure-cell measure-slot--active measure-cell--selected-row">
+              <article class="measure-card">
+                <span class="measure-card__title">Blutdruck</span>
+                <span class="measure-card__value">- mmHg</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Herzfrequenz</span>
+                <span class="measure-card__value">- bpm</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Sauerstoffsättigung</span>
+                <span class="measure-card__value">- %</span>
+              </article>
+            </div>
+            <div class="measure-slot measure-cell measure-slot--active measure-cell--selected-row measure-cell--selected-row-end">
+              <article class="measure-card">
+                <span class="measure-card__title">Blutdruck</span>
+                <span class="measure-card__value">- mmHg</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Herzfrequenz</span>
+                <span class="measure-card__value">- bpm</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Sauerstoffsättigung</span>
+                <span class="measure-card__value">- %</span>
+              </article>
+            </div>
+
+            <div class="measure-time measure-cell">08:00</div>
+            <div class="measure-slot measure-cell">
+              <article class="measure-card measure-card--overdue">
+                <span class="measure-card__title">Sauerstoffsättigung</span>
+                <span class="measure-card__value">Überfällig</span>
+              </article>
+            </div>
+            <div class="measure-slot measure-cell"></div>
+            <div class="measure-slot measure-cell"></div>
+
+            <div class="measure-time measure-cell measure-time--muted">Ohne Zeit</div>
+            <div class="measure-slot measure-cell measure-slot--tasks">
+              <article class="measure-task">
+                <span>Bett machen</span>
+                <span class="measure-status measure-status--success">Heute noch 1 Mal</span>
+              </article>
+              <article class="measure-task">
+                <span>Mobilisierung</span>
+                <span class="measure-status measure-status--success">Heute noch 2 Mal</span>
+              </article>
+              <article class="measure-task">
+                <span>Blutdruck messen</span>
+                <span class="measure-status measure-status--neutral">Beim Frühstück</span>
+              </article>
+            </div>
+            <div class="measure-slot measure-cell measure-slot--tasks">
+              <article class="measure-task">
+                <span>Bett machen</span>
+                <span class="measure-status measure-status--success">Heute noch 1 Mal</span>
+              </article>
+            </div>
+            <div class="measure-slot measure-cell measure-slot--tasks">
+              <article class="measure-task">
+                <span>Bett machen</span>
+                <span class="measure-status measure-status--success">Heute noch 1 Mal</span>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="content-shell" id="view-example-patients" hidden>
+        <section class="panel panel--main panel--list" id="listPanel">
+          <div class="list-panel-inner">
+            <div class="filter-bar">
+              <div class="filter-input">
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none"><path d="M8.85746 12.5061C6.36901 10.6456 4.59564 8.59915 3.62734 7.44867C3.3276 7.09253 3.22938 6.8319 3.17033 6.3728C2.96811 4.8008 2.86701 4.0148 3.32795 3.5074C3.7889 3 4.60404 3 6.23433 3H17.7657C19.396 3 20.2111 3 20.672 3.5074C21.133 4.0148 21.0319 4.8008 20.8297 6.37281C20.7706 6.83191 20.6724 7.09254 20.3726 7.44867C19.403 8.60062 17.6261 10.6507 15.1326 12.5135C14.907 12.6821 14.7583 12.9567 14.7307 13.2614C14.4837 15.992 14.2559 17.4876 14.1141 18.2442C13.8853 19.4657 12.1532 20.2006 11.226 20.8563C10.6741 21.2466 10.0043 20.782 9.93278 20.1778C9.79643 19.0261 9.53961 16.6864 9.25927 13.2614C9.23409 12.9539 9.08486 12.6761 8.85746 12.5061Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                <input type="text" placeholder="Filtern nach Patienten und Typen" />
+              </div>
+              <button class="btn btn--icon btn--secondary" aria-label="Aktualisieren">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M15.1667 0.999756L15.7646 2.11753C16.1689 2.87322 16.371 3.25107 16.2374 3.41289C16.1037 3.57471 15.6635 3.44402 14.7831 3.18264C13.9029 2.92131 12.9684 2.78071 12 2.78071C6.75329 2.78071 2.5 6.90822 2.5 11.9998C2.5 13.6789 2.96262 15.2533 3.77093 16.6093M8.83333 22.9998L8.23536 21.882C7.83108 21.1263 7.62894 20.7484 7.7626 20.5866C7.89627 20.4248 8.33649 20.5555 9.21689 20.8169C10.0971 21.0782 11.0316 21.2188 12 21.2188C17.2467 21.2188 21.5 17.0913 21.5 11.9998C21.5 10.3206 21.0374 8.74623 20.2291 7.39023" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+              <button class="btn btn--icon btn--secondary" aria-label="Mehr Optionen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M11.9967 12.5V12M11.9967 6.5V6M11.9967 18.5V18M12.9967 12.5C12.9967 11.9477 12.549 11.5 11.9967 11.5C11.4444 11.5 10.9967 11.9477 10.9967 12.5C10.9967 13.0523 11.4444 13.5 11.9967 13.5C12.549 13.5 12.9967 13.0523 12.9967 12.5ZM12.9967 6.5C12.9967 5.94772 12.549 5.5 11.9967 5.5C11.4444 5.5 10.9967 5.94772 10.9967 6.5C10.9967 7.05228 11.4444 7.5 11.9967 7.5C12.549 7.5 12.9967 7.05228 12.9967 6.5ZM12.9967 18.5C12.9967 17.9477 12.549 17.5 11.9967 17.5C11.4444 17.5 10.9967 17.9477 10.9967 18.5C10.9967 19.0523 11.4444 19.5 11.9967 19.5C12.549 19.5 12.9967 19.0523 12.9967 18.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+            </div>
+
+            <div class="quick-filters" id="quickFilters">
+              <!-- Hugeicons: InboxUnreadIcon (stroke-rounded) -->
+              <button class="chip chip--status chip--solid chip--primary" type="button" data-quick-filter="unread">
+                <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M21 12V12.5C21 16.9783 21 19.2175 19.6088 20.6088C18.2175 22 15.9783 22 11.5 22C7.02166 22 4.78249 22 3.39124 20.6088C2 19.2175 2 16.9783 2 12.5C2 8.02166 2 5.78249 3.39124 4.39124C4.78249 3 7.02166 3 11.5 3H12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M22 5.5C22 7.433 20.433 9 18.5 9C16.567 9 15 7.433 15 5.5C15 3.567 16.567 2 18.5 2C20.433 2 22 3.567 22 5.5Z" stroke="currentColor" stroke-width="2" /><path d="M21 14H16.0743C15.2322 14 14.5706 14.7036 14.1995 15.4472C13.7963 16.2551 12.9889 17 11.5 17C10.0111 17 9.20373 16.2551 8.80054 15.4472C8.42942 14.7036 7.76777 14 6.92566 14H2" stroke="currentColor" stroke-linejoin="round" stroke-width="2" /></svg></span>
+                Ungelesen
+              </button>
+              <!-- Hugeicons: Task01Icon (stroke-rounded) -->
+              <button class="chip chip--status chip--neutral" type="button" data-quick-filter="todo">
+                <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M14.4961 2.00027H9.49609C8.66767 2.00027 7.99609 2.67185 7.99609 3.50027C7.99609 4.3287 8.66767 5.00027 9.49609 5.00027H14.4961C15.3245 5.00027 15.9961 4.3287 15.9961 3.50027C15.9961 2.67185 15.3245 2.00027 14.4961 2.00027Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M7.99609 15.0003H11.4247M7.99609 11.0003H15.9961" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M15.9961 3.50027C17.5496 3.54709 18.4761 3.72035 19.1174 4.36164C19.9961 5.24032 19.9961 6.65451 19.9961 9.4829L19.9961 15.9997C19.9961 18.8282 19.9961 20.2424 19.1174 21.1211C18.2387 21.9997 16.8245 21.9997 13.9961 21.9997L9.99609 21.9997C7.16767 21.9997 5.75346 21.9997 4.87478 21.1211C3.9961 20.2424 3.9961 18.8282 3.99609 15.9998L3.99611 9.48296C3.9961 6.65453 3.9961 5.24031 4.87478 4.36163C5.51606 3.72034 6.44261 3.54708 7.99599 3.50027" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></span>
+                Zu erledigen
+              </button>
+              <!-- Hugeicons: Alert01Icon (stroke-rounded) -->
+              <button class="chip chip--status chip--neutral" type="button" data-quick-filter="urgent">
+                <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M13.9248 21H10.0752C5.44476 21 3.12955 21 2.27636 19.4939C1.42317 17.9879 2.60736 15.9914 4.97574 11.9985L6.90057 8.75333C9.17559 4.91778 10.3131 3 12 3C13.6869 3 14.8244 4.91777 17.0994 8.75332L19.0243 11.9985C21.3926 15.9914 22.5768 17.9879 21.7236 19.4939C20.8704 21 18.5552 21 13.9248 21Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M12 17V13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M12 9.25H12.125M12.25 9.25C12.25 9.11193 12.1381 9 12 9C11.8619 9 11.75 9.11193 11.75 9.25C11.75 9.38807 11.8619 9.5 12 9.5C12.1381 9.5 12.25 9.38807 12.25 9.25Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></span>
+                Dringend
+              </button>
+              <!-- Hugeicons: Calendar02Icon (stroke-rounded) -->
+              <button class="chip chip--status chip--neutral" type="button" data-quick-filter="range">
+                <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none"><path d="M16 2V6M8 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M13 4H11C7.22876 4 5.34315 4 4.17157 5.17157C3 6.34315 3 8.22876 3 12V14C3 17.7712 3 19.6569 4.17157 20.8284C5.34315 22 7.22876 22 11 22H13C16.7712 22 18.6569 22 19.8284 20.8284C21 19.6569 21 17.7712 21 14V12C21 8.22876 21 6.34315 19.8284 5.17157C18.6569 4 16.7712 4 13 4Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M3 10H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M11 14H16M8 14H8.00898M13 18H8M16 18H15.991" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg></span>
+                Zeitraum
+              </button>
+            </div>
+
+            <!-- Wird dynamisch aus HANDOVER_ENTRIES befüllt (renderer.js) -->
+            <div class="list-groups" id="listGroups"></div>
+          </div>
+        </section>
+        <div class="resize-handle" id="resizeHandle" aria-hidden="true"></div>
+        <section class="panel panel--side panel--detail" id="sidePanel">
+          <div class="detail-view">
+            <div class="detail-view__header">
+              <div class="detail-view__heading">
+                <span class="list-row__badge detail-view__icon" id="detailIcon"></span>
+                <div>
+                  <div class="detail-view__title" id="detailTitle">—</div>
+                  <div class="detail-view__date" id="detailDate">—</div>
+                </div>
+              </div>
+              <div class="detail-view__actions">
+              <button class="btn btn--secondary detail-view__person-btn" id="detailPersonButton">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M14 8.5C14 5.73858 11.7614 3.5 9 3.5C6.23858 3.5 4 5.73858 4 8.5C4 11.2614 6.23858 13.5 9 13.5C11.7614 13.5 14 11.2614 14 8.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M17 10L22 10M17 13L22 13M20 16L22 16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                  <span id="detailPersonName">—</span>
+              </button>
+              <button class="btn btn--secondary" id="editEntryBtn">
+                  Aktionen
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+              </div>
+            </div>
+            <div class="detail-view__fields" id="detailFields" hidden>
+              <div class="sidepanel-item">
+                <span class="sidepanel-item__label">Bezug</span>
+                <span class="sidepanel-item__value" id="detailTarget">—</span>
+              </div>
+              <div class="sidepanel-item">
+                <span class="sidepanel-item__label">Name</span>
+                <span class="sidepanel-item__value" id="detailTargetName">—</span>
+              </div>
+            </div>
+            <div class="detail-view__card">
+              <div class="detail-view__body" id="detailBody"></div>
+              <div class="detail-view__divider"></div>
+              <div class="detail-view__card-footer">
+                <div class="detail-view__meta-block">
+                  <div class="detail-view__meta" id="detailMetaUpdated"></div>
+                  <div class="detail-view__meta" id="detailMetaCreated"></div>
+                </div>
+                <div class="detail-view__footer-actions">
+                  <button class="btn btn--secondary detail-view__protocol-btn">
+                    <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" /><path d="M12 8V12L14 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                    Protokoll anzeigen
+                  </button>
+                  <div class="detail-view__chips">
+                    <span class="chip chip--status detail-view__priority-chip" id="detailPriorityChip">—</span>
+                  <span class="chip chip--status chip--icon detail-view__urgent-chip" id="detailUrgentChip" hidden>
+                    <span class="chip__icon">
+                      <svg viewBox="0 0 24 24" fill="none"><path d="M13.9248 21H10.0752C5.44476 21 3.12955 21 2.27636 19.4939C1.42317 17.9879 2.60736 15.9914 4.97574 11.9985L6.90057 8.75333C9.17559 4.91778 10.3131 3 12 3C13.6869 3 14.8244 4.91777 17.0994 8.75332L19.0243 11.9985C21.3926 15.9914 22.5768 17.9879 21.7236 19.4939C20.8704 21 18.5552 21 13.9248 21Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M12 9V13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M12.125 16.75H12M12.25 16.75C12.25 16.8881 12.1381 17 12 17C11.8619 17 11.75 16.8881 11.75 16.75C11.75 16.6119 11.8619 16.5 12 16.5C12.1381 16.5 12.25 16.6119 12.25 16.75Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                    </span>
+                    Dringend
+                  </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="detail-view__card detail-view__todos" id="detailTodos"></div>
+            <div class="detail-view__footer" id="detailFooter" hidden>
+              <span id="detailReadBy">—</span>
+              <button class="btn btn--secondary detail-view__footer-btn">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M5 3H19C20.1046 3 21 3.89543 21 5V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2" /><path d="M7 8H17M7 12H14M7 16H12" stroke="currentColor" stroke-linecap="round" stroke-width="2" /></svg>
+                Protokoll einsehen
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="content-shell" id="view-detail-topbar" hidden>
+        <section class="panel panel--main detail-panel">
+          <div class="detail-topbar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-text">Alle Elemente</span>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                <span class="bar bar--breadcrumb"></span>
+                <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                <span class="bar bar--breadcrumb"></span>
+                <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                <span class="breadcrumb-pill__icon"></span>
+                <span class="bar bar--breadcrumb bar--breadcrumb-lg"></span>
+                <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M8.5 1.5L10.5 3.5L4 10L1.5 10.5L2 8L8.5 1.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+            </div>
+            <div class="detail-actions">
+              <button class="btn btn--primary">
+                <!-- Hugeicons: Task01Icon (stroke-rounded) -->
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M8 6H21M8 12H21M8 18H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M3 6L4 7L6 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+                Aktion
+              </button>
+              <button class="btn btn--icon btn--ghost" aria-label="Mehr Optionen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M6.00449 12.5V12M18.0045 12.5V12M12.0045 12.5V12M7.00449 12.5C7.00449 11.9477 6.55677 11.5 6.00449 11.5C5.4522 11.5 5.00449 11.9477 5.00449 12.5C5.00449 13.0523 5.4522 13.5 6.00449 13.5C6.55677 13.5 7.00449 13.0523 7.00449 12.5ZM19.0045 12.5C19.0045 11.9477 18.5568 11.5 18.0045 11.5C17.4522 11.5 17.0045 11.9477 17.0045 12.5C17.0045 13.0523 17.4522 13.5 18.0045 13.5C18.5568 13.5 19.0045 13.0523 19.0045 12.5ZM13.0045 12.5C13.0045 11.9477 12.5568 11.5 12.0045 11.5C11.4522 11.5 11.0045 11.9477 11.0045 12.5C11.0045 13.0523 11.4522 13.5 12.0045 13.5C12.5568 13.5 13.0045 13.0523 13.0045 12.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+              <button class="btn btn--icon btn--ghost" aria-label="Sortieren">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 6H14M4 12H11M4 18H8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M17 4V20M17 20L14 17M17 20L20 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="panel__placeholder-fill">
+            <div class="panel__placeholder">Inhalt</div>
+          </div>
+        </section>
+
+        <div class="resize-handle" id="resizeHandleLayout5" aria-hidden="true"></div>
+
+        <section class="panel panel--side detail-sidepanel panel__placeholder-fill" id="layout5Sidepanel">
+          <div class="panel__placeholder">Seitenpanel</div>
+        </section>
+      </div>
+
+      <div class="content-shell" id="view-contract-issues">
+        <div class="panel panel--seamless-group contract-workspace">
+          <div class="detail-topbar contract-topbar issue-topbar">
+            <h1 class="issue-topbar__title">Issues</h1>
+            <div class="issue-topbar__search">
+              <div class="action-menu issue-filter-menu" data-action-menu>
+                <button class="btn btn--icon btn--secondary" type="button" aria-label="Nach Feld filtern" data-tooltip="Filtern" data-action-menu-trigger>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 5H20L14 12.5V19L10 21V12.5L4 5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="menu-surface" id="issueFilterMenu" hidden></div>
+              </div>
+              <div class="smart-search" id="issueSmartSearch">
+                <div class="smart-search__tokens" id="issueSearchTokens"></div>
+                <input class="smart-search__input" id="issueSmartSearchInput" type="text" placeholder="Issue suchen oder Filter eingeben..." autocomplete="off" />
+                <div class="smart-search__suggestions" id="issueSearchSuggestions" hidden></div>
+              </div>
+            </div>
+            <button class="btn btn--secondary" type="button">
+              <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              </svg>
+              Neues Issue
+            </button>
+          </div>
+
+          <div class="seamless-row contract-split">
+            <section class="seamless-block seamless-block--main contract-table-pane">
+              <div class="issue-table" id="issueTable" role="table" aria-label="Issue Tabelle">
+                <div class="issue-table__row issue-table__row--head" role="row">
+                  <span>Issue</span>
+                  <span>Stand</span>
+                  <span>Status</span>
+                  <span>Kostengruppe</span>
+                  <span>Bearbeiter</span>
+                  <span></span>
+                </div>
+                <button class="issue-table__row issue-table__row--selected" type="button" role="row">
+                  <span class="issue-table__primary">LK-Zuschlag fehlt nach Update</span>
+                  <span>08/2026</span>
+                  <span><span class="status-chip status-chip--work"><span class="status-chip__dot"></span>In Bearbeitung</span></span>
+                  <span>Pflegeversicherung</span>
+                  <span>Daniel Jonas</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Pflegegrad-Staffel doppelt gepflegt</span>
+                  <span>07/2026</span>
+                  <span><span class="status-chip status-chip--waiting"><span class="status-chip__dot"></span>Warten auf Test</span></span>
+                  <span>Privat</span>
+                  <span>Lisa Bachmann</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Investitionskosten abweichend</span>
+                  <span>06/2026</span>
+                  <span><span class="status-chip status-chip--testing"><span class="status-chip__dot"></span>Im Test</span></span>
+                  <span>Sozialamt</span>
+                  <span>Benjamin Lau</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Gültigkeit endet ohne Nachfolger</span>
+                  <span>05/2026</span>
+                  <span><span class="status-chip status-chip--approved"><span class="status-chip__dot"></span>Freigegeben</span></span>
+                  <span>Betreuung §45b</span>
+                  <span>Sarafina Carabina</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Punktwert für LK3 weicht vom Rundschreiben ab</span>
+                  <span>08/2026</span>
+                  <span><span class="status-chip status-chip--work"><span class="status-chip__dot"></span>In Bearbeitung</span></span>
+                  <span>Pflegeversicherung</span>
+                  <span>Daniel Jonas</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Privatzuschlag wird doppelt berechnet</span>
+                  <span>08/2026</span>
+                  <span><span class="status-chip status-chip--waiting"><span class="status-chip__dot"></span>Warten auf Test</span></span>
+                  <span>Privat</span>
+                  <span>Lisa Bachmann</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Hausbesuchspauschale fehlt bei Abendtour</span>
+                  <span>07/2026</span>
+                  <span><span class="status-chip status-chip--testing"><span class="status-chip__dot"></span>Im Test</span></span>
+                  <span>Pflegeversicherung</span>
+                  <span>Benjamin Lau</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Kostenträgerwechsel erzeugt falschen Zeitraum</span>
+                  <span>07/2026</span>
+                  <span><span class="status-chip status-chip--work"><span class="status-chip__dot"></span>In Bearbeitung</span></span>
+                  <span>Sozialamt</span>
+                  <span>Sarafina Carabina</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Wochenendzuschlag greift nicht bei Ersatzpflege</span>
+                  <span>06/2026</span>
+                  <span><span class="status-chip status-chip--waiting"><span class="status-chip__dot"></span>Warten auf Test</span></span>
+                  <span>Verhinderungspflege</span>
+                  <span>Daniel Jonas</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Betreuungsleistung ist falscher Kostengruppe zugeordnet</span>
+                  <span>06/2026</span>
+                  <span><span class="status-chip status-chip--approved"><span class="status-chip__dot"></span>Freigegeben</span></span>
+                  <span>Betreuung §45b</span>
+                  <span>Lisa Bachmann</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Abwesenheitstage reduzieren Pauschale nicht</span>
+                  <span>05/2026</span>
+                  <span><span class="status-chip status-chip--testing"><span class="status-chip__dot"></span>Im Test</span></span>
+                  <span>Pflegeversicherung</span>
+                  <span>Benjamin Lau</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Staffel ab Pflegegrad 4 startet einen Monat zu früh</span>
+                  <span>05/2026</span>
+                  <span><span class="status-chip status-chip--work"><span class="status-chip__dot"></span>In Bearbeitung</span></span>
+                  <span>Pflegeversicherung</span>
+                  <span>Sarafina Carabina</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Leistungsnummer LK12 kollidiert mit Altvertrag</span>
+                  <span>04/2026</span>
+                  <span><span class="status-chip status-chip--waiting"><span class="status-chip__dot"></span>Warten auf Test</span></span>
+                  <span>Privat</span>
+                  <span>Daniel Jonas</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Feiertagsregel fehlt für regionale Sondertage</span>
+                  <span>04/2026</span>
+                  <span><span class="status-chip status-chip--testing"><span class="status-chip__dot"></span>Im Test</span></span>
+                  <span>Pflegeversicherung</span>
+                  <span>Lisa Bachmann</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Eigenanteil wird bei Kurzzeitpflege nicht gekappt</span>
+                  <span>03/2026</span>
+                  <span><span class="status-chip status-chip--work"><span class="status-chip__dot"></span>In Bearbeitung</span></span>
+                  <span>Sozialamt</span>
+                  <span>Benjamin Lau</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Entlastungsbetrag kann negativ werden</span>
+                  <span>03/2026</span>
+                  <span><span class="status-chip status-chip--approved"><span class="status-chip__dot"></span>Freigegeben</span></span>
+                  <span>Betreuung §45b</span>
+                  <span>Sarafina Carabina</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Mindestdauer wird bei Kombileistungen ignoriert</span>
+                  <span>02/2026</span>
+                  <span><span class="status-chip status-chip--waiting"><span class="status-chip__dot"></span>Warten auf Test</span></span>
+                  <span>Pflegeversicherung</span>
+                  <span>Daniel Jonas</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Abrechnungssperre bleibt nach Freigabe aktiv</span>
+                  <span>02/2026</span>
+                  <span><span class="status-chip status-chip--testing"><span class="status-chip__dot"></span>Im Test</span></span>
+                  <span>Privat</span>
+                  <span>Lisa Bachmann</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Pflegehilfsmittel werden nicht exportiert</span>
+                  <span>01/2026</span>
+                  <span><span class="status-chip status-chip--work"><span class="status-chip__dot"></span>In Bearbeitung</span></span>
+                  <span>Pflegeversicherung</span>
+                  <span>Benjamin Lau</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Sondervereinbarung überschreibt Basistarif</span>
+                  <span>01/2026</span>
+                  <span><span class="status-chip status-chip--approved"><span class="status-chip__dot"></span>Freigegeben</span></span>
+                  <span>Privat</span>
+                  <span>Sarafina Carabina</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Nachberechnung ignoriert historische Punktwerte</span>
+                  <span>12/2025</span>
+                  <span><span class="status-chip status-chip--work"><span class="status-chip__dot"></span>In Bearbeitung</span></span>
+                  <span>Pflegeversicherung</span>
+                  <span>Daniel Jonas</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Stundensatz wird bei Nachtbereitschaft gerundet</span>
+                  <span>12/2025</span>
+                  <span><span class="status-chip status-chip--waiting"><span class="status-chip__dot"></span>Warten auf Test</span></span>
+                  <span>Privat</span>
+                  <span>Lisa Bachmann</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Pflegegradwechsel erzeugt doppelte Rechnung</span>
+                  <span>11/2025</span>
+                  <span><span class="status-chip status-chip--testing"><span class="status-chip__dot"></span>Im Test</span></span>
+                  <span>Sozialamt</span>
+                  <span>Benjamin Lau</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+                <button class="issue-table__row" type="button" role="row">
+                  <span class="issue-table__primary">Gutschrift übernimmt falsche Kostengruppe</span>
+                  <span>11/2025</span>
+                  <span><span class="status-chip status-chip--approved"><span class="status-chip__dot"></span>Freigegeben</span></span>
+                  <span>Betreuung §45b</span>
+                  <span>Sarafina Carabina</span>
+                  <span class="issue-table__actions">...</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-shell" id="view-contract-overview" hidden>
+        <div class="panel panel--seamless-group contract-workspace">
+          <div class="detail-topbar contract-topbar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-text">Vertragsbereich</span>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill" type="button">Vertragsübersicht</button>
+            </div>
+            <div class="detail-actions">
+              <div class="action-menu vertrag-filter-menu" data-action-menu>
+                <button class="btn btn--icon btn--secondary" type="button" aria-label="Nach Feld filtern" data-tooltip="Filtern" data-action-menu-trigger>
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 5H20L14 12.5V19L10 21V12.5L4 5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="menu-surface" id="vertragFilterMenu" hidden></div>
+              </div>
+              <div class="smart-search" id="vertragSmartSearch">
+                <div class="smart-search__tokens" id="vertragSearchTokens"></div>
+                <input class="smart-search__input" id="vertragSmartSearchInput" type="text" placeholder="Verträge durchsuchen..." autocomplete="off" />
+                <div class="smart-search__suggestions" id="vertragSearchSuggestions" hidden></div>
+              </div>
+              <button class="btn btn--primary" type="button">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                </svg>
+                Vertrag
+              </button>
+            </div>
+          </div>
+
+          <div class="seamless-row contract-split">
+            <section class="seamless-block seamless-block--main contract-table-pane">
+              <div class="contract-pane-header">
+                <div>
+                  <span class="contract-eyebrow">Vertragsdaten</span>
+                  <h2 class="contract-heading">Vertragsübersicht</h2>
+                </div>
+                <div class="contract-kpis" aria-label="Vertragskennzahlen">
+                  <span><strong>42</strong> aktiv</span>
+                  <span><strong>6</strong> in Prüfung</span>
+                  <span><strong>3</strong> laufen aus</span>
+                </div>
+              </div>
+
+              <div class="contract-table contract-table--contracts" role="table" aria-label="Vertragsliste" id="vertragTable">
+                <div class="contract-table__row contract-table__row--head" role="row">
+                  <span>Vertrag</span>
+                  <span>Kalender</span>
+                  <span>Status</span>
+                  <span>Offene Pakete</span>
+                  <span>Zuletzt bearbeitet</span>
+                </div>
+              </div>
+            </section>
+
+            <div class="resize-handle resize-handle--seamless" aria-hidden="true"></div>
+
+            <section class="seamless-block seamless-block--side contract-detail-pane">
+              <div class="contract-detail">
+                <div class="contract-detail__header">
+                  <span class="chip chip--status chip--success">Aktiv</span>
+                  <h2>Hamburg Pflegevertrag 2026</h2>
+                  <p>Rahmenvertrag mit aktuellen Leistungskomplexen, Zuschlägen und Kostenträgerzuordnung.</p>
+                </div>
+                <div class="contract-facts">
+                  <div class="sidepanel-item">
+                    <span class="sidepanel-item__label">Version</span>
+                    <span class="sidepanel-item__value">6</span>
+                  </div>
+                  <div class="sidepanel-item">
+                    <span class="sidepanel-item__label">Gültigkeit</span>
+                    <span class="sidepanel-item__value">01.01.2026 bis offen</span>
+                  </div>
+                  <div class="sidepanel-item sidepanel-item--chips">
+                    <span class="sidepanel-item__label">Kostengruppen</span>
+                    <div class="chip-group">
+                      <span class="chip chip--status chip--neutral">Pflegeversicherung</span>
+                      <span class="chip chip--status chip--neutral">Privat</span>
+                      <span class="chip chip--status chip--neutral">§45b</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="contract-card">
+                  <span class="contract-card__title">Offene Punkte</span>
+                  <p>1 Issue in Prüfung, 2 Änderungen warten auf fachliche Freigabe.</p>
+                  <button class="btn btn--secondary" type="button">Details ansehen</button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-shell" id="view-contract-detail" hidden>
+        <section class="panel panel--main detail-panel contract-page">
+          <div class="detail-topbar contract-topbar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-text">Vertragsbereich</span>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill" type="button">Verträge</button>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill" type="button">Hamburg Pflegevertrag 2026</button>
+            </div>
+            <div class="detail-actions">
+              <button class="btn btn--secondary" type="button">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 12H18M12 6V18" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                </svg>
+                Änderung
+              </button>
+              <button class="btn btn--primary" type="button">Freigeben</button>
+            </div>
+          </div>
+
+          <div class="contract-page__body">
+            <header class="contract-page__header">
+              <div>
+                <span class="contract-eyebrow">Vertragsdetails</span>
+                <h1>Hamburg Pflegevertrag 2026</h1>
+              </div>
+              <span class="chip chip--status chip--success">Aktiv</span>
+            </header>
+
+            <div class="contract-page__grid">
+              <section class="contract-card contract-card--large">
+                <span class="contract-card__title">Stammdaten</span>
+                <div class="contract-facts contract-facts--grid">
+                  <div class="sidepanel-item">
+                    <span class="sidepanel-item__label">Bundesland</span>
+                    <span class="sidepanel-item__value">Hamburg</span>
+                  </div>
+                  <div class="sidepanel-item">
+                    <span class="sidepanel-item__label">Version</span>
+                    <span class="sidepanel-item__value">6</span>
+                  </div>
+                  <div class="sidepanel-item">
+                    <span class="sidepanel-item__label">Gültig ab</span>
+                    <span class="sidepanel-item__value">01.01.2026</span>
+                  </div>
+                  <div class="sidepanel-item">
+                    <span class="sidepanel-item__label">Ersteller</span>
+                    <span class="sidepanel-item__value">Daniel Jonas</span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="contract-card contract-card--large">
+                <span class="contract-card__title">Leistungsgruppen</span>
+                <div class="contract-mini-list">
+                  <div><strong>Grundpflege</strong><span>18 Leistungen</span></div>
+                  <div><strong>Behandlungspflege</strong><span>24 Leistungen</span></div>
+                  <div><strong>Betreuung §45b</strong><span>7 Leistungen</span></div>
+                </div>
+              </section>
+
+              <section class="contract-card contract-card--large contract-card--wide">
+                <span class="contract-card__title">Änderungen</span>
+                <div class="contract-change-list">
+                  <div>
+                    <span class="contract-change-list__dot"></span>
+                    <strong>LK1 Punktwert angepasst</strong>
+                    <span>0,50 auf 0,56</span>
+                  </div>
+                  <div>
+                    <span class="contract-change-list__dot"></span>
+                    <strong>Wochenendzuschlag ergänzt</strong>
+                    <span>Gilt für Grundpflege und Betreuung</span>
+                  </div>
+                  <div>
+                    <span class="contract-change-list__dot"></span>
+                    <strong>Private Kostengruppe bereinigt</strong>
+                    <span>Doppelte Rundungsregel entfernt</span>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="content-shell" id="view-example-contract" hidden>
+        <div class="panel panel--seamless-group">
+          <div class="detail-topbar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-text">Alle Verträge</span>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                <span class="bar bar--breadcrumb"></span>
+                <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                <span class="bar bar--breadcrumb"></span>
+                <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill">
+                <span class="breadcrumb-pill__icon"></span>
+                <span class="bar bar--breadcrumb bar--breadcrumb-lg"></span>
+                <svg class="icon icon--tiny" viewBox="0 0 12 12" fill="none"><path d="M8.5 1.5L10.5 3.5L4 10L1.5 10.5L2 8L8.5 1.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" /></svg>
+              </button>
+            </div>
+            <div class="detail-actions">
+              <button class="btn btn--primary">
+                <!-- Hugeicons: Task01Icon (stroke-rounded) -->
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M8 6H21M8 12H21M8 18H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M3 6L4 7L6 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+                Bereit für Test
+              </button>
+              <button class="btn btn--icon btn--ghost" aria-label="Mehr Optionen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M6.00449 12.5V12M18.0045 12.5V12M12.0045 12.5V12M7.00449 12.5C7.00449 11.9477 6.55677 11.5 6.00449 11.5C5.4522 11.5 5.00449 11.9477 5.00449 12.5C5.00449 13.0523 5.4522 13.5 6.00449 13.5C6.55677 13.5 7.00449 13.0523 7.00449 12.5ZM19.0045 12.5C19.0045 11.9477 18.5568 11.5 18.0045 11.5C17.4522 11.5 17.0045 11.9477 17.0045 12.5C17.0045 13.0523 17.4522 13.5 18.0045 13.5C18.5568 13.5 19.0045 13.0523 19.0045 12.5ZM13.0045 12.5C13.0045 11.9477 12.5568 11.5 12.0045 11.5C11.4522 11.5 11.0045 11.9477 11.0045 12.5C11.0045 13.0523 11.4522 13.5 12.0045 13.5C12.5568 13.5 13.0045 13.0523 13.0045 12.5Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+              <button class="btn btn--icon btn--ghost" aria-label="Sortieren">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 6H14M4 12H11M4 18H8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  <path d="M17 4V20M17 20L14 17M17 20L20 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="seamless-row">
+            <section class="seamless-block seamless-block--main">
+            <div class="detail-content">
+              <div class="detail-header">
+                <span class="detail-header__title" id="leistungHeaderTitle">Leistungen</span>
+                <input class="detail-search" type="text" id="leistungSearchInput" placeholder="Leistung suchen..." />
+              </div>
+
+              <div class="leistung-section">
+                <div class="leistung-list" id="leistungList"></div>
+              </div>
+          </div>
+            </section>
+            <div class="resize-handle resize-handle--seamless" id="resizeHandleDetail" aria-hidden="true"></div>
+            <section class="seamless-block seamless-block--side" id="detailSidepanel">
+              <div class="detail-sidepanel__content">
+                <div class="sidepanel-item">
+                  <span class="sidepanel-item__label">Bundesland</span>
+                  <span class="sidepanel-item__value">Hamburg</span>
+                </div>
+                <div class="sidepanel-item">
+                  <span class="sidepanel-item__label">Investitionskosten</span>
+                  <span class="sidepanel-item__value">Monatlich</span>
+                </div>
+                <div class="sidepanel-item sidepanel-item--chips">
+                  <span class="sidepanel-item__label">Kostengruppe</span>
+                  <div class="chip-group">
+                    <span class="chip chip--status chip--neutral">Pflegeversicherung</span>
+                    <span class="chip chip--status chip--neutral">Betreuung §45</span>
+                    <span class="chip chip--status chip--neutral">Privat</span>
+                    <span class="chip chip--status chip--neutral">Sozialamt</span>
+                    <span class="chip chip--status chip--neutral">Verhinderungspflege</span>
+                  </div>
+                </div>
+                <div class="sidepanel-item">
+                  <span class="sidepanel-item__label">Getestet von</span>
+                  <span class="sidepanel-item__value">Benjamin Lau</span>
+                </div>
+                <div class="sidepanel-item">
+                  <span class="sidepanel-item__label">Ersteller</span>
+                  <span class="sidepanel-item__value">Daniel Jonas</span>
+                </div>
+              </div>
+              <div class="detail-sidepanel__divider"></div>
+              <div class="detail-sidepanel__updates">
+                <div class="updates-header">Änderungen in diesem Update</div>
+                <div id="vertragUpdatesList"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-shell content-shell--settings" id="view-example-settings" hidden>
+        <section class="panel panel--main settings-panel">
+          <div class="settings-header">
+            <span class="detail-header__title">Einstellungen</span>
+          </div>
+          <div class="settings-grid">
+            <section class="settings-section" style="grid-column: 1; grid-row: 1;">
+              <header class="settings-section__header">
+                <div class="settings-section__label">
+                  <span class="settings-section__icon settings-section__icon--red">
+                    <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none"><path d="M10.4107 19.9677C7.58942 17.858 2 13.0349 2 8.69451C2 5.82569 4.10526 3.50006 7 3.50006C8.5 3.50006 10 4.00006 12 6.00006C14 4.00006 15.5 3.50006 17 3.50006C19.8947 3.50006 22 5.82569 22 8.69451C22 13.0349 16.4106 17.858 13.5893 19.9677C12.6399 20.6777 11.3601 20.6777 10.4107 19.9677Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M20.0006 12.9998H16.0284C15.8164 12.9998 15.7103 12.9998 15.6186 12.9635C15.5687 12.9438 15.5225 12.9165 15.4817 12.8827C15.4068 12.8205 15.3594 12.7299 15.2645 12.5487C14.9917 12.0275 14.8553 11.7668 14.6593 11.7041C14.5563 11.6712 14.4449 11.6712 14.3418 11.7041C14.1458 11.7668 14.0094 12.0275 13.7366 12.5487L13.1168 13.7331C12.6438 14.6368 12.4074 15.0887 12.0702 15.062C11.7331 15.0353 11.5776 14.5525 11.2666 13.5868L10.802 12.1443C10.4664 11.1023 10.2986 10.5813 9.94999 10.5636C9.60136 10.5458 9.3766 11.0469 8.92709 12.049L8.76033 12.4207C8.63435 12.7016 8.57136 12.842 8.44613 12.9209C8.32089 12.9998 8.16099 12.9998 7.84118 12.9998H4.00058" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                  </span>
+                  <span class="settings-section__title">Vitalwerte</span>
+              </div>
+              <button class="btn btn--secondary">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                  Hinzufügen
+              </button>
+              </header>
+              <div class="settings-rows">
+                <div class="settings-row">
+                  <span class="settings-row__name">Puls</span>
+                  <span class="settings-row__meta">Einheit: <span class="unit-tag">bpm</span></span>
+                  <span class="settings-row__value">Normalbereich: 60-100</span>
+                </div>
+                <div class="settings-row">
+                  <span class="settings-row__name">Temperatur</span>
+                  <span class="settings-row__meta">Einheit: <span class="unit-tag">°C</span></span>
+                  <span class="settings-row__value">Normalbereich: 36 - 37.5</span>
+                </div>
+                <div class="settings-row">
+                  <span class="settings-row__name">Atemfrequenz</span>
+                  <span class="settings-row__meta">Einheit: <span class="unit-tag">/min</span></span>
+                  <span class="settings-row__value">Normalbereich: 12-20</span>
+                </div>
+                <div class="settings-row">
+                  <span class="settings-row__name">Sauerstoffsättigung</span>
+                  <span class="settings-row__meta">Einheit: <span class="unit-tag">%</span></span>
+                  <span class="settings-row__value">Normalbereich: 95-100</span>
+                </div>
+                <div class="settings-row">
+                  <span class="settings-row__name">Blutdruck</span>
+                  <span class="settings-row__meta">Einheit: <span class="unit-tag">mmHg</span></span>
+                  <span class="settings-row__value">Systolisch: 90-140<br />Diastolisch: 90-140</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="settings-section" style="grid-column: 2; grid-row: 1;">
+              <header class="settings-section__header">
+                <div class="settings-section__label">
+                  <span class="settings-section__icon settings-section__icon--green">
+                    <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none"><path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" stroke-width="2" /><path d="M8 13.75C8 13.75 9.6 14.6625 10.4 16C10.4 16 12.8 10.75 16 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                  </span>
+                  <span class="settings-section__title">Maßnahmen</span>
+              </div>
+              <button class="btn btn--secondary">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                  Hinzufügen
+              </button>
+              </header>
+              <div class="settings-rows">
+                <div class="settings-row">
+                  <span class="settings-row__name">Lagerung</span>
+                </div>
+                <div class="settings-row">
+                  <span class="settings-row__name">Mobilisation</span>
+                </div>
+                <div class="settings-row">
+                  <span class="settings-row__name">Absaugen</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="settings-section" style="grid-column: 1; grid-row: 2;">
+              <header class="settings-section__header">
+                <div class="settings-section__label">
+                  <span class="settings-section__icon settings-section__icon--purple">
+                    <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none"><path d="M8.5 14.5H15.5M8.5 9.5H12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M14.1706 20.8905C18.3536 20.6125 21.6856 17.2332 21.9598 12.9909C22.0134 12.1607 22.0134 11.3009 21.9598 10.4707C21.6856 6.22838 18.3536 2.84913 14.1706 2.57107C12.7435 2.47621 11.2536 2.47641 9.8294 2.57107C5.64639 2.84913 2.31441 6.22838 2.04024 10.4707C1.98659 11.3009 1.98659 12.1607 2.04024 12.9909C2.1401 14.536 2.82343 15.9666 3.62791 17.1746C4.09501 18.0203 3.78674 19.0758 3.30021 19.9978C2.94941 20.6626 2.77401 20.995 2.91484 21.2351C3.05568 21.4752 3.37026 21.4829 3.99943 21.4982C5.24367 21.5285 6.08268 21.1757 6.74868 20.6846C7.1264 20.4061 7.31527 20.2668 7.44544 20.2508C7.5756 20.2348 7.83177 20.3403 8.34401 20.5513C8.8044 20.7409 9.33896 20.8579 9.8294 20.8905C11.2536 20.9852 12.7435 20.9854 14.1706 20.8905Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2" /></svg>
+                  </span>
+                  <span class="settings-section__title">Feedback</span>
+              </div>
+              <button class="btn btn--secondary">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                  Hinzufügen
+              </button>
+              </header>
+              <div class="settings-rows">
+                <div class="settings-row">
+                  <span class="settings-row__name">Schmerzskala</span>
+                  <div class="settings-chip-group">
+                    <span class="chip chip--status chip--neutral">Keine</span>
+                    <span class="chip chip--status chip--neutral">Leicht</span>
+                    <span class="chip chip--status chip--neutral">Mittel</span>
+                    <span class="chip chip--status chip--neutral">Stark</span>
+                    <span class="chip chip--status chip--neutral">Sehr stark</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="settings-section" style="grid-column: 2; grid-row: 2;">
+              <header class="settings-section__header">
+                <div class="settings-section__label">
+                  <span class="settings-section__icon settings-section__icon--blue">
+                    <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5" r="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M10 5H4M14 5H20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M17 21H7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M12 7V21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M16 14L18.5 8H19.5L22 14C22 15.6569 20.6569 17 19 17C17.3431 17 16 15.6569 16 14ZM22 14H16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M2 14L4.5 8H5.5L8 14C8 15.6569 6.65685 17 5 17C3.34315 17 2 15.6569 2 14ZM8 14H2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                  </span>
+                  <span class="settings-section__title">Bilanz</span>
+              </div>
+              <button class="btn btn--secondary">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                  Hinzufügen
+              </button>
+              </header>
+              <div class="settings-rows">
+                <div class="settings-row">
+                  <span class="settings-row__name">Flüssigkeitsbilanz</span>
+                  <span class="settings-row__meta">Einheit: <span class="unit-tag">ml</span></span>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <!-- Konzept: Kundenseite ist eine eigene Anwendung (nicht CuraSoft-intern),
+           hier erstmal als grobe Skizze innerhalb desselben Sidebar-Prototyps,
+           um Umfang/Bausteine zu klären, bevor sie technisch abgetrennt wird. -->
+      <div class="content-shell" id="view-customer-portal" hidden>
+        <div class="panel panel--seamless-group contract-workspace">
+          <div class="detail-topbar contract-topbar">
+            <div class="breadcrumbs">
+              <span class="breadcrumb-text">Kundenportal</span>
+              <span class="breadcrumb-sep">/</span>
+              <button class="breadcrumb-pill" type="button">Mein Vertrag</button>
+            </div>
+            <div class="detail-actions">
+              <span class="chip chip--muted">Konzept · eigene Anwendung, nicht CuraSoft-intern</span>
+            </div>
+          </div>
+
+          <div class="seamless-row contract-split">
+            <section class="seamless-block seamless-block--main contract-table-pane">
+              <div class="contract-pane-header">
+                <div>
+                  <span class="contract-eyebrow">Wenn Engeln pflegen</span>
+                  <h2 class="contract-heading">Ihr Vertrag</h2>
+                </div>
+              </div>
+
+              <div class="settings-section customer-portal-section">
+                <header class="settings-section__header">
+                  <div class="settings-section__label">
+                    <span class="settings-section__title">Hamburg Pflegevertrag 2026</span>
+                  </div>
+                  <div class="customer-portal-actions">
+                    <button class="btn btn--secondary" type="button">
+                      <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 4V16M12 16L16.5 11.5M12 16L7.5 11.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M4 17V18C4 19.6569 5.34315 21 7 21H17C18.6569 21 20 19.6569 20 18V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                      Herunterladen
+                    </button>
+                    <button class="btn btn--secondary" type="button">
+                      <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 20V8M12 8L7.5 12.5M12 8L16.5 12.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path d="M4 17V18C4 19.6569 5.34315 21 7 21H17C18.6569 21 20 19.6569 20 18V17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+                      Neuen Vertrag hochladen
+                    </button>
+                  </div>
+                </header>
+                <div class="settings-rows">
+                  <div class="settings-row">
+                    <span class="settings-row__name">Status</span>
+                    <span class="chip chip--status chip--success">Aktiv</span>
+                  </div>
+                  <div class="settings-row">
+                    <span class="settings-row__name">Gültig ab</span>
+                    <span class="settings-row__value">01.01.2026</span>
+                  </div>
+                  <div class="settings-row">
+                    <span class="settings-row__name">Tarif</span>
+                    <span class="settings-row__value">SGB XI, Version 6</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="settings-section customer-portal-section">
+                <header class="settings-section__header">
+                  <div class="settings-section__label">
+                    <span class="settings-section__title">Preise</span>
+                  </div>
+                  <span class="chip chip--muted">KI-Vorschlag folgt später · jetzt manuell</span>
+                </header>
+                <div class="settings-rows">
+                  <div class="settings-row">
+                    <span class="settings-row__name">Grundpreis</span>
+                    <span class="settings-row__meta">
+                      <input class="detail-search price-input" type="number" step="0.01" value="24.50" aria-label="Grundpreis" />
+                      <span class="unit-tag">€</span>
+                    </span>
+                  </div>
+                  <div class="settings-row">
+                    <span class="settings-row__name">Zuschlag Nacht</span>
+                    <span class="settings-row__meta">
+                      <input class="detail-search price-input" type="number" step="0.01" value="6.00" aria-label="Zuschlag Nacht" />
+                      <span class="unit-tag">€</span>
+                    </span>
+                  </div>
+                  <div class="settings-row">
+                    <span class="settings-row__name">Zuschlag Wochenende</span>
+                    <span class="settings-row__meta">
+                      <input class="detail-search price-input" type="number" step="0.01" value="4.50" aria-label="Zuschlag Wochenende" />
+                      <span class="unit-tag">€</span>
+                    </span>
+                  </div>
+                  <div class="settings-row">
+                    <span class="settings-row__name">Fahrtkosten</span>
+                    <span class="settings-row__meta">
+                      <input class="detail-search price-input" type="number" step="0.01" value="0.35" aria-label="Fahrtkosten" />
+                      <span class="unit-tag">€/km</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Issue-Details (öffnet beim Klick auf eine Issue-Zeile) -->
+    <div class="modal-overlay" id="issueDetailModalOverlay" hidden>
+      <div class="modal issue-detail-modal" role="dialog" aria-modal="true" aria-labelledby="issueDetailModalTitle">
+        <div class="modal__header">
+          <div class="modal__header-title">
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <path d="M4 3H3C2.44772 3 2 3.44772 2 4V18L3.5 21L5 18V4C5 3.44772 4.55228 3 4 3Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M21 12.0013V8.00072C21 5.64336 21 4.46468 20.2678 3.73234C19.5355 3 18.357 3 16 3H13C10.643 3 9.46447 3 8.73223 3.73234C8 4.46468 8 5.64336 8 8.00072V16.0019C8 18.3592 8 19.5379 8.73223 20.2703C9.35264 20.8908 10.2934 20.9855 12 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M12 7H17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+              <path d="M12 11H17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+            </svg>
+            <span id="issueDetailModalTitle">Issue-Details</span>
+          </div>
+          <button class="btn btn--icon btn--ghost" type="button" aria-label="Schließen" data-modal-close>
+            <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <aside class="issue-detail" aria-label="Issue Details">
+            <div class="issue-detail__body">
+              <dl class="issue-detail__fields">
+                <div class="issue-detail__field">
+                  <dt>Issue</dt>
+                  <dd id="issueDetailTitle">Neue Preise für XXX</dd>
+                </div>
+                <div class="issue-detail__field">
+                  <dt>Tarif</dt>
+                  <dd class="issue-detail__muted" id="issueDetailTariff">-</dd>
+                </div>
+                <div class="issue-detail__field issue-detail__field--top">
+                  <dt>Beschreibung</dt>
+                  <dd id="issueDetailDescription">
+                    <p>Neue Preislogik für die betroffenen Leistungspakete prüfen.</p>
+                    <p>Abweichungen im Teststand sammeln und vor Freigabe dokumentieren.</p>
+                  </dd>
+                </div>
+                <div class="issue-detail__field">
+                  <dt>Vertrag</dt>
+                  <dd id="issueDetailContract">24 H Betreuung</dd>
+                </div>
+                <div class="issue-detail__field">
+                  <dt>Status</dt>
+                  <dd><button class="issue-detail__select" id="issueDetailStatus" type="button">In Bearbeitung</button></dd>
+                </div>
+                <div class="issue-detail__field">
+                  <dt>Prio</dt>
+                  <dd><button class="issue-detail__select" id="issueDetailPriority" type="button">Highest</button></dd>
+                </div>
+                <div class="issue-detail__field">
+                  <dt>Stand</dt>
+                  <dd id="issueDetailStand">06/2026</dd>
+                </div>
+                <div class="issue-detail__field">
+                  <dt>Dokumente</dt>
+                  <dd>
+                    <button class="btn btn--secondary issue-detail__upload" type="button">
+                      <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 15V3M12 3L8 7M12 3L16 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                        <path d="M4 15V17C4 19.2091 5.79086 21 8 21H16C18.2091 21 20 19.2091 20 17V15" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                      </svg>
+                      Hochladen
+                    </button>
+                  </dd>
+                </div>
+                <div class="issue-detail__field">
+                  <dt>Bearbeiter</dt>
+                  <dd><button class="issue-detail__select issue-detail__select--empty" id="issueDetailAssignee" type="button">-</button></dd>
+                </div>
+              </dl>
+
+              <button class="btn btn--primary issue-detail__primary-action" type="button">Paket bearbeiten</button>
+            </div>
+
+            <section class="issue-activity" aria-label="Letzte Aktivität">
+              <h3>Letzte Aktivität</h3>
+              <div class="issue-activity__list" id="issueActivityList">
+                <article class="issue-activity__item">
+                  <span class="issue-activity__dot"></span>
+                  <p>Ranorex-TestAutomation hat ein Globales Paket erstellt.</p>
+                  <time>02.03.2026</time>
+                </article>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Feedback erfassen -->
+    <div class="modal-overlay" id="feedbackModalOverlay" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle">
+        <div class="modal__header">
+          <div class="modal__header-title">
+            <svg class="icon" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+            <span id="feedbackModalTitle">Feedback erfassen</span>
+          </div>
+          <button class="btn btn--icon btn--ghost" aria-label="Schließen" data-modal-close>
+            <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__card">
+            <div class="form-row">
+              <div class="form-field">
+                <span class="form-label">Maßnahme</span>
+                <div class="form-input">
+                  <span class="chip">Cº</span>
+                  <span class="form-input__value">Temperatur</span>
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <span class="form-label">Startdatum</span>
+                <div class="form-input">
+                  <span class="form-input__value">Heute 31.05.2026</span>
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="4" width="18" height="17" rx="3" stroke="currentColor" stroke-width="2" />
+                    <path d="M3 9H21" stroke="currentColor" stroke-width="2" />
+                    <path d="M8 2V6M16 2V6" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                  </svg>
+                </div>
+              </div>
+              <div class="form-field">
+                <span class="form-label">Enddatum</span>
+                <div class="form-input">
+                  <span class="form-input__value form-input__value--placeholder">Kein Enddatum (fortlaufend)</span>
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="4" width="18" height="17" rx="3" stroke="currentColor" stroke-width="2" />
+                    <path d="M3 9H21" stroke="currentColor" stroke-width="2" />
+                    <path d="M8 2V6M16 2V6" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <span class="form-label">Häufigkeit</span>
+                <div class="form-input">
+                  <span class="form-input__value">Benutzerdefiniert</span>
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </div>
+              </div>
+              <div class="form-field">
+                <span class="form-label">Startzeit</span>
+                <div class="form-input">
+                  <span class="form-input__value">09:00</span>
+                  <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--destructive" data-modal-close>
+            <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none">
+              <path d="M19.5 5.5L18.8803 15.5251C18.7219 18.0864 18.6428 19.3671 18.0008 20.2879C17.6833 20.7431 17.2747 21.1273 16.8007 21.416C15.8421 22 14.559 22 11.9927 22C9.42312 22 8.1383 22 7.17905 21.4149C6.7048 21.1257 6.296 20.7408 5.97868 20.2848C5.33688 19.3626 5.25945 18.0801 5.10461 15.5152L4.5 5.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+              <path d="M3 5.5H21M16.0557 5.5L15.3731 4.09173C14.9196 3.15626 14.6928 2.68852 14.3017 2.39681C14.215 2.3321 14.1231 2.27454 14.027 2.2247C13.5939 2 13.0741 2 12.0345 2C10.9688 2 10.436 2 9.99568 2.23412C9.8981 2.28601 9.80498 2.3459 9.71729 2.41317C9.32164 2.7167 9.10063 3.20155 8.65861 4.17126L8.05292 5.5" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+            </svg>
+            Feedback verwerfen
+          </button>
+          <div class="modal__footer-actions">
+            <button class="btn btn--secondary" data-modal-close>Abbrechen</button>
+            <button class="btn btn--primary" data-modal-close>Übernehmen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="renderer.js?v=4"></script>
+</body>
+</html>

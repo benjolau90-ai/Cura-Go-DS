@@ -1,0 +1,20 @@
+{
+  "name": "desktop-layout",
+  "version": "1.0.0",
+  "description": "Electron-Testumgebung für Styling (Intensiv Visual Design)",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "capture:surfaces": "electron scripts/capture-surface-screenshots.js",
+    "capture:components": "electron scripts/capture-component-screenshots.js"
+  },
+  "devDependencies": {
+    "electron": "^43.2.0"
+  },
+  "dependencies": {
+    "@hugeicons/core-free-icons": "^4.2.2"
+  },
+  "allowScripts": {
+    "electron@43.2.0": true
+  }
+}

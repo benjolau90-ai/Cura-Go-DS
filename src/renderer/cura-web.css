@@ -1,0 +1,1148 @@
+html:has(.cura-web-body) {
+  height: 100%;
+  overflow: hidden;
+}
+
+.cura-web-body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.cura-app {
+  height: 100vh;
+}
+
+.cura-sidebar {
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.cura-brand {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--spacing-12);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.cura-brand__mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  justify-self: center;
+  border-radius: var(--radius-md);
+}
+
+.cura-brand__mark img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.cura-brand__text {
+  display: grid;
+  gap: var(--spacing-2);
+  min-width: 0;
+}
+
+.cura-brand__text strong {
+  font: var(--type-title-strong);
+}
+
+.cura-brand__text small {
+  font: var(--type-meta);
+  color: var(--text-secondary);
+}
+
+.cura-nav {
+  display: grid;
+  gap: var(--spacing-8);
+}
+
+.cura-nav__item {
+  font: var(--type-body-strong);
+}
+
+.cura-nav__item .icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  justify-self: center;
+}
+
+.cura-nav__item--active {
+  color: var(--nav-item-text-active);
+}
+
+.cura-topbar {
+  flex-shrink: 0;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding: var(--spacing-14) var(--spacing-16);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-default);
+  box-shadow: none;
+}
+
+.cura-eyebrow,
+.cura-topbar h1,
+.cura-section h2,
+.cura-section p {
+  margin: 0;
+}
+
+.cura-eyebrow {
+  margin-bottom: var(--spacing-4);
+  font: var(--type-caption);
+  color: var(--color-brand-default);
+  text-transform: uppercase;
+}
+
+.cura-topbar h1 {
+  font: var(--type-heading-section);
+}
+
+.cura-topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
+
+.cura-user-create__menu {
+  min-width: 260px;
+}
+
+.cura-content-shell {
+  min-width: 0;
+}
+
+.cura-panel {
+  flex: 1;
+  min-width: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: var(--spacing-0);
+}
+
+.cura-page-stack {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--spacing-0);
+}
+
+.cura-page {
+  min-height: 100%;
+}
+
+.cura-page--active {
+  display: grid;
+}
+
+.cura-section {
+  display: grid;
+  gap: var(--spacing-16);
+  padding: var(--spacing-20);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  background: var(--card-background);
+  box-shadow: var(--shadow-card);
+}
+
+.cura-section__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+}
+
+.cura-section h2 {
+  margin-bottom: var(--spacing-4);
+  font: var(--type-heading-section);
+}
+
+.cura-section p {
+  font: var(--type-body);
+  color: var(--text-secondary);
+}
+
+.cura-section--users {
+  gap: var(--spacing-0);
+  padding: var(--spacing-0);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  min-height: 100%;
+}
+
+.cura-user-split {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: var(--spacing-0);
+  align-items: stretch;
+  min-height: 100%;
+}
+
+.cura-user-table,
+.cura-user-detail-panel {
+  overflow: hidden;
+  min-height: 100%;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+  background: var(--surface-default);
+}
+
+.cura-user-detail-panel {
+  border-left: 0;
+}
+
+.cura-user-table__head {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(260px, 0.76fr);
+  gap: var(--spacing-16);
+  min-height: 42px;
+  align-items: center;
+  padding: var(--spacing-10) var(--spacing-16);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-subtle);
+  color: var(--text-secondary);
+  font: var(--type-caption);
+}
+
+.cura-user-list {
+  display: grid;
+}
+
+.cura-user-row {
+  width: 100%;
+  min-height: 76px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(260px, 0.76fr);
+  align-items: center;
+  gap: var(--spacing-16);
+  padding: var(--spacing-14) var(--spacing-16);
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.cura-user-row:last-child {
+  border-bottom: 0;
+}
+
+.cura-user-row:hover {
+  background: var(--surface-subtle);
+}
+
+.cura-user-row--selected {
+  background: var(--state-selected-background);
+  box-shadow: inset 0 0 0 2px var(--state-selected-border);
+}
+
+.cura-user-row--selected:hover {
+  background: var(--state-selected-background);
+}
+
+.cura-user-row:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+
+.cura-user-row__person,
+.cura-user-row__status {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.cura-user-row__person {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.cura-user-row__person strong {
+  overflow: hidden;
+  font: var(--type-body-strong);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cura-user-row__person small,
+.cura-detail-card span,
+.cura-wizard-step small {
+  overflow: hidden;
+  font: var(--type-meta);
+  color: var(--text-secondary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cura-user-row__status {
+  justify-self: stretch;
+}
+
+.cura-user-row__chips {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.cura-user-row__chips .chip {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.cura-user-row__chips .chip__icon {
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+}
+
+.cura-system-chip--disabled {
+  opacity: 0.68;
+}
+
+.cura-user-detail-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.cura-detail-hero {
+  display: grid;
+  justify-items: start;
+  gap: var(--spacing-4);
+  padding: var(--spacing-12) var(--spacing-16) var(--spacing-16);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-default);
+}
+
+.cura-user-detail-panel h2,
+.cura-user-detail-panel p {
+  margin: 0;
+}
+
+.cura-user-detail-panel h2 {
+  font: var(--type-heading-section);
+}
+
+.cura-user-detail-panel p {
+  font: var(--type-body);
+  color: var(--text-secondary);
+}
+
+.cura-detail-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: calc(100% - (var(--spacing-16) * 2));
+  margin: var(--spacing-12) var(--spacing-16) 0;
+}
+
+.cura-detail-tab {
+  width: 100%;
+}
+
+.cura-detail-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.cura-detail-tab-panel {
+  display: grid;
+  align-content: start;
+  gap: var(--spacing-16);
+  padding: var(--spacing-16);
+}
+
+.cura-detail-tab-panel[hidden] {
+  display: none;
+}
+
+.cura-detail-section {
+  display: grid;
+  gap: var(--spacing-10);
+}
+
+.cura-detail-section h3 {
+  margin: 0;
+  font: var(--type-body-strong);
+}
+
+.cura-detail-kv-list,
+.cura-detail-system-list,
+.cura-rights-compact {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-default);
+}
+
+.cura-detail-kv-list div,
+.cura-detail-system {
+  min-height: 54px;
+  display: grid;
+  align-content: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-10) var(--spacing-12);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cura-detail-kv-list div:last-child,
+.cura-detail-system:last-child {
+  border-bottom: 0;
+}
+
+.cura-detail-kv-list span,
+.cura-device-summary span {
+  font: var(--type-meta);
+  color: var(--text-secondary);
+}
+
+.cura-detail-kv-list strong,
+.cura-detail-system strong,
+.cura-device-summary strong {
+  font: var(--type-body-strong);
+}
+
+.cura-detail-system {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  align-content: center;
+  column-gap: var(--spacing-10);
+}
+
+.cura-detail-system .chip {
+  justify-self: start;
+}
+
+.cura-detail-system strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cura-device-summary {
+  display: grid;
+  gap: var(--spacing-4);
+  padding: var(--spacing-12);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-subtle);
+}
+
+.cura-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+}
+
+.cura-detail-app-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-6);
+}
+
+.cura-rights-compact {
+  gap: var(--spacing-0);
+}
+
+.cura-rights-compact section {
+  display: grid;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cura-rights-compact section:last-child {
+  border-bottom: 0;
+}
+
+.cura-rights-compact header {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-10);
+  padding: var(--spacing-8) var(--spacing-12);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-subtle);
+}
+
+.cura-rights-compact header strong {
+  font: var(--type-body-strong);
+}
+
+.cura-rights-compact label {
+  min-height: 44px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--spacing-10);
+  padding: var(--spacing-8) var(--spacing-12);
+  border-bottom: 1px solid var(--border-subtle);
+  font: var(--type-body);
+}
+
+.cura-rights-compact label:last-child {
+  border-bottom: 0;
+}
+
+.cura-rights-compact input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-brand-default);
+}
+
+.cura-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-12);
+}
+
+.cura-detail-card,
+.cura-wizard-step {
+  display: grid;
+  align-content: start;
+  gap: var(--spacing-8);
+  min-height: 128px;
+  padding: var(--spacing-16);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-default);
+}
+
+.cura-detail-card strong,
+.cura-wizard-step strong {
+  font: var(--type-title-strong);
+}
+
+.cura-wizard-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-12);
+}
+
+.cura-wizard-step span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--button-radius);
+  color: var(--text-secondary);
+  background: var(--surface-subtle);
+  font: var(--type-label);
+}
+
+.cura-wizard-step--active {
+  border-color: var(--color-brand-default);
+  background: var(--state-selected-background);
+}
+
+.cura-wizard-step--active span {
+  color: var(--button-primary-text);
+  background: var(--button-primary-background-default);
+}
+
+.cura-modal[hidden] {
+  display: none;
+}
+
+.cura-modal {
+  z-index: 100;
+  padding: var(--spacing-20);
+}
+
+.cura-modal__scrim {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+}
+
+.cura-wizard-modal {
+  position: relative;
+  z-index: 1;
+  width: min(696px, calc(100% - 48px));
+  max-height: calc(100vh - 48px);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.cura-wizard-title {
+  align-items: flex-start;
+}
+
+.cura-wizard-title h2,
+.cura-wizard-title p {
+  margin: 0;
+}
+
+.cura-wizard-title h2 {
+  font: var(--type-title-strong);
+}
+
+.cura-wizard-title p {
+  margin-top: var(--spacing-4);
+  font: var(--type-body);
+  color: var(--text-secondary);
+}
+
+.cura-wizard-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+}
+
+.cura-wizard-flow {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.cura-wizard-card {
+  min-height: 0;
+}
+
+.cura-wizard-dots {
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+}
+
+.cura-wizard-dot {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--border-strong);
+  opacity: 0.36;
+  transition: width 180ms ease, opacity 180ms ease, background-color 180ms ease;
+}
+
+.cura-wizard-dot--active {
+  width: 24px;
+  background: var(--color-brand-default);
+  opacity: 1;
+}
+
+.cura-wizard-panel {
+  align-content: start;
+  gap: var(--spacing-14);
+}
+
+.cura-wizard-panel:not([hidden]) {
+  display: grid;
+}
+
+.cura-wizard-panel h3,
+.cura-wizard-panel p {
+  margin: 0;
+}
+
+.cura-wizard-panel h3,
+.cura-wizard-success h3 {
+  font: var(--type-title-strong);
+}
+
+.cura-wizard-panel p,
+.cura-wizard-success p {
+  font: var(--type-body);
+  color: var(--text-secondary);
+}
+
+.cura-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-12);
+}
+
+.cura-form-stack {
+  display: grid;
+  gap: var(--spacing-14);
+}
+
+.cura-form-field {
+  display: grid;
+  gap: var(--spacing-6);
+}
+
+.cura-form-field span {
+  font: var(--type-body-strong);
+}
+
+.cura-form-field input {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--spacing-8) var(--spacing-12);
+  border: 1px solid var(--input-border-default);
+  border-radius: var(--button-radius);
+  color: var(--text-primary);
+  background: var(--input-background-default);
+  font: var(--type-body);
+}
+
+.cura-form-field input:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  border-color: var(--input-border-focus);
+}
+
+.cura-form-field small {
+  font: var(--type-meta);
+  color: var(--text-secondary);
+}
+
+.cura-cs-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-12);
+  padding: var(--spacing-12);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-subtle);
+}
+
+.cura-cs-note span {
+  color: var(--text-secondary);
+  font: var(--type-meta);
+}
+
+.cura-cs-note strong {
+  font: var(--type-body-strong);
+}
+
+.cura-password-choice {
+  display: grid;
+  gap: var(--spacing-10);
+}
+
+.cura-password-option {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--spacing-12);
+  padding: var(--spacing-12) var(--spacing-14);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-default);
+  cursor: pointer;
+  transition: var(--button-transition);
+}
+
+.cura-password-option:hover {
+  background: var(--surface-subtle);
+}
+
+.cura-password-option--active {
+  border-color: color-mix(in srgb, var(--color-brand-default) 32%, transparent);
+  background: var(--color-brand-subtle);
+}
+
+.cura-password-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-brand-default);
+}
+
+.cura-password-option span {
+  display: grid;
+  gap: var(--spacing-2);
+}
+
+.cura-password-option strong {
+  font: var(--type-body-strong);
+}
+
+.cura-password-option small {
+  color: var(--text-secondary);
+  font: var(--type-meta);
+}
+
+.cura-password-fields {
+  display: grid;
+  gap: var(--spacing-12);
+  padding: var(--spacing-14);
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.cura-password-fields[hidden] {
+  display: none;
+}
+
+.cura-app-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+}
+
+.cura-app-chip {
+  min-height: 34px;
+  padding: var(--spacing-0) var(--spacing-12);
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  background: var(--chip-background);
+  font: var(--type-body-strong);
+  cursor: pointer;
+  transition: var(--button-transition);
+}
+
+.cura-app-chip:hover {
+  background: var(--button-secondary-background-hover);
+}
+
+.cura-app-chip--active {
+  color: var(--color-brand-default);
+  border-color: color-mix(in srgb, var(--color-brand-default) 32%, transparent);
+  background: var(--color-brand-subtle);
+}
+
+.cura-rights-stack {
+  display: grid;
+  gap: var(--spacing-10);
+}
+
+.cura-rights-group {
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-default);
+}
+
+.cura-rights-group header {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-12);
+  padding: var(--spacing-8) var(--spacing-12);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--surface-subtle);
+}
+
+.cura-rights-group header strong {
+  font: var(--type-body-strong);
+}
+
+.cura-rights-group label {
+  min-height: 48px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--spacing-10);
+  padding: var(--spacing-10) var(--spacing-12);
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+}
+
+.cura-rights-group label:last-child {
+  border-bottom: 0;
+}
+
+.cura-rights-group input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-brand-default);
+}
+
+.cura-rights-group label span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: var(--type-body-strong);
+}
+
+.cura-rights-group label small {
+  color: var(--text-secondary);
+  font: var(--type-meta);
+  white-space: nowrap;
+}
+
+.cura-cs-note {
+  align-items: flex-start;
+}
+
+.cura-cs-note span {
+  max-width: 420px;
+}
+
+.cura-task-list,
+.cura-summary-list {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-default);
+}
+
+.cura-task-list label,
+.cura-summary-list div {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-12);
+  padding: var(--spacing-12) var(--spacing-14);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cura-task-list label:last-child,
+.cura-summary-list div:last-child {
+  border-bottom: 0;
+}
+
+.cura-task-list label {
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.cura-task-list input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-brand-default);
+}
+
+.cura-task-list span,
+.cura-summary-list strong {
+  font: var(--type-body-strong);
+}
+
+.cura-summary-list span {
+  font: var(--type-meta);
+  color: var(--text-secondary);
+}
+
+.cura-rights-details {
+  padding: var(--spacing-12) var(--spacing-14);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-subtle);
+}
+
+.cura-rights-details summary {
+  font: var(--type-body-strong);
+  cursor: pointer;
+}
+
+.cura-rights-details p {
+  margin-top: var(--spacing-8);
+}
+
+.cura-wizard-success {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.cura-success-content {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: var(--spacing-8);
+  min-height: 320px;
+  padding: var(--spacing-24);
+  align-content: center;
+}
+
+.cura-wizard-success[hidden] {
+  display: none;
+}
+
+.cura-success-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--color-brand-default) 28%, transparent);
+  border-radius: 999px;
+  color: var(--color-brand-default);
+  background: var(--color-brand-subtle);
+}
+
+.cura-success-icon .icon {
+  width: 22px;
+  height: 22px;
+}
+
+.cura-success-footer {
+  position: relative;
+  justify-content: flex-end;
+}
+
+.cura-success-footer[hidden] {
+  display: none;
+}
+
+.cura-success-footer span {
+  position: absolute;
+  left: 50%;
+  max-width: min(360px, calc(100% - 180px));
+  transform: translateX(-50%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: var(--type-body-strong);
+  color: var(--color-brand-default);
+}
+
+.cura-wizard-success h3,
+.cura-wizard-success p {
+  margin: 0;
+}
+
+.cura-table {
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-default);
+}
+
+.cura-table__row {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.25fr) minmax(140px, 0.8fr) minmax(120px, 0.6fr) minmax(140px, 0.7fr);
+  align-items: center;
+  gap: var(--spacing-12);
+  min-height: 58px;
+  padding: var(--spacing-10) var(--spacing-14);
+  border-bottom: 1px solid var(--border-subtle);
+  font: var(--type-body);
+}
+
+.cura-table__row:last-child {
+  border-bottom: 0;
+}
+
+.cura-table__row--head {
+  min-height: 42px;
+  background: var(--surface-subtle);
+  font: var(--type-caption);
+  color: var(--text-secondary);
+}
+
+.cura-table__row strong,
+.cura-table__row small {
+  display: block;
+}
+
+.cura-table__row small {
+  margin-top: var(--spacing-2);
+  font: var(--type-meta);
+  color: var(--text-secondary);
+}
+
+.cura-permission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-12);
+}
+
+.cura-permission-card {
+  display: grid;
+  align-content: start;
+  gap: var(--spacing-8);
+  min-height: 154px;
+  padding: var(--spacing-16);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-default);
+}
+
+.cura-permission-card strong {
+  font: var(--type-title-strong);
+}
+
+.cura-settings-list {
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-default);
+}
+
+.cura-setting {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding: var(--spacing-14) var(--spacing-16);
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+}
+
+.cura-setting:last-child {
+  border-bottom: 0;
+}
+
+.cura-setting span {
+  display: grid;
+  gap: var(--spacing-2);
+}
+
+.cura-setting strong {
+  font: var(--type-body-strong);
+}
+
+.cura-setting small {
+  font: var(--type-meta);
+  color: var(--text-secondary);
+}
+
+.cura-setting input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-brand-default);
+}
+
+@media (max-width: 960px) {
+  .cura-topbar,
+  .cura-section__header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .cura-permission-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cura-user-row,
+  .cura-user-split,
+  .cura-detail-grid,
+  .cura-wizard-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .cura-user-row {
+    gap: var(--spacing-10);
+  }
+}
+
+@media (max-width: 720px) {
+  .cura-table {
+    overflow-x: auto;
+  }
+
+  .cura-table__row {
+    min-width: 720px;
+  }
+
+  .cura-topbar__actions {
+    flex-wrap: wrap;
+  }
+}
