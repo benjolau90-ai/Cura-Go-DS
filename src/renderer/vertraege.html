@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'" />
-  <title>App Playground – Layouts</title>
+  <title>Verträge – Prototyp</title>
   <link rel="stylesheet" href="tokens.css?v=7" />
   <link rel="stylesheet" href="style.css?v=23" />
 </head>
-<body class="app-playground-page">
+<body class="contracts-page">
   <div class="main-view">
     <!-- Bg: unscharfer Glass-Hintergrund -->
     <div class="bg-decoration" aria-hidden="true"></div>
 
     <!-- topBar: Titelzeile (Windows-Style, da frame:false) -->
     <header class="title-bar">
-      <div class="title-bar__title" id="titleBarTitle">Layout 1 – Split View</div>
+      <div class="title-bar__title" id="titleBarTitle">Issue</div>
       <div class="title-bar__controls">
         <button class="caption-btn" data-action="minimize" aria-label="Minimieren">
           <svg viewBox="0 0 10 1" width="10" height="1"><rect width="10" height="1" fill="currentColor" /></svg>
@@ -134,7 +134,7 @@
           <!-- Beispielseiten: echte, befüllte Produkt-Screens -->
           <div class="sidebar-divider"></div>
 
-          <button class="sidebar-icon" aria-label="Issue" data-view="contract-issues" data-title="Issue">
+          <button class="sidebar-icon sidebar-icon--selected" aria-label="Issue" data-view="contract-issues" data-title="Issue">
             <svg class="icon" viewBox="0 0 24 24" fill="none">
               <path d="M4 3H3C2.44772 3 2 3.44772 2 4V18L3.5 21L5 18V4C5 3.44772 4.55228 3 4 3Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5" />
               <path d="M21 12.0013V8.00072C21 5.64336 21 4.46468 20.2678 3.73234C19.5355 3 18.357 3 16 3H13C10.643 3 9.46447 3 8.73223 3.73234C8 4.46468 8 5.64336 8 8.00072V16.0019C8 18.3592 8 19.5379 8.73223 20.2703C9.35264 20.8908 10.2934 20.9855 12 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
@@ -262,7 +262,7 @@
         </div>
       </aside>
 
-      <div class="content-shell" id="view-split">
+      <div class="content-shell" id="view-split" hidden>
         <section class="panel panel--main panel--list" id="emptyListPanel">
           <div class="list-panel-inner">
             <div class="filter-bar">
@@ -1316,7 +1316,7 @@
         </section>
       </div>
 
-      <div class="content-shell" id="view-contract-issues" hidden>
+      <div class="content-shell" id="view-contract-issues">
         <div class="panel panel--seamless-group contract-workspace">
           <div class="detail-topbar contract-topbar issue-topbar">
             <h1 class="issue-topbar__title">Issues</h1>

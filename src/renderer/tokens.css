@@ -239,6 +239,21 @@
   --scrim-subtle: rgba(15, 23, 42, 0.16);
   --scrim-modal: rgba(6, 9, 14, 0.35);
 
+  /* Software Collection: Transparenz ist ein Layer-Prinzip.
+     Background/Chrome/Shell dürfen Atmosphäre zeigen; Content, Items und
+     Controls bleiben opak, damit Daten lesbar und vergleichbar bleiben. */
+  --collection-bg: var(--color-background-primary);
+  --collection-chrome-bg: var(--glass-chrome-nav);
+  --collection-chrome-top-bg: var(--glass-chrome-top);
+  --collection-shell-bg: color-mix(in srgb, var(--color-surface-default) 70%, transparent);
+  --collection-surface-bg: color-mix(in srgb, var(--color-surface-default) 99%, transparent);
+  --collection-item-bg: var(--color-surface-default);
+  --collection-item-subtle-bg: var(--color-surface-subtle);
+  --collection-overlay-bg: var(--glass-solid);
+  --collection-shell-blur: blur(18.8px);
+  --collection-chrome-blur: blur(22px);
+  --collection-overlay-blur: blur(28px);
+
   /* Skalierungsfaktoren für die Bevel-Schatten an Buttons/Modal/Card (Schritt
      "Dark-Mode-Schatten"). Multiplizieren die bestehenden, unveränderten
      Alpha-Werte per calc() – Verhältnis zwischen default/hover/active bleibt
@@ -272,7 +287,7 @@
   --button-primary-background-active: linear-gradient(180deg, color-mix(in srgb, var(--color-brand-default) 84%, var(--color-brand-active)) 0%, color-mix(in srgb, var(--color-brand-default) 70%, var(--color-brand-active)) 100%);
   --button-primary-border: color-mix(in srgb, var(--color-brand-default) 82%, var(--color-brand-active));
   --button-primary-text: var(--color-text-on-brand);
-  --button-secondary-background-default: color-mix(in srgb, var(--color-surface-default) 66%, transparent);
+  --button-secondary-background-default: var(--collection-item-bg);
   /* DesignSystem-Kanon nutzt --color-surface-raised; desktopLayout hat für
      Button-Hover schon immer den etwas dezenteren --color-surface-subtle
      verwendet (eigener Semantic-Slot, siehe Schritt 1) – hier bewusst der
@@ -301,19 +316,19 @@
   --state-hover-background: color-mix(in srgb, var(--color-brand-default) 8%, var(--color-surface-default));
   --button-secondary-icon: var(--color-text-secondary);
 
-  --card-background: var(--color-surface-raised);
+  --card-background: var(--collection-item-bg);
   --card-border: var(--color-border-subtle);
   --card-title: var(--color-text-primary);
   --card-body: var(--color-text-secondary);
 
-  --nav-background: var(--color-background-primary);
+  --nav-background: var(--collection-chrome-bg);
   --nav-border: var(--color-border-subtle);
   --nav-item-text-default: var(--color-text-secondary);
   --nav-item-text-active: var(--color-brand-default);
   --nav-item-background-hover: var(--color-surface-raised);
   --nav-item-background-active: var(--color-brand-subtle);
 
-  --input-background-default: var(--color-surface-default);
+  --input-background-default: var(--collection-item-bg);
   --input-background-focus: var(--color-background-primary);
   --input-border-default: var(--color-border-default);
   --input-border-hover: color-mix(in srgb, var(--input-border-default) 72%, var(--color-brand-default));
@@ -332,7 +347,7 @@
   --form-control-border-focus: var(--input-border-focus);
   --form-control-shadow-focus: var(--input-shadow-focus);
 
-  --chip-background: var(--color-surface-default);
+  --chip-background: var(--collection-item-bg);
   --chip-border: var(--color-border-strong);
   --chip-text: var(--color-text-primary);
   --chip-height: 24px;
@@ -342,7 +357,7 @@
   --chip-background-muted: var(--color-surface-subtle);
   --chip-border-muted: var(--color-border-default);
   --chip-text-muted: var(--color-text-secondary);
-  --chip-choice-background: var(--color-surface-default);
+  --chip-choice-background: var(--collection-item-bg);
   --chip-choice-background-hover: var(--state-hover-background, var(--color-brand-subtle));
   --chip-choice-background-selected: var(--color-brand-subtle);
   --chip-choice-border-selected: var(--color-brand-default);
@@ -351,11 +366,11 @@
   --chip-icon-size: 14px;
   --chip-remove-size: 18px;
 
-  --segmented-control-height: var(--form-control-height-compact);
-  --segmented-control-radius: var(--form-control-radius);
+  --segmented-control-height: var(--form-control-height-default);
+  --segmented-control-radius: var(--radius-full);
   --segmented-control-background: var(--color-surface-subtle);
-  --segmented-control-item-selected-background: var(--color-brand-default);
-  --segmented-control-item-selected-text: var(--color-text-on-brand);
+  --segmented-control-item-selected-background: var(--collection-item-bg);
+  --segmented-control-item-selected-text: var(--color-text-primary);
   --switch-track-background-off: var(--color-border-default);
   --switch-track-background-on: var(--color-brand-default);
   --switch-thumb-background: var(--color-surface-default);
@@ -365,7 +380,7 @@
   --radio-border: var(--input-border-default);
   --radio-border-focus: var(--input-border-focus);
   --radio-dot: var(--color-brand-default);
-  --menu-surface-background: var(--color-surface-default);
+  --menu-surface-background: var(--collection-overlay-bg);
   --menu-surface-border: var(--color-border-default);
   --menu-item-background-hover: var(--state-hover-background, var(--color-brand-subtle));
   --modal-surface-background: var(--color-surface-raised);

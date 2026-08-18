@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messblatt - Original</title>
+  <link rel="stylesheet" href="tokens.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=17" />
+</head>
+<body>
+  <div class="main-view">
+    <div class="bg-decoration" aria-hidden="true"></div>
+    <div class="app-body">
+      <main class="content-shell" id="view-measure-sheet">
+        <section class="panel panel--main measure-panel">
+          <header class="measure-header">
+            <span class="detail-header__title">Messblatt</span>
+            <label class="measure-toggle">
+              <span class="measure-toggle__track" aria-hidden="true">
+                <span class="measure-toggle__thumb"></span>
+              </span>
+              <span>Erledigte ausblenden</span>
+            </label>
+          </header>
+
+          <div class="measure-grid" aria-label="Messblatt Tagesübersicht">
+            <div class="measure-time measure-cell measure-cell--header"></div>
+
+            <section class="measure-patient measure-cell measure-cell--header">
+              <div>
+                <span class="measure-patient__name">Günther Schröder</span>
+                <span class="measure-patient__meta">Zimmer 12 · Frühdienst</span>
+              </div>
+              <button class="btn btn--icon btn--secondary" aria-label="Messung hinzufügen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+            </section>
+
+            <section class="measure-patient measure-cell measure-cell--header">
+              <div>
+                <span class="measure-patient__name">Wilhelm Bergmann</span>
+                <span class="measure-patient__meta">Zimmer 14 · Frühdienst</span>
+              </div>
+              <button class="btn btn--icon btn--secondary" aria-label="Messung hinzufügen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+            </section>
+
+            <section class="measure-patient measure-cell measure-cell--header">
+              <div>
+                <span class="measure-patient__name">Frieda Baumann</span>
+                <span class="measure-patient__meta">Zimmer 18 · Frühdienst</span>
+              </div>
+              <button class="btn btn--icon btn--secondary" aria-label="Messung hinzufügen">
+                <svg class="icon icon--xs" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /></svg>
+              </button>
+            </section>
+
+            <div class="measure-time measure-cell measure-time--active measure-cell--selected-row measure-cell--selected-row-start">10:00</div>
+            <div class="measure-slot measure-cell measure-slot--active measure-cell--selected-row">
+              <article class="measure-card">
+                <span class="measure-card__title">Blutdruck</span>
+                <span class="measure-card__value">184/95 mmHg</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Blutdruck</span>
+                <span class="measure-card__value">135/85 mmHg</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Herzfrequenz</span>
+                <span class="measure-card__value">88 /min</span>
+              </article>
+            </div>
+            <div class="measure-slot measure-cell measure-slot--active measure-cell--selected-row">
+              <article class="measure-card">
+                <span class="measure-card__title">Blutdruck</span>
+                <span class="measure-card__value">- mmHg</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Herzfrequenz</span>
+                <span class="measure-card__value">- bpm</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Sauerstoffsättigung</span>
+                <span class="measure-card__value">- %</span>
+              </article>
+            </div>
+            <div class="measure-slot measure-cell measure-slot--active measure-cell--selected-row measure-cell--selected-row-end">
+              <article class="measure-card">
+                <span class="measure-card__title">Blutdruck</span>
+                <span class="measure-card__value">- mmHg</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Herzfrequenz</span>
+                <span class="measure-card__value">- bpm</span>
+              </article>
+              <article class="measure-card">
+                <span class="measure-card__title">Sauerstoffsättigung</span>
+                <span class="measure-card__value">- %</span>
+              </article>
+            </div>
+
+            <div class="measure-time measure-cell">08:00</div>
+            <div class="measure-slot measure-cell">
+              <article class="measure-card measure-card--overdue">
+                <span class="measure-card__title">Sauerstoffsättigung</span>
+                <span class="measure-card__value">Überfällig</span>
+              </article>
+            </div>
+            <div class="measure-slot measure-cell"></div>
+            <div class="measure-slot measure-cell"></div>
+
+            <div class="measure-time measure-cell measure-time--muted">Ohne Zeit</div>
+            <div class="measure-slot measure-cell measure-slot--tasks">
+              <article class="measure-task">
+                <span>Bett machen</span>
+                <span class="measure-status measure-status--success">Heute noch 1 Mal</span>
+              </article>
+              <article class="measure-task">
+                <span>Mobilisierung</span>
+                <span class="measure-status measure-status--success">Heute noch 2 Mal</span>
+              </article>
+              <article class="measure-task">
+                <span>Blutdruck messen</span>
+                <span class="measure-status measure-status--neutral">Beim Frühstück</span>
+              </article>
+            </div>
+            <div class="measure-slot measure-cell measure-slot--tasks">
+              <article class="measure-task">
+                <span>Bett machen</span>
+                <span class="measure-status measure-status--success">Heute noch 1 Mal</span>
+              </article>
+            </div>
+            <div class="measure-slot measure-cell measure-slot--tasks">
+              <article class="measure-task">
+                <span>Bett machen</span>
+                <span class="measure-status measure-status--success">Heute noch 1 Mal</span>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script>
+    document.documentElement.classList.add(navigator.userAgent.includes('Electron') ? 'is-electron' : 'is-browser');
+  </script>
+</body>
+</html>

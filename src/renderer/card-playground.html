@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Playground - Design System</title>
+  <link rel="stylesheet" href="tokens.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=20" />
+  <link rel="stylesheet" href="card-playground.css?v=1" />
+</head>
+<body class="card-playground-body">
+  <main class="card-playground">
+    <div class="card-playground__shell">
+      <header class="card-playground__header">
+        <div>
+          <p class="card-playground__eyebrow">Design System</p>
+          <h1>Cards</h1>
+          <p class="card-playground__intro">Eine gemeinsame Card-Basis für dichte Items, Inhaltskarten und klickbare Auswahlflächen.</p>
+        </div>
+        <div class="card-playground__meta" aria-label="Card Tokens">
+          <span class="chip chip--status chip--neutral">background: card</span>
+          <span class="chip chip--status chip--neutral">border: card</span>
+          <span class="chip chip--status chip--neutral">shadow: card</span>
+          <span class="chip chip--status chip--neutral">radius: 8 / 12</span>
+        </div>
+      </header>
+
+      <section class="card-playground__section" aria-labelledby="card-foundation">
+        <div class="card-playground__section-header">
+          <h2 id="card-foundation">Foundation</h2>
+          <p>Tokens und Basisklassen, die künftig jede Card-Familie erbt.</p>
+        </div>
+        <div class="card-playground__token-grid">
+          <article class="card card--sm">
+            <span class="card__meta">--card-background</span>
+            <span class="card__title">Surface Raised</span>
+            <span class="card-playground__swatch card-playground__swatch--background"></span>
+          </article>
+          <article class="card card--sm">
+            <span class="card__meta">--card-border</span>
+            <span class="card__title">Subtle Border</span>
+            <span class="card-playground__swatch card-playground__swatch--border"></span>
+          </article>
+          <article class="card card--sm">
+            <span class="card__meta">--shadow-card</span>
+            <span class="card__title">1px Lift</span>
+            <span class="card-playground__shadow-sample"></span>
+          </article>
+          <article class="card card--sm">
+            <span class="card__meta">--radius-md / --radius-lg</span>
+            <span class="card__title">8px Standard, 12px Large</span>
+            <span class="card-playground__radius-sample"></span>
+          </article>
+        </div>
+      </section>
+
+      <section class="card-playground__section" aria-labelledby="card-density">
+        <div class="card-playground__section-header">
+          <h2 id="card-density">Density</h2>
+          <p>Die gleiche Card-Basis in kompakter, normaler und großer Fläche.</p>
+        </div>
+        <div class="card-playground__density-grid">
+          <article class="card card--sm">
+            <div class="card__header">
+              <span class="card__title">Compact</span>
+              <span class="card__meta">sm</span>
+            </div>
+            <span class="card__meta">Dichte Listen, Messblatt-Items, kleine Facts.</span>
+          </article>
+          <article class="card card--md">
+            <div class="card__header">
+              <span class="card__title">Default</span>
+              <span class="card__meta">md</span>
+            </div>
+            <p class="card__body">Normale Inhaltskarten mit kurzer Beschreibung und klarer eigener Fläche.</p>
+          </article>
+          <article class="card card--lg">
+            <div class="card__header">
+              <span class="card__title">Large</span>
+              <span class="card__meta">lg</span>
+            </div>
+            <p class="card__body">Für zusammenhängende Informationen, Facts-Blöcke oder Detailbereiche mit mehr Luft.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card-playground__section" aria-labelledby="card-states">
+        <div class="card-playground__section-header">
+          <h2 id="card-states">States</h2>
+          <p>Interaktion bleibt leicht: Hover hebt nicht eine neue Ebene auf, Selection ist klar aber ruhig.</p>
+        </div>
+        <div class="card-playground__state-grid">
+          <button class="card card--sm card--row card--interactive" type="button">
+            <span class="card__title">Interactive</span>
+            <span class="card__meta">hover</span>
+          </button>
+          <button class="card card--sm card--row card--interactive card--selected" type="button">
+            <span class="card__title">Selected</span>
+            <span class="card__meta">active</span>
+          </button>
+          <article class="card card--sm card--row card-playground__danger-card">
+            <span class="card__title">Status</span>
+            <span class="card__meta">warn</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="card-playground__section" aria-labelledby="card-contexts">
+        <div class="card-playground__section-header">
+          <h2 id="card-contexts">Kontexte</h2>
+          <p>Messblatt, Facts und Modal verwenden dieselbe Basis, unterscheiden sich nur in Dichte und Inhalt.</p>
+        </div>
+        <div class="card-playground__context-grid">
+          <article class="card-playground__preview" aria-label="Messblatt Cards">
+            <div class="card-playground__preview-header">
+              <strong>Messblatt</strong>
+              <span>card--sm + row</span>
+            </div>
+            <div class="card-playground__measure-stack">
+              <article class="measure-card"><span class="measure-card__title">Absaugen von Sekret</span></article>
+              <article class="measure-card"><span class="measure-card__title">Lagerung</span></article>
+              <article class="measure-task"><span>Ein/Ausfuhr</span></article>
+            </div>
+          </article>
+
+          <article class="card-playground__preview" aria-label="Fact Cards">
+            <div class="card-playground__preview-header">
+              <strong>Facts</strong>
+              <span>card--lg</span>
+            </div>
+            <div class="card-playground__fact-grid">
+              <article class="card card--lg">
+                <span class="card__meta">Status</span>
+                <span class="card__title">Aktiv</span>
+                <p class="card__body">Klare Fläche für kurze Vergleichswerte.</p>
+              </article>
+              <article class="card card--lg">
+                <span class="card__meta">Zeitraum</span>
+                <span class="card__title">01.06. bis 30.06.</span>
+                <p class="card__body">Mehr Luft, aber gleiche Materiallogik.</p>
+              </article>
+            </div>
+          </article>
+
+          <article class="card-playground__preview" aria-label="Modal Card">
+            <div class="card-playground__preview-header">
+              <strong>Modal</strong>
+              <span>card--md</span>
+            </div>
+            <article class="card card--md">
+              <div class="card__header">
+                <span class="card__title">Zusammenfassung</span>
+                <span class="chip chip--status chip--neutral">Draft</span>
+              </div>
+              <p class="card__body">Gleiche Card-Tokens innerhalb eines Dialogs, ohne extra Glow.</p>
+            </article>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
